@@ -373,6 +373,20 @@
     line-height:1.55;
   }
 
+  .blocker-status{
+    margin-top:12px;
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:12px;
+    font-weight:600;
+    background:rgba(99,102,241,.10);
+    border:1px solid rgba(99,102,241,.30);
+    color:#c7d2fe;
+    display:none;
+    line-height:1.5;
+  }
+  .blocker-status.show{ display:block; animation:fadeUp .4s ease forwards; }
+
   body.blocked{ overflow:hidden; }
 </style>
 </head>
@@ -417,6 +431,8 @@
       <i class="fas fa-link"></i>
       <span>Copy Link</span>
     </button>
+
+    <div class="blocker-status" id="blockerStatus"></div>
 
     <p class="blocker-hint">
       If the button above doesn't work, use the ⋯ menu inside TikTok to open this page in your browser.
@@ -727,15 +743,15 @@
 
 
   /* ==========================================================
-     3) 🚫 TIKTOK IN-APP BROWSER BLOCKER
+     3) 🚫 TIKTOK IN-APP BROWSER BLOCKER (نسخة قوية)
      ========================================================== */
   var ua = navigator.userAgent || '';
 
-  // كشف متصفح تيك توك + باقي المتصفحات الداخلية للتطبيقات
-  var isTikTok   = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview/i.test(ua);
-  var isInApp    = /FBAN|FBAV|Instagram|Line\/|Twitter|Snapchat|Pinterest/i.test(ua);
+  // كشف متصفحات التطبيقات الداخلية
+  var isTikTok   = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview|ByteLocale/i.test(ua);
+  var isInApp    = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|Snapchat|Pinterest|MicroMessenger|GSA\//i.test(ua);
   var isAndroid  = /Android/i.test(ua);
-  var isIOS      = /iPhone|iPad|iPod/i.test(ua);
+  var isIOS      = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && 'ontouchend' in document);
 
   // 🔒 عرض الحاجب
   function showBlocker() {
@@ -743,17 +759,125 @@
     if (!blocker) return;
     blocker.classList.add('show');
     document.body.classList.add('blocked');
-    // منع التمرير للخلف
     document.documentElement.style.overflow = 'hidden';
   }
 
   if (isTikTok || isInApp) {
-    // ننتظر DOM
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', showBlocker);
     } else {
       showBlocker();
     }
+  }
+
+  // 📢 عرض حالة للمستخدم
+  var statusEl = document.getElementById('blockerStatus');
+  function setStatus(text, type) {
+    if (!statusEl) return;
+    statusEl.textContent = text;
+    statusEl.classList.add('show');
+    if (type === 'ok') {
+      statusEl.style.background = 'rgba(16,185,129,.10)';
+      statusEl.style.borderColor = 'rgba(16,185,129,.35)';
+      statusEl.style.color = '#6ee7b7';
+    } else if (type === 'err') {
+      statusEl.style.background = 'rgba(239,68,68,.10)';
+      statusEl.style.borderColor = 'rgba(239,68,68,.35)';
+      statusEl.style.color = '#fca5a5';
+    } else {
+      statusEl.style.background = 'rgba(99,102,241,.10)';
+      statusEl.style.borderColor = 'rgba(99,102,241,.30)';
+      statusEl.style.color = '#c7d2fe';
+    }
+  }
+
+  /* ==========================================================
+     🚀 محاولات فتح المتصفح الخارجي — طرق متعددة
+     ========================================================== */
+
+  // الطريقة 1: intent:// لأندرويد (الأقوى)
+  function tryAndroidIntent(url) {
+    try {
+      var cleanUrl = url.replace(/^https?:\/\//, '');
+      var intentUrl =
+        'intent://' + cleanUrl +
+        '#Intent;scheme=https;' +
+        'action=android.intent.action.VIEW;' +
+        'category=android.intent.category.BROWSABLE;' +
+        'S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      window.location.href = intentUrl;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // الطريقة 2: x-safari-https:// لأجهزة iOS (قديمة لكن تعمل أحياناً)
+  function trySafariScheme(url) {
+    try {
+      var safariUrl = url.replace(/^https?:\/\//, '');
+      window.location.href = 'x-safari-https://' + safariUrl;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // الطريقة 3: googlechrome:// على iOS
+  function tryChromeScheme(url) {
+    try {
+      var chromeUrl = url.replace(/^https?:\/\//, '');
+      window.location.href = 'googlechrome://' + chromeUrl;
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // الطريقة 4: فتح نافذة جديدة (قد تفتح المتصفح الخارجي على iOS)
+  function tryWindowOpen(url) {
+    try {
+      var w = window.open(url, '_blank', 'noopener,noreferrer');
+      return !!w;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // الطريقة 5: iframe خفي (خدعة تعمل على بعض إصدارات iOS)
+  function tryIframeEscape(url) {
+    try {
+      var iframe = document.createElement('iframe');
+      iframe.style.position = 'fixed';
+      iframe.style.top = '-9999px';
+      iframe.style.left = '-9999px';
+      iframe.style.width = '1px';
+      iframe.style.height = '1px';
+      iframe.style.opacity = '0';
+      iframe.setAttribute('sandbox', 'allow-top-navigation allow-same-origin allow-scripts allow-popups');
+      iframe.src = url;
+      document.body.appendChild(iframe);
+      setTimeout(function () {
+        if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
+      }, 3000);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // الطريقة 6: طرق iOS المباشرة
+  function tryIOSDirect(url) {
+    // محاولة عبر x-safari أولاً
+    trySafariScheme(url);
+    setTimeout(function () {
+      // إن لم ينجح، نجرب googlechrome
+      tryChromeScheme(url);
+    }, 400);
+    setTimeout(function () {
+      // كحل أخير: نافذة جديدة
+      tryWindowOpen(url);
+    }, 900);
   }
 
   // 🚀 زر "Try to Open in Browser"
@@ -763,26 +887,29 @@
       var url = window.location.href;
 
       if (isAndroid) {
-        // على أندرويد: نستخدم intent:// لفتح المتصفح الافتراضي
-        var cleanUrl = url.replace(/^https?:\/\//, '');
-        window.location.href =
-          'intent://' + cleanUrl +
-          '#Intent;scheme=https;action=android.intent.action.VIEW;' +
-          'category=android.intent.category.BROWSABLE;' +
-          'S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
-      } else if (isIOS) {
-        // على iOS: نحاول فتح Safari مباشرة
-        // (قد لا يعمل داخل TikTok لكنه محاولة)
-        var safariUrl = url.replace(/^https?:\/\//, '');
-        window.location.href = 'x-safari-https://' + safariUrl;
-
-        // احتياطي: بعد ثانية، نعرض رسالة إرشادية
+        setStatus('جاري محاولة فتح المتصفح الخارجي…', 'info');
+        var ok = tryAndroidIntent(url);
+        if (!ok) {
+          tryWindowOpen(url);
+        }
+        // بعد ثانيتين نعرض تعليمات إن لم يفتح
         setTimeout(function () {
-          alert('If the browser didn\'t open, tap the ⋯ menu at the top-right of TikTok and choose "Open in Safari".');
-        }, 1200);
+          setStatus('إذا لم يفتح المتصفح، استخدم زر "نسخ الرابط" والصقه في المتصفح.', 'err');
+        }, 2000);
+
+      } else if (isIOS) {
+        setStatus('جاري محاولة فتح Safari…', 'info');
+        tryIOSDirect(url);
+        setTimeout(function () {
+          setStatus('إذا لم يفتح المتصفح، اضغط (⋯) أعلى يمين تيك توك ثم "Open in Safari". أو استخدم زر "نسخ الرابط".', 'err');
+        }, 2200);
+
       } else {
-        // سطح المكتب / غير معروف
-        window.open(url, '_blank', 'noopener,noreferrer');
+        // سطح المكتب أو غير معروف
+        setStatus('جاري فتح الرابط…', 'info');
+        if (!tryWindowOpen(url)) {
+          setStatus('يرجى استخدام زر "نسخ الرابط" لفتحه يدوياً.', 'err');
+        }
       }
     });
   }
@@ -797,6 +924,7 @@
       function done() {
         copyBtn.classList.add('copied');
         label.textContent = 'Link Copied ✓';
+        setStatus('✅ تم نسخ الرابط — افتح متصفحك والصقه في شريط العنوان.', 'ok');
         setTimeout(function () {
           copyBtn.classList.remove('copied');
           label.textContent = 'Copy Link';
@@ -819,8 +947,12 @@
     ta.style.position = 'fixed';
     ta.style.opacity = '0';
     document.body.appendChild(ta);
+    ta.focus();
     ta.select();
-    try { document.execCommand('copy'); cb && cb(); } catch (e) {}
+    try {
+      var ok = document.execCommand('copy');
+      if (ok && cb) cb();
+    } catch (e) {}
     document.body.removeChild(ta);
   }
 
