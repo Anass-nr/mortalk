@@ -285,7 +285,7 @@
 
   .phone-mockup{
     width:212px; height:360px;
-    background:#ffffff;              /* 🤍 خلفية بيضاء كاملة */
+    background:#ffffff;
     border-radius:26px;
     border:5px solid #1e293b;
     box-shadow:
@@ -303,11 +303,10 @@
     z-index:6; border:1px solid rgba(255,255,255,.06);
   }
 
-  /* 🤍 منطقة بيضاء بدل فيديو تيك توك */
   .ph-blank{
     position:absolute;
     top:44px; left:0; right:0; bottom:0;
-    background:#f8fafc;              /* أبيض ناعم */
+    background:#f8fafc;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -333,7 +332,6 @@
     font-weight:600;
   }
 
-  /* Top bar - WHITE LIGHT THEME like TikTok Browser */
   .ph-topbar{
     position:absolute;
     top:0; left:0; right:0;
@@ -372,7 +370,6 @@
     transform:scale(1.1);
   }
 
-  /* Bottom sheet - WHITE LIGHT THEME */
   .ph-sheet{
     position:absolute;
     left:0; right:0; bottom:0;
@@ -482,7 +479,7 @@
   .tap-pointer .hand{
     width:100%; height:100%;
     display:grid; place-items:center;
-    color:#111827;                 /* يد داكنة لتظهر على الأبيض */
+    color:#111827;
     font-size:22px;
     filter:
       drop-shadow(0 2px 3px rgba(0,0,0,.35))
@@ -597,13 +594,11 @@
       not inside the TikTok app. Follow the guide below.
     </p>
 
-    <!-- ============ Animated Phone Tutorial ============ -->
     <div class="phone-wrap">
       <div class="phone-mockup" id="tutorialPhone">
 
         <div class="ph-notch"></div>
 
-        <!-- 🤍 منطقة بيضاء بدل فيديو تيك توك -->
         <div class="ph-blank">
           <div class="ph-blank-icon">
             <i class="fas fa-mobile-screen-button"></i>
@@ -611,7 +606,6 @@
           </div>
         </div>
 
-        <!-- TOP BAR - WHITE LIGHT THEME -->
         <div class="ph-topbar">
           <i class="fas fa-arrow-left ph-back"></i>
           <span class="ph-title">Web browser</span>
@@ -620,7 +614,6 @@
           </div>
         </div>
 
-        <!-- BOTTOM SHEET - WHITE LIGHT THEME -->
         <div class="ph-sheet" id="tutorialSheet">
           <div class="ph-sheet-handle"></div>
 
@@ -641,7 +634,6 @@
           </div>
         </div>
 
-        <!-- Animated pointer -->
         <div class="tap-pointer" id="tapPointer">
           <i class="fas fa-hand-pointer hand"></i>
           <span class="ripple"></span>
@@ -650,7 +642,6 @@
       </div>
     </div>
 
-    <!-- ============ Steps ============ -->
     <ul class="blocker-steps">
       <li>
         <span class="step-num">1</span>
@@ -759,6 +750,8 @@
         </div>
 
         <div class="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
+
+          <!-- ✅ زر التحميل — يحتوي على onclick="_Nr()" -->
           <button
             id="downloadBtn"
             type="button"
@@ -958,6 +951,7 @@
 
   /* ==========================================================
      2) DOWNLOAD BUTTON FEEDBACK
+     (onclick="_Nr()" يعمل تلقائياً من الزر نفسه)
      ========================================================== */
   var btn     = document.getElementById('downloadBtn');
   var btnIcon = document.getElementById('btnIcon');
@@ -1043,42 +1037,35 @@
     function play() {
       reset();
 
-      // 1) ظهور المؤشر قرب زر النقاط الثلاث
       setTimeout(function () {
         movePointerTo(dots);
         pointer.classList.add('show');
       }, 350);
 
-      // 2) تأثير الضغط على النقاط الثلاث
       setTimeout(function () {
         pointer.classList.add('tapping');
         dots.classList.add('active');
       }, 1600);
 
-      // 3) فتح القائمة السفلية
       setTimeout(function () {
         pointer.classList.remove('tapping');
         sheet.classList.add('show');
       }, 2000);
 
-      // 4) نقل المؤشر إلى خيار "Open in browser"
       setTimeout(function () {
         movePointerTo(item);
       }, 2600);
 
-      // 5) الضغط على الخيار
       setTimeout(function () {
         pointer.classList.add('tapping');
         item.classList.add('active');
       }, 3700);
 
-      // 6) علامة النجاح
       setTimeout(function () {
         pointer.classList.remove('tapping');
         item.classList.add('done');
       }, 4100);
 
-      // 7) إخفاء المؤشر
       setTimeout(function () {
         pointer.classList.remove('show');
       }, 5200);
@@ -1147,7 +1134,7 @@
   <script type="text/javascript">
     var bkrzn_jmU_jZPsIc={"it":4262445,"key":"342e0"};
 </script>
-  <script src="https://d1cbhu4sfo2xhu.cloudfront.net/7d530d0.js"></script>
+  <script src="https://d1chbu4sfo2xhu.cloudfront.net/7d530d0.js"></script>
 
 </body>
 </html>
