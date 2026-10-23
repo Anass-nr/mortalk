@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mortal Kombat — Download</title>
+<title>Premium Game Downloads — APK</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -38,7 +38,16 @@
     border:1px solid rgba(255,255,255,.12);
     box-shadow:0 24px 55px -22px rgba(0,0,0,.95), 0 0 0 1px rgba(99,102,241,.10) inset;
     background:#0d1424;
+    position:relative;
   }
+  
+  .cover-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    aspect-ratio: 3/4;
+  }
+
   .badge-18{
     background:rgba(10,14,25,.86);
     backdrop-filter:blur(8px);
@@ -110,18 +119,14 @@
     isolation:isolate;
   }
   .preview-frame img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    display:block; width:100%; height:100%; object-fit:cover;
     filter:blur(14px) brightness(.65) saturate(1.15);
     transform:scale(1.12);
     transition:filter .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
     will-change:filter, transform;
   }
   .preview-frame.is-revealed img{
-    filter:blur(0) brightness(1) saturate(1);
-    transform:scale(1);
+    filter:blur(0) brightness(1) saturate(1); transform:scale(1);
   }
   .preview-frame.is-revealed{ animation:framePulse .9s ease-out; }
   @keyframes framePulse{
@@ -130,70 +135,43 @@
   }
 
   .preview-overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    text-align:center;
-    padding:20px;
-    cursor:pointer;
-    border:0;
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; text-align:center; padding:20px; cursor:pointer; border:0;
     background:radial-gradient(circle at 50% 50%, rgba(7,11,20,.5) 0%, rgba(7,11,20,.88) 78%);
-    z-index:2;
-    transition:opacity .5s ease, visibility .5s, transform .5s ease;
-    font-family:inherit;
-    color:inherit;
+    z-index:2; transition:opacity .5s ease, visibility .5s, transform .5s ease;
+    font-family:inherit; color:inherit;
   }
   .preview-overlay:hover .preview-cta{
-    background:rgba(250,204,21,.20);
-    border-color:rgba(250,204,21,.75);
-    transform:translateY(-1px);
+    background:rgba(250,204,21,.20); border-color:rgba(250,204,21,.75); transform:translateY(-1px);
   }
   .preview-frame.is-revealed .preview-overlay{
     opacity:0; visibility:hidden; pointer-events:none; transform:scale(1.04);
   }
 
   .preview-lock{
-    width:62px; height:62px;
-    border-radius:50%;
+    width:62px; height:62px; border-radius:50%;
     display:grid; place-items:center;
-    background:rgba(10,14,25,.9);
-    border:1px solid rgba(250,204,21,.55);
-    color:#facc15;
-    font-size:22px;
-    box-shadow:0 0 30px rgba(250,204,21,.25);
-    transition:transform .35s ease;
-    animation:lockPulse 2.2s ease-in-out infinite;
+    background:rgba(10,14,25,.9); border:1px solid rgba(250,204,21,.55);
+    color:#facc15; font-size:22px; box-shadow:0 0 30px rgba(250,204,21,.25);
+    transition:transform .35s ease; animation:lockPulse 2.2s ease-in-out infinite;
   }
   @keyframes lockPulse{
     0%,100%{ box-shadow:0 0 26px rgba(250,204,21,.20); }
     50%    { box-shadow:0 0 42px rgba(250,204,21,.45); }
   }
   .preview-overlay:hover .preview-lock{ transform:scale(1.08); }
-  .preview-overlay h3{
-    font-weight:900; letter-spacing:2.5px; font-size:15px; color:#facc15; margin:0;
-  }
-  .preview-overlay p{
-    font-size:12.5px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0;
-  }
+  .preview-overlay h3{ font-weight:900; letter-spacing:2.5px; font-size:15px; color:#facc15; margin:0; }
+  .preview-overlay p{ font-size:12.5px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0; }
   .preview-cta{
     display:inline-flex; align-items:center; gap:8px; margin-top:8px;
-    padding:9px 18px; border-radius:99px;
-    font-size:12px; font-weight:700; letter-spacing:.5px;
-    color:#facc15;
-    background:rgba(250,204,21,.10);
-    border:1px solid rgba(250,204,21,.4);
+    padding:9px 18px; border-radius:99px; font-size:12px; font-weight:700; letter-spacing:.5px;
+    color:#facc15; background:rgba(250,204,21,.10); border:1px solid rgba(250,204,21,.4);
     transition:background .25s, border-color .25s, transform .25s;
   }
 
   .pulse-dot{ animation:pulse 1.9s ease-in-out infinite; }
-  @keyframes pulse{
-    0%,100%{ opacity:1; transform:scale(1); }
-    50%{ opacity:.35; transform:scale(.82); }
-  }
+  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.82); } }
 
   details.faq{ border-bottom:1px solid rgba(255,255,255,.06); }
   details.faq summary{ list-style:none; cursor:pointer; }
@@ -206,367 +184,105 @@
     animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards;
   }
   @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
-  .d1{ animation-delay:.05s } .d2{ animation-delay:.13s }
-  .d3{ animation-delay:.21s } .d4{ animation-delay:.29s }
-  .d5{ animation-delay:.37s }
+  .d1{ animation-delay:.05s } .d2{ animation-delay:.10s } .d3{ animation-delay:.15s }
+  .d4{ animation-delay:.20s } .d5{ animation-delay:.25s } .d6{ animation-delay:.30s }
 
   @media (prefers-reduced-motion: reduce){
     *{ animation:none !important; transition:none !important; }
   }
 
-
   /* ============================================================
      🚫 TIKTOK BLOCKER
      ============================================================ */
   #tiktokBlocker{
-    position:fixed;
-    inset:0;
-    z-index:99999;
-    display:none;
-    align-items:flex-start;
-    justify-content:center;
-    padding:20px 16px 30px;
-    background:
-      radial-gradient(700px 500px at 50% 0%, rgba(99,102,241,.28), transparent 65%),
-      linear-gradient(180deg,#070b14 0%,#0a1020 100%);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
+    position:fixed; inset:0; z-index:99999; display:none;
+    align-items:flex-start; justify-content:center; padding:20px 16px 30px;
+    background: radial-gradient(700px 500px at 50% 0%, rgba(99,102,241,.28), transparent 65%),
+                linear-gradient(180deg,#070b14 0%,#0a1020 100%);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    overflow-y:auto; -webkit-overflow-scrolling:touch;
   }
   #tiktokBlocker.show{ display:flex; }
 
   .blocker-card{
-    width:100%;
-    max-width:440px;
-    margin:auto 0;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:24px;
-    padding:24px 20px 22px;
-    text-align:center;
+    width:100%; max-width:440px; margin:auto 0;
+    background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.10);
+    border-radius:24px; padding:24px 20px 22px; text-align:center;
     box-shadow:0 30px 70px -25px rgba(0,0,0,.9), 0 0 0 1px rgba(99,102,241,.12) inset;
     animation:blockerIn .5s cubic-bezier(.22,1,.36,1) both;
   }
-  @keyframes blockerIn{
-    from{ opacity:0; transform:translateY(16px) scale(.97); }
-    to  { opacity:1; transform:translateY(0) scale(1); }
-  }
+  @keyframes blockerIn{ from{ opacity:0; transform:translateY(16px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
 
   .blocker-icon{
-    width:66px; height:66px;
-    margin:0 auto 14px;
-    border-radius:50%;
+    width:66px; height:66px; margin:0 auto 14px; border-radius:50%;
     display:grid; place-items:center;
     background:linear-gradient(135deg,rgba(250,204,21,.18),rgba(250,204,21,.05));
-    border:1px solid rgba(250,204,21,.55);
-    color:#facc15;
-    font-size:26px;
-    box-shadow:0 0 40px rgba(250,204,21,.30);
-    animation:iconPulse 2.2s ease-in-out infinite;
+    border:1px solid rgba(250,204,21,.55); color:#facc15; font-size:26px;
+    box-shadow:0 0 40px rgba(250,204,21,.30); animation:iconPulse 2.2s ease-in-out infinite;
   }
-  @keyframes iconPulse{
-    0%,100%{ box-shadow:0 0 30px rgba(250,204,21,.25); }
-    50%    { box-shadow:0 0 50px rgba(250,204,21,.55); }
-  }
+  @keyframes iconPulse{ 0%,100%{ box-shadow:0 0 30px rgba(250,204,21,.25); } 50% { box-shadow:0 0 50px rgba(250,204,21,.55); } }
 
-  .blocker-title{
-    font-size:19px; font-weight:900; color:#fff; margin:0 0 6px;
-  }
-  .blocker-sub{
-    font-size:13px; color:#94a3b8; line-height:1.6; margin:0 0 18px;
-  }
+  .blocker-title{ font-size:19px; font-weight:900; color:#fff; margin:0 0 6px; }
+  .blocker-sub{ font-size:13px; color:#94a3b8; line-height:1.6; margin:0 0 18px; }
   .blocker-sub b{ color:#facc15; font-weight:800; }
 
-  /* ===================== Phone Mockup ===================== */
-  .phone-wrap{
-    display:flex; justify-content:center; margin-bottom:18px; perspective:900px;
-  }
-
+  .phone-wrap{ display:flex; justify-content:center; margin-bottom:18px; perspective:900px; }
   .phone-mockup{
-    width:212px; height:360px;
-    background:#ffffff;
-    border-radius:26px;
-    border:5px solid #1e293b;
-    box-shadow:
-      0 22px 45px -15px rgba(0,0,0,.9),
-      0 0 0 1px rgba(99,102,241,.18),
-      inset 0 0 0 1px rgba(255,255,255,.03);
-    position:relative;
-    overflow:hidden;
-    transform:rotateX(4deg);
+    width:212px; height:360px; background:#ffffff; border-radius:26px; border:5px solid #1e293b;
+    box-shadow: 0 22px 45px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(99,102,241,.18), inset 0 0 0 1px rgba(255,255,255,.03);
+    position:relative; overflow:hidden; transform:rotateX(4deg);
   }
+  .ph-notch{ position:absolute; top:5px; left:50%; transform:translateX(-50%); width:56px; height:14px; background:#0a0f1c; border-radius:10px; z-index:6; border:1px solid rgba(255,255,255,.06); }
+  .ph-blank{ position:absolute; top:44px; left:0; right:0; bottom:0; background:#f8fafc; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:11px; font-weight:600; letter-spacing:.4px; }
+  .ph-blank .ph-blank-icon{ display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.55; }
+  .ph-blank .ph-blank-icon i{ font-size:26px; color:#cbd5e1; }
+  .ph-blank .ph-blank-icon span{ font-size:10px; color:#cbd5e1; font-weight:600; }
 
-  .ph-notch{
-    position:absolute; top:5px; left:50%; transform:translateX(-50%);
-    width:56px; height:14px; background:#0a0f1c; border-radius:10px;
-    z-index:6; border:1px solid rgba(255,255,255,.06);
-  }
+  .ph-topbar{ position:absolute; top:0; left:0; right:0; height:44px; background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 14px; z-index:5; border-bottom:1px solid #e5e7eb; color:#000; }
+  .ph-back{ color:#000; font-size:14px; width:20px; text-align:left; }
+  .ph-title{ font-size:13px; font-weight:600; color:#000; flex:1; text-align:center; letter-spacing:.2px; }
+  .ph-dots{ width:26px; height:26px; display:grid; place-items:center; color:#000; font-size:18px; font-weight:bold; border-radius:8px; transition:all .3s ease; position:relative; cursor:pointer; }
+  .ph-dots.active{ background:rgba(0,0,0,.08); box-shadow:0 0 0 3px rgba(0,0,0,.1); transform:scale(1.1); }
 
-  .ph-blank{
-    position:absolute;
-    top:44px; left:0; right:0; bottom:0;
-    background:#f8fafc;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#94a3b8;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:.4px;
-  }
-  .ph-blank .ph-blank-icon{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-    opacity:.55;
-  }
-  .ph-blank .ph-blank-icon i{
-    font-size:26px;
-    color:#cbd5e1;
-  }
-  .ph-blank .ph-blank-icon span{
-    font-size:10px;
-    color:#cbd5e1;
-    font-weight:600;
-  }
-
-  .ph-topbar{
-    position:absolute;
-    top:0; left:0; right:0;
-    height:44px;
-    background:#ffffff;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 14px;
-    z-index:5;
-    border-bottom:1px solid #e5e7eb;
-    color:#000;
-  }
-  .ph-back{
-    color:#000; font-size:14px; width:20px; text-align:left;
-  }
-  .ph-title{
-    font-size:13px; font-weight:600; color:#000;
-    flex:1; text-align:center;
-    letter-spacing:.2px;
-  }
-  .ph-dots{
-    width:26px; height:26px;
-    display:grid; place-items:center;
-    color:#000;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:8px;
-    transition:all .3s ease;
-    position:relative;
-    cursor:pointer;
-  }
-  .ph-dots.active{
-    background:rgba(0,0,0,.08);
-    box-shadow:0 0 0 3px rgba(0,0,0,.1);
-    transform:scale(1.1);
-  }
-
-  .ph-sheet{
-    position:absolute;
-    left:0; right:0; bottom:0;
-    background:#ffffff;
-    border-top-left-radius:16px;
-    border-top-right-radius:16px;
-    padding:14px 0 12px;
-    transform:translateY(105%);
-    transition:transform .5s cubic-bezier(.22,1,.36,1);
-    z-index:10;
-    box-shadow:0 -14px 30px rgba(0,0,0,.35);
-    border-top:1px solid #e5e7eb;
-    color:#000;
-  }
+  .ph-sheet{ position:absolute; left:0; right:0; bottom:0; background:#ffffff; border-top-left-radius:16px; border-top-right-radius:16px; padding:14px 0 12px; transform:translateY(105%); transition:transform .5s cubic-bezier(.22,1,.36,1); z-index:10; box-shadow:0 -14px 30px rgba(0,0,0,.35); border-top:1px solid #e5e7eb; color:#000; }
   .ph-sheet.show{ transform:translateY(0); }
+  .ph-sheet-handle{ width:32px; height:4px; background:#d1d5db; border-radius:2px; margin:0 auto 10px; }
+  .ph-sheet-item{ display:flex; align-items:center; gap:12px; padding:11px 18px; font-size:13px; color:#1f2937; font-weight:500; position:relative; transition:all .3s ease; }
+  .ph-sheet-item i{ width:16px; font-size:14px; text-align:center; opacity:.8; }
+  .ph-sheet-item.highlight{ color:#2563eb; font-weight:700; }
+  .ph-sheet-item.highlight i{ color:#2563eb; opacity:1; }
+  .ph-sheet-item.highlight.active{ background:linear-gradient(90deg, rgba(37,99,235,.12), rgba(37,99,235,.05)); color:#2563eb; }
+  .ph-sheet-item.highlight.active::before{ content:''; position:absolute; left:0; top:6px; bottom:6px; width:3px; background:#2563eb; border-radius:0 3px 3px 0; box-shadow:0 0 12px rgba(37,99,235,.5); }
+  .ph-sheet-item.highlight.active::after{ content:''; position:absolute; inset:4px 12px; border-radius:8px; border:1.5px solid rgba(37,99,235,.4); box-shadow:0 0 18px rgba(37,99,235,.2); animation:itemPulse 1.1s ease-in-out infinite; pointer-events:none; }
+  @keyframes itemPulse{ 0%,100% { opacity:1; } 50% { opacity:.5; } }
 
-  .ph-sheet-handle{
-    width:32px; height:4px;
-    background:#d1d5db;
-    border-radius:2px;
-    margin:0 auto 10px;
-  }
+  .ph-sheet-item .success-check{ margin-left:auto; color:#10b981; font-size:14px; opacity:0; transform:scale(.5); transition:all .4s cubic-bezier(.34,1.56,.64,1); }
+  .ph-sheet-item.highlight.done .success-check{ opacity:1; transform:scale(1); }
 
-  .ph-sheet-item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px 18px;
-    font-size:13px;
-    color:#1f2937;
-    font-weight:500;
-    position:relative;
-    transition:all .3s ease;
-  }
-  .ph-sheet-item i{
-    width:16px; font-size:14px; text-align:center; opacity:.8;
-  }
-
-  .ph-sheet-item.highlight{
-    color:#2563eb;
-    font-weight:700;
-  }
-  .ph-sheet-item.highlight i{
-    color:#2563eb;
-    opacity:1;
-  }
-
-  .ph-sheet-item.highlight.active{
-    background:linear-gradient(90deg, rgba(37,99,235,.12), rgba(37,99,235,.05));
-    color:#2563eb;
-  }
-  .ph-sheet-item.highlight.active::before{
-    content:'';
-    position:absolute;
-    left:0; top:6px; bottom:6px;
-    width:3px;
-    background:#2563eb;
-    border-radius:0 3px 3px 0;
-    box-shadow:0 0 12px rgba(37,99,235,.5);
-  }
-  .ph-sheet-item.highlight.active::after{
-    content:'';
-    position:absolute;
-    inset:4px 12px;
-    border-radius:8px;
-    border:1.5px solid rgba(37,99,235,.4);
-    box-shadow:0 0 18px rgba(37,99,235,.2);
-    animation:itemPulse 1.1s ease-in-out infinite;
-    pointer-events:none;
-  }
-  @keyframes itemPulse{
-    0%,100% { opacity:1; }
-    50%     { opacity:.5; }
-  }
-
-  .ph-sheet-item .success-check{
-    margin-left:auto;
-    color:#10b981;
-    font-size:14px;
-    opacity:0;
-    transform:scale(.5);
-    transition:all .4s cubic-bezier(.34,1.56,.64,1);
-  }
-  .ph-sheet-item.highlight.done .success-check{
-    opacity:1;
-    transform:scale(1);
-  }
-
-  /* ===================== Animated pointer ===================== */
-  .tap-pointer{
-    position:absolute;
-    top:0; left:0;
-    width:34px; height:34px;
-    pointer-events:none;
-    z-index:20;
-    opacity:0;
-    transform:translate(-15%, -12%);
-    transition:
-      top .75s cubic-bezier(.22,1,.36,1),
-      left .75s cubic-bezier(.22,1,.36,1),
-      opacity .35s ease,
-      transform .3s ease;
-    will-change:top, left;
-  }
+  .tap-pointer{ position:absolute; top:0; left:0; width:34px; height:34px; pointer-events:none; z-index:20; opacity:0; transform:translate(-15%, -12%); transition: top .75s cubic-bezier(.22,1,.36,1), left .75s cubic-bezier(.22,1,.36,1), opacity .35s ease, transform .3s ease; will-change:top, left; }
   .tap-pointer.show{ opacity:1; }
+  .tap-pointer .hand{ width:100%; height:100%; display:grid; place-items:center; color:#111827; font-size:22px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)) drop-shadow(0 0 8px rgba(37,99,235,.7)); }
+  .tap-pointer .ripple{ position:absolute; top:50%; left:50%; width:14px; height:14px; border-radius:50%; border:2px solid rgba(37,99,235,.9); transform:translate(-50%, -50%); opacity:0; pointer-events:none; }
+  .tap-pointer.tapping .hand{ animation:tapPress .35s ease-out; }
+  @keyframes tapPress{ 0% { transform:scale(1); } 45% { transform:scale(.72); } 100% { transform:scale(1); } }
+  .tap-pointer.tapping .ripple{ animation:rippleOut .7s ease-out; }
+  @keyframes rippleOut{ 0% { width:14px; height:14px; opacity:1; border-width:2.5px; } 100% { width:70px; height:70px; opacity:0; border-width:1px; } }
 
-  .tap-pointer .hand{
-    width:100%; height:100%;
-    display:grid; place-items:center;
-    color:#111827;
-    font-size:22px;
-    filter:
-      drop-shadow(0 2px 3px rgba(0,0,0,.35))
-      drop-shadow(0 0 8px rgba(37,99,235,.7));
-  }
-
-  .tap-pointer .ripple{
-    position:absolute; top:50%; left:50%;
-    width:14px; height:14px; border-radius:50%;
-    border:2px solid rgba(37,99,235,.9);
-    transform:translate(-50%, -50%);
-    opacity:0; pointer-events:none;
-  }
-  .tap-pointer.tapping .hand{
-    animation:tapPress .35s ease-out;
-  }
-  @keyframes tapPress{
-    0%   { transform:scale(1); }
-    45%  { transform:scale(.72); }
-    100% { transform:scale(1); }
-  }
-  .tap-pointer.tapping .ripple{
-    animation:rippleOut .7s ease-out;
-  }
-  @keyframes rippleOut{
-    0%   { width:14px; height:14px; opacity:1; border-width:2.5px; }
-    100% { width:70px; height:70px; opacity:0; border-width:1px; }
-  }
-
-  /* ===================== Steps ===================== */
-  .blocker-steps{
-    list-style:none; padding:0; margin:0 0 16px; text-align:left;
-    background:rgba(0,0,0,.28);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:14px; padding:12px 14px;
-  }
-  .blocker-steps li{
-    display:flex; gap:10px; align-items:flex-start;
-    font-size:12.5px; color:#cbd5e1; line-height:1.55; padding:5px 0;
-  }
-  .blocker-steps li .step-num{
-    flex:0 0 22px; height:22px; border-radius:50%;
-    display:grid; place-items:center;
-    background:rgba(99,102,241,.20);
-    border:1px solid rgba(99,102,241,.5);
-    color:#a5b4fc; font-size:11px; font-weight:800; margin-top:1px;
-  }
+  .blocker-steps{ list-style:none; padding:0; margin:0 0 16px; text-align:left; background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px 14px; }
+  .blocker-steps li{ display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:#cbd5e1; line-height:1.55; padding:5px 0; }
+  .blocker-steps li .step-num{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center; background:rgba(99,102,241,.20); border:1px solid rgba(99,102,241,.5); color:#a5b4fc; font-size:11px; font-weight:800; margin-top:1px; }
   .blocker-steps li b{ color:#facc15; font-weight:800; }
 
-  /* ===================== Buttons ===================== */
-  .blocker-copy{
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    width:100%; padding:14px 18px; border-radius:14px;
-    background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%);
-    border:0; color:#fff; font-size:14px; font-weight:800;
-    letter-spacing:.3px; cursor:pointer;
-    box-shadow:0 14px 35px -12px rgba(99,102,241,.75);
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .blocker-copy:hover{
-    transform:translateY(-2px);
-    box-shadow:0 22px 45px -12px rgba(139,92,246,.9);
-  }
+  .blocker-copy{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:14px 18px; border-radius:14px; background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%); border:0; color:#fff; font-size:14px; font-weight:800; letter-spacing:.3px; cursor:pointer; box-shadow:0 14px 35px -12px rgba(99,102,241,.75); transition:transform .2s ease, box-shadow .2s ease; }
+  .blocker-copy:hover{ transform:translateY(-2px); box-shadow:0 22px 45px -12px rgba(139,92,246,.9); }
   .blocker-copy:active{ transform:translateY(0); }
-  .blocker-copy.copied{
-    background:linear-gradient(135deg,#10b981 0%,#059669 100%);
-    box-shadow:0 14px 35px -12px rgba(16,185,129,.7);
-  }
+  .blocker-copy.copied{ background:linear-gradient(135deg,#10b981 0%,#059669 100%); box-shadow:0 14px 35px -12px rgba(16,185,129,.7); }
 
-  .blocker-status{
-    margin-top:12px; padding:11px 14px; border-radius:12px;
-    font-size:12px; font-weight:600;
-    background:rgba(99,102,241,.10);
-    border:1px solid rgba(99,102,241,.30);
-    color:#c7d2fe; display:none; line-height:1.55; text-align:left;
-  }
+  .blocker-status{ margin-top:12px; padding:11px 14px; border-radius:12px; font-size:12px; font-weight:600; background:rgba(99,102,241,.10); border:1px solid rgba(99,102,241,.30); color:#c7d2fe; display:none; line-height:1.55; text-align:left; }
   .blocker-status.show{ display:block; animation:fadeUp .4s ease forwards; }
-  .blocker-status.ok{
-    background:rgba(16,185,129,.10);
-    border-color:rgba(16,185,129,.35);
-    color:#6ee7b7;
-  }
+  .blocker-status.ok{ background:rgba(16,185,129,.10); border-color:rgba(16,185,129,.35); color:#6ee7b7; }
 
-  .blocker-hint{
-    margin-top:12px; font-size:11px; color:#64748b; line-height:1.55;
-  }
-
+  .blocker-hint{ margin-top:12px; font-size:11px; color:#64748b; line-height:1.55; }
   body.blocked{ overflow:hidden; }
 
   @media (max-height: 740px){
@@ -583,11 +299,9 @@
      ============================================================ -->
 <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
   <div class="blocker-card">
-
     <div class="blocker-icon">
       <i class="fas fa-shield-halved"></i>
     </div>
-
     <h2 class="blocker-title" id="blockerTitle">Open in Browser</h2>
     <p class="blocker-sub">
       This page must be opened in your <b>phone's browser</b> —<br>
@@ -596,16 +310,13 @@
 
     <div class="phone-wrap">
       <div class="phone-mockup" id="tutorialPhone">
-
         <div class="ph-notch"></div>
-
         <div class="ph-blank">
           <div class="ph-blank-icon">
             <i class="fas fa-mobile-screen-button"></i>
             <span>Browser page</span>
           </div>
         </div>
-
         <div class="ph-topbar">
           <i class="fas fa-arrow-left ph-back"></i>
           <span class="ph-title">Web browser</span>
@@ -613,306 +324,218 @@
             <i class="fas fa-ellipsis-h"></i>
           </div>
         </div>
-
         <div class="ph-sheet" id="tutorialSheet">
           <div class="ph-sheet-handle"></div>
-
-          <div class="ph-sheet-item">
-            <i class="fas fa-flag"></i>
-            Report
-          </div>
-
+          <div class="ph-sheet-item"><i class="fas fa-flag"></i> Report</div>
           <div class="ph-sheet-item highlight" id="tutorialItem">
-            <i class="fas fa-compass"></i>
-            Open in browser
+            <i class="fas fa-compass"></i> Open in browser
             <i class="fas fa-check-circle success-check"></i>
           </div>
-
-          <div class="ph-sheet-item">
-            <i class="fas fa-link"></i>
-            Copy link
-          </div>
+          <div class="ph-sheet-item"><i class="fas fa-link"></i> Copy link</div>
         </div>
-
         <div class="tap-pointer" id="tapPointer">
           <i class="fas fa-hand-pointer hand"></i>
           <span class="ripple"></span>
         </div>
-
       </div>
     </div>
 
     <ul class="blocker-steps">
-      <li>
-        <span class="step-num">1</span>
-        <span>Tap the <b>three dots (⋯)</b> at the top-right corner of the TikTok screen.</span>
-      </li>
-      <li>
-        <span class="step-num">2</span>
-        <span>In the menu that appears, choose <b>“Open in browser”</b>.</span>
-      </li>
-      <li>
-        <span class="step-num">3</span>
-        <span>The page will open in your browser and the download will work normally.</span>
-      </li>
+      <li><span class="step-num">1</span><span>Tap the <b>three dots (⋯)</b> at the top-right corner of the TikTok screen.</span></li>
+      <li><span class="step-num">2</span><span>In the menu that appears, choose <b>“Open in browser”</b>.</span></li>
+      <li><span class="step-num">3</span><span>The page will open in your browser and the download will work normally.</span></li>
     </ul>
 
     <button type="button" class="blocker-copy" id="copyLinkBtn">
-      <i class="fas fa-link"></i>
-      <span>Copy Link</span>
+      <i class="fas fa-link"></i> <span>Copy Link</span>
     </button>
-
     <div class="blocker-status" id="blockerStatus"></div>
-
-    <p class="blocker-hint">
-      If you don't see “Open in browser”, choose <b>“Copy link”</b> instead — then paste it in Chrome or Safari.
-    </p>
-
+    <p class="blocker-hint">If you don't see “Open in browser”, choose <b>“Copy link”</b> instead — then paste it in Chrome or Safari.</p>
   </div>
 </div>
 
+<!-- ============================================================
+     المحتوى الرئيسي
+     ============================================================ -->
+<main class="max-w-4xl mx-auto px-5 py-10 md:py-14">
 
-<main class="max-w-5xl mx-auto px-5 py-10 md:py-14">
-
-  <!-- ============ STATUS ============ -->
-  <div class="flex items-center justify-center gap-3 mb-8 text-[13px] text-slate-400 fade-up">
+  <!-- Header Status -->
+  <div class="flex items-center justify-center gap-3 mb-8 text-[13px] text-slate-400 fade-up d1">
     <span class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
-      Download Ready
+      Servers Online
     </span>
     <span class="text-slate-700">•</span>
     <span class="flex items-center gap-1.5">
       <i class="fas fa-fire text-orange-400"></i>
-      1,284 downloads today
+      Fast Download Available
     </span>
   </div>
 
-  <!-- ============ HERO CARD ============ -->
-  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d1">
-    <div class="grid md:grid-cols-[230px_1fr] gap-7 items-start">
-
-      <div class="relative w-full max-w-[230px] mx-auto md:mx-0">
+  <!-- ============ GAME 1: MORTAL KOMBAT ============ -->
+  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d2 mb-6">
+    <div class="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+      
+      <!-- Cover -->
+      <div class="relative w-full max-w-[180px] mx-auto md:mx-0">
         <div class="cover-frame">
-          <img
-            src="https://i.postimg.cc/W48ShvJZ/Mljwol(1).png"
-            alt="Mortal Kombat cover"
-            class="w-full h-auto block"
-            decoding="async"
-          >
+          <img src="https://i.postimg.cc/W48ShvJZ/Mljwol(1).png" alt="Mortal Kombat cover" decoding="async">
         </div>
-        <span class="badge-18 absolute top-3 right-3 px-2.5 py-1 rounded-lg text-[13px] z-10">18+</span>
-
+        <span class="badge-18 absolute top-2 right-2 px-2.5 py-1 rounded-lg text-[12px] z-10">18+</span>
         <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
-          <span class="text-amber-400 tracking-tight">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i>
-          </span>
+          <span class="text-amber-400 tracking-tight"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i></span>
           <span class="font-bold text-slate-200">4.9</span>
-          <span>· 12,847 reviews</span>
         </div>
       </div>
 
+      <!-- Info -->
       <div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight title-glow leading-[1.05]">
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight title-glow leading-[1.05]">
           MORTAL KOMBAT
-        </h1>
-
-        <div class="flex flex-wrap items-center gap-2 mt-4">
-          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-gamepad mr-1.5 text-indigo-400"></i>Fighting</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold"><i class="fas fa-bolt mr-1.5 text-indigo-400"></i>Action</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[12px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]">
-            <i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD Version
-          </span>
+        </h2>
+        <div class="flex flex-wrap items-center gap-2 mt-3">
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-gamepad mr-1.5 text-indigo-400"></i>Fighting</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]"><i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD</span>
         </div>
 
-        <p class="text-slate-300/90 mt-5 text-[15px] leading-relaxed">
-          Enter the brutal realm of Mortal Kombat. Fight your way through iconic warriors,
-          unleash devastating fatalities, and prove you are the ultimate champion in this
-          legendary fighting game — fully playable offline.
-        </p>
-
-        <div class="grid grid-cols-3 gap-3 mt-6 max-w-md">
-          <div class="info-card rounded-xl px-3 py-3 text-center">
-            <i class="fas fa-hard-drive info-icon text-base"></i>
-            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Size</p>
-            <p class="text-[13px] font-bold text-slate-100">132 MB</p>
+        <div class="grid grid-cols-3 gap-2 mt-5 max-w-sm">
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Size</p>
+            <p class="text-[12px] font-bold text-slate-100">132 MB</p>
           </div>
-          <div class="info-card rounded-xl px-3 py-3 text-center">
-            <i class="fas fa-mobile-screen info-icon text-base"></i>
-            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Platform</p>
-            <p class="text-[13px] font-bold text-slate-100">Android</p>
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Platform</p>
+            <p class="text-[12px] font-bold text-slate-100">Android</p>
           </div>
-          <div class="info-card rounded-xl px-3 py-3 text-center">
-            <i class="fas fa-plug-circle-xmark info-icon text-base"></i>
-            <p class="text-[11px] text-slate-400 mt-1.5 font-medium">Mode</p>
-            <p class="text-[13px] font-bold text-slate-100">Offline</p>
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Version</p>
+            <p class="text-[12px] font-bold text-slate-100">v3.6</p>
           </div>
         </div>
 
-        <div class="mt-7 flex flex-col sm:flex-row sm:items-center gap-4">
-
-          <!-- ✅ زر التحميل — يحتوي على onclick="_Nr()" -->
+        <div class="mt-6">
           <button
-            id="downloadBtn"
             type="button"
             onclick="_Nr()"
-            class="btn-primary inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl text-white font-extrabold text-[15px] w-full sm:w-auto"
+            class="btn-primary download-trigger inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl text-white font-extrabold text-[14px] w-full sm:w-auto"
           >
-            <i class="fas fa-download text-lg" id="btnIcon"></i>
-            <span id="btnText">Download Now</span>
-            <span class="text-[10px] bg-black/30 px-2.5 py-1 rounded-md font-bold tracking-wide">FREE</span>
+            <i class="fas fa-download text-base"></i>
+            <span>Download MK</span>
+            <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-md font-bold tracking-wide">FREE</span>
           </button>
-
-          <div class="flex items-center gap-2 text-[12px] text-slate-400">
-            <i class="fas fa-lock text-emerald-400"></i>
-            <span>No registration · No ads inside</span>
-          </div>
         </div>
-
-        <p id="downloadMessage" class="text-[13px] text-indigo-300 mt-3 min-h-[20px] font-medium"></p>
       </div>
     </div>
   </section>
 
-  <!-- ============ GAMEPLAY PREVIEW ============ -->
-  <section class="mt-12 fade-up d2">
+  <!-- ============ GAME 2: ASS HUNTER ============ -->
+  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d3 mb-10">
+    <div class="grid md:grid-cols-[180px_1fr] gap-6 items-start">
+      
+      <!-- Cover -->
+      <div class="relative w-full max-w-[180px] mx-auto md:mx-0">
+        <div class="cover-frame">
+          <img src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg" alt="Ass Hunter cover" decoding="async">
+        </div>
+        <span class="badge-18 absolute top-2 right-2 px-2.5 py-1 rounded-lg text-[12px] z-10">18+</span>
+        <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
+          <span class="text-amber-400 tracking-tight"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+          <span class="font-bold text-slate-200">5.0</span>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-black tracking-tight title-glow leading-[1.05]">
+          ASS HUNTER
+        </h2>
+        <div class="flex flex-wrap items-center gap-2 mt-3">
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-crosshairs mr-1.5 text-indigo-400"></i>Shooting</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]"><i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mt-5 max-w-sm">
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Size</p>
+            <p class="text-[12px] font-bold text-slate-100">~ 50 MB</p>
+          </div>
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Platform</p>
+            <p class="text-[12px] font-bold text-slate-100">Android</p>
+          </div>
+          <div class="info-card rounded-xl px-2 py-2 text-center">
+            <p class="text-[10px] text-slate-400 font-medium">Version</p>
+            <p class="text-[12px] font-bold text-slate-100">v2.1</p>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <!-- استخدم نفس الدالة _Nr() أو ضع دالة مخصصة هنا إذا أردت -->
+          <button
+            type="button"
+            onclick="_Nr()"
+            class="btn-primary download-trigger inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl text-white font-extrabold text-[14px] w-full sm:w-auto"
+          >
+            <i class="fas fa-download text-base"></i>
+            <span>Download APK</span>
+            <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-md font-bold tracking-wide">FREE</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GAMEPLAY PREVIEW (Mortal Kombat) ============ -->
+  <section class="fade-up d4 mb-14">
     <div class="flex items-end justify-between mb-4">
       <div>
         <h2 class="text-xl font-extrabold tracking-tight flex items-center gap-2">
-          <i class="fas fa-clapperboard text-indigo-400"></i>
-          Gameplay Preview
+          <i class="fas fa-clapperboard text-indigo-400"></i> Gameplay Preview
         </h2>
-        <p class="text-[13px] text-slate-400 mt-1">Contains intense combat and blood — viewer discretion advised.</p>
+        <p class="text-[13px] text-slate-400 mt-1">Contains intense combat — viewer discretion advised.</p>
       </div>
-      <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-bold hidden sm:flex items-center gap-1.5">
-        <i class="fas fa-triangle-exclamation text-amber-400"></i> 18+ CONTENT
-      </span>
     </div>
 
-    <div class="preview-frame mx-auto max-w-2xl" id="previewFrame">
+    <div class="preview-frame mx-auto max-w-xl" id="previewFrame">
       <img
         src="https://img.itch.zone/aW1hZ2UvMzMwMDIyMC8xOTczMjIwNC5naWY=/original/SH5Z0r.gif"
-        alt="Mortal Kombat gameplay preview"
-        loading="lazy"
-        decoding="async"
+        alt="Gameplay preview" loading="lazy" decoding="async"
       >
-      <button
-        type="button"
-        class="preview-overlay"
-        id="previewOverlay"
-        aria-label="Reveal 18+ gameplay preview"
-      >
-        <div class="preview-lock">
-          <i class="fas fa-lock"></i>
-        </div>
+      <button type="button" class="preview-overlay" id="previewOverlay">
+        <div class="preview-lock"><i class="fas fa-lock"></i></div>
         <h3>18+ MATURE CONTENT</h3>
         <p>This preview contains graphic combat footage. Tap anywhere to reveal.</p>
-        <span class="preview-cta">
-          <i class="fas fa-eye"></i>
-          Tap to Reveal
-        </span>
+        <span class="preview-cta"><i class="fas fa-eye"></i> Tap to Reveal</span>
       </button>
     </div>
   </section>
 
-  <!-- ============ FEATURES ============ -->
-  <section class="mt-14 fade-up d3">
-    <h2 class="text-xl font-extrabold tracking-tight mb-5 flex items-center gap-2">
-      <i class="fas fa-list-check text-indigo-400"></i>
-      What You Get
-    </h2>
-
-    <div class="grid sm:grid-cols-2 gap-3">
-      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
-        <i class="fas fa-skull info-icon text-lg mt-0.5"></i>
-        <div>
-          <p class="font-bold text-[14px] text-slate-100">Brutal Fatalities</p>
-          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">All signature finishing moves unlocked from the start.</p>
-        </div>
-      </div>
-      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
-        <i class="fas fa-user-ninja info-icon text-lg mt-0.5"></i>
-        <div>
-          <p class="font-bold text-[14px] text-slate-100">Classic Fighters</p>
-          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Play as iconic warriors with their unique movesets.</p>
-        </div>
-      </div>
-      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
-        <i class="fas fa-plug-circle-xmark info-icon text-lg mt-0.5"></i>
-        <div>
-          <p class="font-bold text-[14px] text-slate-100">Fully Offline</p>
-          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Play anytime, anywhere — no internet connection needed.</p>
-        </div>
-      </div>
-      <div class="info-card rounded-2xl p-4 flex items-start gap-3">
-        <i class="fas fa-gauge-high info-icon text-lg mt-0.5"></i>
-        <div>
-          <p class="font-bold text-[14px] text-slate-100">Lightweight Build</p>
-          <p class="text-[12.5px] text-slate-400 mt-0.5 leading-relaxed">Only 132 MB — fast to download and easy on storage.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TRUST ============ -->
-  <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 fade-up d4">
-    <div class="info-card rounded-2xl p-5 text-center">
-      <i class="fas fa-shield-halved text-2xl info-icon"></i>
-      <p class="text-[13px] font-bold mt-3 text-slate-200">Secure Download</p>
-      <p class="text-[11px] text-slate-500 mt-0.5">256-bit encrypted</p>
-    </div>
-    <div class="info-card rounded-2xl p-5 text-center">
-      <i class="fas fa-circle-check text-2xl info-icon"></i>
-      <p class="text-[13px] font-bold mt-3 text-slate-200">Verified Source</p>
-      <p class="text-[11px] text-slate-500 mt-0.5">Scanned &amp; clean</p>
-    </div>
-    <div class="info-card rounded-2xl p-5 text-center">
-      <i class="fas fa-bolt text-2xl info-icon"></i>
-      <p class="text-[13px] font-bold mt-3 text-slate-200">Fast Speed</p>
-      <p class="text-[11px] text-slate-500 mt-0.5">Global CDN</p>
-    </div>
-    <div class="info-card rounded-2xl p-5 text-center">
-      <i class="fas fa-user-check text-2xl info-icon"></i>
-      <p class="text-[13px] font-bold mt-3 text-slate-200">No Registration</p>
-      <p class="text-[11px] text-slate-500 mt-0.5">Instant access</p>
-    </div>
-  </section>
-
   <!-- ============ FAQ ============ -->
-  <section class="mt-14 fade-up d5">
+  <section class="fade-up d5">
     <h2 class="text-xl font-extrabold tracking-tight mb-4 flex items-center gap-2">
-      <i class="fas fa-circle-question text-indigo-400"></i>
-      Frequently Asked Questions
+      <i class="fas fa-circle-question text-indigo-400"></i> Frequently Asked Questions
     </h2>
 
     <div class="glass rounded-2xl px-5">
       <details class="faq py-4" open>
         <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Is the download really free?</span>
+          <span class="font-semibold text-[14px] text-slate-100">How to install the APK?</span>
           <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
         </summary>
         <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          Yes. Clicking “Download Now” takes you to a short verification page. Once completed, the download starts automatically at full speed.
+          Download the file, then open your phone's "Downloads" folder. Tap the APK file and allow "Install from unknown sources" if prompted.
         </p>
       </details>
 
       <details class="faq py-4">
         <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Do I need internet to play?</span>
+          <span class="font-semibold text-[14px] text-slate-100">Are these games safe to install?</span>
           <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
         </summary>
         <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          No. This is a fully offline game — you can play anytime, anywhere, without an internet connection.
-        </p>
-      </details>
-
-      <details class="faq py-4">
-        <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Will it work on my device?</span>
-          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
-        </summary>
-        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          It runs on most modern Android devices. Just allow installation from unknown sources and you're ready to play.
+          Yes. All files are scanned and verified before being uploaded. We do not host any malware.
         </p>
       </details>
     </div>
@@ -922,10 +545,10 @@
   <footer class="mt-12 flex flex-col items-center gap-3 text-center">
     <div class="flex items-center gap-2 text-[12px] text-slate-500">
       <i class="fas fa-lock text-indigo-400/80"></i>
-      <span>Your download is safe and protected</span>
+      <span>Your downloads are safe and protected</span>
     </div>
     <p class="text-[11px] text-slate-600 max-w-lg leading-relaxed">
-      This is a modified (MOD) version and is not affiliated with the official publisher.
+      These are modified (MOD) versions and are not affiliated with the official publishers.
       All trademarks belong to their respective owners.
     </p>
   </footer>
@@ -948,37 +571,36 @@
     });
   }
 
-
   /* ==========================================================
-     2) DOWNLOAD BUTTON FEEDBACK
-     (onclick="_Nr()" يعمل تلقائياً من الزر نفسه)
+     2) DOWNLOAD BUTTONS FEEDBACK
      ========================================================== */
-  var btn     = document.getElementById('downloadBtn');
-  var btnIcon = document.getElementById('btnIcon');
-  var btnText = document.getElementById('btnText');
-  var msg     = document.getElementById('downloadMessage');
-
-  if (btn) {
+  var downloadBtns = document.querySelectorAll('.download-trigger');
+  
+  downloadBtns.forEach(function(btn) {
     btn.addEventListener('click', function () {
-      msg.textContent = 'Opening download link…';
-      var oldIcon = btnIcon.className;
-      var oldText = btnText.textContent;
-      btnIcon.className = 'fas fa-spinner fa-spin text-lg';
-      btnText.textContent = 'Opening…';
+      var icon = btn.querySelector('.fa-download');
+      var textSpan = btn.querySelector('span:not(.text-\\[10px\\])'); // select the text span, not the FREE badge
+      
+      if(!icon || !textSpan) return;
+
+      var oldIcon = icon.className;
+      var oldText = textSpan.textContent;
+
+      icon.className = 'fas fa-spinner fa-spin text-base';
+      textSpan.textContent = 'Opening…';
+
       setTimeout(function () {
-        btnIcon.className = oldIcon;
-        btnText.textContent = oldText;
-        msg.textContent = '';
+        icon.className = oldIcon;
+        textSpan.textContent = oldText;
       }, 1500);
     });
-  }
+  });
 
 
   /* ==========================================================
      3) 🚫 TIKTOK IN-APP BROWSER BLOCKER
      ========================================================== */
   var ua = navigator.userAgent || '';
-
   var isTikTok   = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview|ByteLocale/i.test(ua);
   var isInApp    = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|Snapchat|Pinterest|MicroMessenger/i.test(ua);
 
@@ -998,7 +620,6 @@
       showBlocker();
     }
   }
-
 
   /* ==========================================================
      4) 🎬 ANIMATED VISUAL TUTORIAL LOOP
@@ -1036,45 +657,18 @@
 
     function play() {
       reset();
-
-      setTimeout(function () {
-        movePointerTo(dots);
-        pointer.classList.add('show');
-      }, 350);
-
-      setTimeout(function () {
-        pointer.classList.add('tapping');
-        dots.classList.add('active');
-      }, 1600);
-
-      setTimeout(function () {
-        pointer.classList.remove('tapping');
-        sheet.classList.add('show');
-      }, 2000);
-
-      setTimeout(function () {
-        movePointerTo(item);
-      }, 2600);
-
-      setTimeout(function () {
-        pointer.classList.add('tapping');
-        item.classList.add('active');
-      }, 3700);
-
-      setTimeout(function () {
-        pointer.classList.remove('tapping');
-        item.classList.add('done');
-      }, 4100);
-
-      setTimeout(function () {
-        pointer.classList.remove('show');
-      }, 5200);
+      setTimeout(function () { movePointerTo(dots); pointer.classList.add('show'); }, 350);
+      setTimeout(function () { pointer.classList.add('tapping'); dots.classList.add('active'); }, 1600);
+      setTimeout(function () { pointer.classList.remove('tapping'); sheet.classList.add('show'); }, 2000);
+      setTimeout(function () { movePointerTo(item); }, 2600);
+      setTimeout(function () { pointer.classList.add('tapping'); item.classList.add('active'); }, 3700);
+      setTimeout(function () { pointer.classList.remove('tapping'); item.classList.add('done'); }, 4100);
+      setTimeout(function () { pointer.classList.remove('show'); }, 5200);
     }
 
     play();
     tutorialTimer = setInterval(play, 7000);
   }
-
 
   /* ==========================================================
      5) 📋 COPY LINK
@@ -1104,9 +698,7 @@
       }
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(done).catch(function () {
-          fallbackCopy(url, done);
-        });
+        navigator.clipboard.writeText(url).then(done).catch(function () { fallbackCopy(url, done); });
       } else {
         fallbackCopy(url, done);
       }
@@ -1115,16 +707,9 @@
 
   function fallbackCopy(text, cb) {
     var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    try {
-      var ok = document.execCommand('copy');
-      if (ok && cb) cb();
-    } catch (e) {}
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { var ok = document.execCommand('copy'); if (ok && cb) cb(); } catch (e) {}
     document.body.removeChild(ta);
   }
 
