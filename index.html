@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Game Downloads — APK</title>
+<title>Ass Hunter — Premium Download</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   *{ font-family:'Inter',sans-serif; }
   html{ scroll-behavior:smooth; }
+  .font-display{ font-family:'Space Grotesk', sans-serif; }
 
   body{
     background-color:#070b14;
     background-image:
-      radial-gradient(900px 520px at 10% -8%, rgba(99,102,241,.20), transparent 62%),
-      radial-gradient(800px 520px at 92% 6%, rgba(168,85,247,.15), transparent 62%),
+      radial-gradient(900px 520px at 10% -8%, rgba(236,72,153,.18), transparent 62%),
+      radial-gradient(800px 520px at 92% 6%, rgba(139,92,246,.18), transparent 62%),
+      radial-gradient(700px 500px at 50% 110%, rgba(59,130,246,.12), transparent 62%),
       linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-    background-size:auto, auto, 46px 46px, 46px 46px;
+    background-size:auto, auto, auto, 46px 46px, 46px 46px;
     min-height:100vh;
     color:#e2e8f5;
     -webkit-font-smoothing:antialiased;
@@ -26,93 +28,122 @@
   }
 
   .glass{
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.09);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    box-shadow:0 24px 60px -22px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.02) inset;
   }
 
+  /* ====== COVER FRAME (premium look) ====== */
   .cover-frame{
-    border-radius:20px;
+    border-radius:22px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 24px 55px -22px rgba(0,0,0,.95), 0 0 0 1px rgba(99,102,241,.10) inset;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:
+      0 30px 65px -22px rgba(0,0,0,.95),
+      0 0 0 1px rgba(236,72,153,.15) inset,
+      0 0 45px -5px rgba(236,72,153,.35);
     background:#0d1424;
     position:relative;
+    transform:perspective(900px) rotateY(-2deg);
+    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s;
   }
-  
+  .cover-frame:hover{
+    transform:perspective(900px) rotateY(0deg) translateY(-4px);
+    box-shadow:
+      0 40px 80px -22px rgba(0,0,0,.95),
+      0 0 0 1px rgba(236,72,153,.25) inset,
+      0 0 70px -5px rgba(236,72,153,.5);
+  }
+  .cover-frame::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 55%, rgba(7,11,20,.55) 100%);
+    pointer-events:none;
+    z-index:1;
+  }
   .cover-frame img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    aspect-ratio: 3/4;
+    width:100%; height:100%; object-fit:cover;
+    aspect-ratio:3/4;
+    display:block;
+    transition:transform .6s cubic-bezier(.22,1,.36,1);
   }
+  .cover-frame:hover img{ transform:scale(1.04); }
 
   .badge-18{
-    background:rgba(10,14,25,.86);
-    backdrop-filter:blur(8px);
-    border:1px solid rgba(250,204,21,.55);
+    background:linear-gradient(135deg, rgba(10,14,25,.92), rgba(30,15,50,.92));
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(250,204,21,.65);
     color:#facc15;
     font-weight:900;
     letter-spacing:.5px;
-    box-shadow:0 0 22px rgba(250,204,21,.18);
+    box-shadow:0 0 22px rgba(250,204,21,.25), 0 0 0 1px rgba(250,204,21,.15) inset;
+    text-shadow:0 0 12px rgba(250,204,21,.6);
   }
 
+  /* ====== TITLE ====== */
   .title-glow{
-    background:linear-gradient(135deg,#ffffff 0%,#dbe3ff 45%,#a5b4fc 100%);
+    background:linear-gradient(135deg,#ffffff 0%,#ffe0f5 40%,#a5b4fc 100%);
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 0 28px rgba(236,72,153,.35));
+    letter-spacing:-.03em;
   }
 
+  /* ====== PRIMARY BUTTON ====== */
   .btn-primary{
-    background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%);
+    background:linear-gradient(135deg,#ec4899 0%,#a855f7 50%,#6366f1 100%);
+    background-size:200% 200%;
     position:relative;
     overflow:hidden;
-    box-shadow:0 14px 35px -12px rgba(99,102,241,.75);
-    transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+    box-shadow:
+      0 14px 38px -12px rgba(236,72,153,.75),
+      0 0 0 1px rgba(255,255,255,.12) inset;
+    transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s, background-position .6s;
   }
   .btn-primary::before{
     content:'';
     position:absolute; top:0; left:-120%; width:60%; height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
     transform:skewX(-20deg);
-    transition:left .75s ease;
+    transition:left .8s ease;
   }
   .btn-primary:hover::before{ left:140%; }
   .btn-primary:hover:not(:disabled){
     transform:translateY(-2px);
-    box-shadow:0 22px 45px -12px rgba(139,92,246,.9);
+    background-position:100% 100%;
+    box-shadow:
+      0 24px 55px -12px rgba(168,85,247,.95),
+      0 0 0 1px rgba(255,255,255,.18) inset;
   }
   .btn-primary:active:not(:disabled){ transform:translateY(0); }
   .btn-primary:disabled{ opacity:.9; cursor:not-allowed; }
 
   .chip{
     background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.10);
     color:#c3cbe0;
   }
 
   .info-card{
-    background:rgba(255,255,255,.03);
-    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
     transition:background .3s, border-color .3s, transform .3s;
   }
   .info-card:hover{
-    background:rgba(255,255,255,.055);
-    border-color:rgba(99,102,241,.45);
+    background:rgba(255,255,255,.065);
+    border-color:rgba(236,72,153,.5);
     transform:translateY(-3px);
   }
-  .info-icon{
-    color:#818cf8;
-    filter:drop-shadow(0 0 12px rgba(129,140,248,.55));
-  }
 
+  /* ====== PREVIEW BLUR ====== */
   .preview-frame{
     position:relative;
     border-radius:20px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.12);
     background:#0a0f1c;
     box-shadow:0 26px 60px -25px rgba(0,0,0,.95);
     aspect-ratio:16/9;
@@ -120,53 +151,51 @@
   }
   .preview-frame img{
     display:block; width:100%; height:100%; object-fit:cover;
-    filter:blur(14px) brightness(.65) saturate(1.15);
+    filter:blur(16px) brightness(.6) saturate(1.2);
     transform:scale(1.12);
-    transition:filter .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+    transition:filter .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
     will-change:filter, transform;
   }
-  .preview-frame.is-revealed img{
-    filter:blur(0) brightness(1) saturate(1); transform:scale(1);
-  }
+  .preview-frame.is-revealed img{ filter:blur(0) brightness(1) saturate(1); transform:scale(1); }
   .preview-frame.is-revealed{ animation:framePulse .9s ease-out; }
   @keyframes framePulse{
-    0%   { box-shadow:0 0 0 0 rgba(250,204,21,.55), 0 26px 60px -25px rgba(0,0,0,.95); }
-    100% { box-shadow:0 0 0 18px rgba(250,204,21,0), 0 26px 60px -25px rgba(0,0,0,.95); }
+    0%   { box-shadow:0 0 0 0 rgba(236,72,153,.55), 0 26px 60px -25px rgba(0,0,0,.95); }
+    100% { box-shadow:0 0 0 18px rgba(236,72,153,0), 0 26px 60px -25px rgba(0,0,0,.95); }
   }
 
   .preview-overlay{
     position:absolute; inset:0;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:10px; text-align:center; padding:20px; cursor:pointer; border:0;
-    background:radial-gradient(circle at 50% 50%, rgba(7,11,20,.5) 0%, rgba(7,11,20,.88) 78%);
+    background:radial-gradient(circle at 50% 50%, rgba(7,11,20,.5) 0%, rgba(7,11,20,.9) 78%);
     z-index:2; transition:opacity .5s ease, visibility .5s, transform .5s ease;
     font-family:inherit; color:inherit;
   }
   .preview-overlay:hover .preview-cta{
-    background:rgba(250,204,21,.20); border-color:rgba(250,204,21,.75); transform:translateY(-1px);
+    background:rgba(236,72,153,.22); border-color:rgba(236,72,153,.8); transform:translateY(-1px);
   }
   .preview-frame.is-revealed .preview-overlay{
     opacity:0; visibility:hidden; pointer-events:none; transform:scale(1.04);
   }
-
   .preview-lock{
     width:62px; height:62px; border-radius:50%;
     display:grid; place-items:center;
-    background:rgba(10,14,25,.9); border:1px solid rgba(250,204,21,.55);
-    color:#facc15; font-size:22px; box-shadow:0 0 30px rgba(250,204,21,.25);
+    background:rgba(10,14,25,.9); border:1px solid rgba(236,72,153,.65);
+    color:#f472b6; font-size:22px;
+    box-shadow:0 0 30px rgba(236,72,153,.35);
     transition:transform .35s ease; animation:lockPulse 2.2s ease-in-out infinite;
   }
   @keyframes lockPulse{
-    0%,100%{ box-shadow:0 0 26px rgba(250,204,21,.20); }
-    50%    { box-shadow:0 0 42px rgba(250,204,21,.45); }
+    0%,100%{ box-shadow:0 0 26px rgba(236,72,153,.25); }
+    50%    { box-shadow:0 0 48px rgba(236,72,153,.55); }
   }
   .preview-overlay:hover .preview-lock{ transform:scale(1.08); }
-  .preview-overlay h3{ font-weight:900; letter-spacing:2.5px; font-size:15px; color:#facc15; margin:0; }
-  .preview-overlay p{ font-size:12.5px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0; }
+  .preview-overlay h3{ font-weight:900; letter-spacing:2.5px; font-size:14px; color:#f472b6; margin:0; }
+  .preview-overlay p{ font-size:12px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0; }
   .preview-cta{
     display:inline-flex; align-items:center; gap:8px; margin-top:8px;
     padding:9px 18px; border-radius:99px; font-size:12px; font-weight:700; letter-spacing:.5px;
-    color:#facc15; background:rgba(250,204,21,.10); border:1px solid rgba(250,204,21,.4);
+    color:#f472b6; background:rgba(236,72,153,.12); border:1px solid rgba(236,72,153,.45);
     transition:background .25s, border-color .25s, transform .25s;
   }
 
@@ -179,10 +208,8 @@
   details.faq[open] .faq-chevron{ transform:rotate(180deg); }
   .faq-chevron{ transition:transform .3s ease; }
 
-  .fade-up{
-    opacity:0; transform:translateY(18px);
-    animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards;
-  }
+  /* ====== ANIMATIONS ====== */
+  .fade-up{ opacity:0; transform:translateY(18px); animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards; }
   @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
   .d1{ animation-delay:.05s } .d2{ animation-delay:.10s } .d3{ animation-delay:.15s }
   .d4{ animation-delay:.20s } .d5{ animation-delay:.25s } .d6{ animation-delay:.30s }
@@ -192,7 +219,7 @@
   }
 
   /* ============================================================
-     🚫 TIKTOK BLOCKER
+     🚫 TIKTOK BLOCKER (exactly as original)
      ============================================================ */
   #tiktokBlocker{
     position:fixed; inset:0; z-index:99999; display:none;
@@ -290,12 +317,27 @@
     .blocker-icon{ width:56px; height:56px; font-size:22px; }
     .blocker-title{ font-size:17px; }
   }
+
+  /* ====== DECORATIVE GLOW ORBS (background) ====== */
+  .orb{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    pointer-events:none;
+    z-index:0;
+    opacity:.5;
+    will-change:transform;
+  }
+  .orb.pink{ width:520px; height:520px; background:radial-gradient(circle,#ec4899,transparent 70%); top:-180px; left:-140px; animation:floatA 22s ease-in-out infinite; }
+  .orb.purple{ width:460px; height:460px; background:radial-gradient(circle,#8b5cf6,transparent 70%); bottom:-160px; right:-120px; animation:floatB 26s ease-in-out infinite; }
+  @keyframes floatA{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(80px,60px) scale(1.12); } }
+  @keyframes floatB{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-70px,-50px) scale(1.08); } }
 </style>
 </head>
 <body>
 
 <!-- ============================================================
-     🚫 TIKTOK BLOCKER
+     🚫 TIKTOK BLOCKER (unchanged)
      ============================================================ -->
 <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
   <div class="blocker-card">
@@ -354,12 +396,16 @@
   </div>
 </div>
 
-<!-- ============================================================
-     المحتوى الرئيسي
-     ============================================================ -->
-<main class="max-w-4xl mx-auto px-5 py-10 md:py-14">
+<!-- Decorative background orbs -->
+<div class="orb pink"></div>
+<div class="orb purple"></div>
 
-  <!-- Header Status -->
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main class="relative max-w-3xl mx-auto px-5 py-10 md:py-14" style="z-index:1;">
+
+  <!-- Header status -->
   <div class="flex items-center justify-center gap-3 mb-8 text-[13px] text-slate-400 fade-up d1">
     <span class="flex items-center gap-2">
       <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
@@ -367,112 +413,67 @@
     </span>
     <span class="text-slate-700">•</span>
     <span class="flex items-center gap-1.5">
-      <i class="fas fa-fire text-orange-400"></i>
+      <i class="fas fa-fire text-pink-400"></i>
       Fast Download Available
     </span>
   </div>
 
-  <!-- ============ GAME 1: MORTAL KOMBAT ============ -->
-  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d2 mb-6">
-    <div class="grid md:grid-cols-[180px_1fr] gap-6 items-start">
-      
+  <!-- ============ MAIN CARD (Ass Hunter) ============ -->
+  <section class="glass rounded-3xl p-6 sm:p-8 fade-up d2 mb-8">
+
+    <div class="grid md:grid-cols-[200px_1fr] gap-7 items-start">
+
       <!-- Cover -->
-      <div class="relative w-full max-w-[180px] mx-auto md:mx-0">
+      <div class="relative w-full max-w-[200px] mx-auto md:mx-0">
         <div class="cover-frame">
-          <img src="https://i.postimg.cc/W48ShvJZ/Mljwol(1).png" alt="Mortal Kombat cover" decoding="async">
-        </div>
-        <span class="badge-18 absolute top-2 right-2 px-2.5 py-1 rounded-lg text-[12px] z-10">18+</span>
-        <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
-          <span class="text-amber-400 tracking-tight"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i></span>
-          <span class="font-bold text-slate-200">4.9</span>
-        </div>
-      </div>
-
-      <!-- Info -->
-      <div>
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight title-glow leading-[1.05]">
-          MORTAL KOMBAT
-        </h2>
-        <div class="flex flex-wrap items-center gap-2 mt-3">
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-gamepad mr-1.5 text-indigo-400"></i>Fighting</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]"><i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD</span>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2 mt-5 max-w-sm">
-          <div class="info-card rounded-xl px-2 py-2 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Size</p>
-            <p class="text-[12px] font-bold text-slate-100">132 MB</p>
-          </div>
-          <div class="info-card rounded-xl px-2 py-2 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Platform</p>
-            <p class="text-[12px] font-bold text-slate-100">Android</p>
-          </div>
-          <div class="info-card rounded-xl px-2 py-2 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Version</p>
-            <p class="text-[12px] font-bold text-slate-100">v3.6</p>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <button
-            type="button"
-            onclick="_iD()"
-            class="btn-primary download-trigger inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl text-white font-extrabold text-[14px] w-full sm:w-auto"
+          <img
+            src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg"
+            alt="Ass Hunter cover"
+            decoding="async"
           >
-            <i class="fas fa-download text-base"></i>
-            <span>Download MK</span>
-            <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-md font-bold tracking-wide">FREE</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ GAME 2: ASS HUNTER ============ -->
-  <section class="glass rounded-3xl p-5 sm:p-7 fade-up d3 mb-10">
-    <div class="grid md:grid-cols-[180px_1fr] gap-6 items-start">
-      
-      <!-- Cover -->
-      <div class="relative w-full max-w-[180px] mx-auto md:mx-0">
-        <div class="cover-frame">
-          <img src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg" alt="Ass Hunter cover" decoding="async">
         </div>
         <span class="badge-18 absolute top-2 right-2 px-2.5 py-1 rounded-lg text-[12px] z-10">18+</span>
         <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
-          <span class="text-amber-400 tracking-tight"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+          <span class="text-amber-400 tracking-tight">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </span>
           <span class="font-bold text-slate-200">5.0</span>
         </div>
       </div>
 
       <!-- Info -->
       <div>
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight title-glow leading-[1.05]">
+        <h1 class="text-4xl sm:text-5xl font-black font-display title-glow leading-[1.02]">
           ASS HUNTER
-        </h2>
-        <div class="flex flex-wrap items-center gap-2 mt-3">
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-crosshairs mr-1.5 text-indigo-400"></i>Shooting</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-indigo-400"></i>Offline</span>
+        </h1>
+
+        <p class="text-[13.5px] text-slate-400 mt-3 leading-relaxed max-w-md">
+          A fast-paced shooting adventure — hunt targets, unlock weapons, and master every level in this action-packed mobile shooter.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2 mt-4">
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-crosshairs mr-1.5 text-pink-400"></i>Shooting</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-pink-400"></i>Offline</span>
           <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]"><i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD</span>
+          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-pink-300 border-pink-400/30 bg-pink-400/[.07]"><i class="fas fa-bolt mr-1.5"></i>Unlimited</span>
         </div>
 
         <div class="grid grid-cols-3 gap-2 mt-5 max-w-sm">
-          <div class="info-card rounded-xl px-2 py-2 text-center">
+          <div class="info-card rounded-xl px-2 py-2.5 text-center">
             <p class="text-[10px] text-slate-400 font-medium">Size</p>
             <p class="text-[12px] font-bold text-slate-100">~ 50 MB</p>
           </div>
-          <div class="info-card rounded-xl px-2 py-2 text-center">
+          <div class="info-card rounded-xl px-2 py-2.5 text-center">
             <p class="text-[10px] text-slate-400 font-medium">Platform</p>
             <p class="text-[12px] font-bold text-slate-100">Android</p>
           </div>
-          <div class="info-card rounded-xl px-2 py-2 text-center">
+          <div class="info-card rounded-xl px-2 py-2.5 text-center">
             <p class="text-[10px] text-slate-400 font-medium">Version</p>
             <p class="text-[12px] font-bold text-slate-100">v2.1</p>
           </div>
         </div>
 
         <div class="mt-6">
-          <!-- استخدم نفس الدالة _Nr() أو ضع دالة مخصصة هنا إذا أردت -->
           <button
             type="button"
             onclick="_iD()"
@@ -487,42 +488,67 @@
     </div>
   </section>
 
-  <!-- ============ GAMEPLAY PREVIEW (Mortal Kombat) ============ -->
-  <section class="fade-up d4 mb-14">
+  <!-- ============ FEATURES ============ -->
+  <section class="fade-up d3 mb-10">
+    <h2 class="text-lg font-extrabold tracking-tight flex items-center gap-2 mb-4">
+      <i class="fas fa-sparkles text-pink-400"></i> What's Inside
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="info-card rounded-2xl p-4 text-center">
+        <i class="fas fa-infinity text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
+        <p class="text-[12px] font-semibold text-slate-200 mt-2">Unlimited Ammo</p>
+      </div>
+      <div class="info-card rounded-2xl p-4 text-center">
+        <i class="fas fa-gun text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
+        <p class="text-[12px] font-semibold text-slate-200 mt-2">All Weapons</p>
+      </div>
+      <div class="info-card rounded-2xl p-4 text-center">
+        <i class="fas fa-shield-halved text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
+        <p class="text-[12px] font-semibold text-slate-200 mt-2">No Ads</p>
+      </div>
+      <div class="info-card rounded-2xl p-4 text-center">
+        <i class="fas fa-bolt text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
+        <p class="text-[12px] font-semibold text-slate-200 mt-2">Fast Install</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREVIEW ============ -->
+  <section class="fade-up d4 mb-10">
     <div class="flex items-end justify-between mb-4">
       <div>
-        <h2 class="text-xl font-extrabold tracking-tight flex items-center gap-2">
-          <i class="fas fa-clapperboard text-indigo-400"></i> Gameplay Preview
+        <h2 class="text-lg font-extrabold tracking-tight flex items-center gap-2">
+          <i class="fas fa-clapperboard text-pink-400"></i> Gameplay Preview
         </h2>
-        <p class="text-[13px] text-slate-400 mt-1">Contains intense combat — viewer discretion advised.</p>
+        <p class="text-[13px] text-slate-400 mt-1">Contains mature content — viewer discretion advised.</p>
       </div>
     </div>
 
     <div class="preview-frame mx-auto max-w-xl" id="previewFrame">
       <img
-        src="https://img.itch.zone/aW1hZ2UvMzMwMDIyMC8xOTczMjIwNC5naWY=/original/SH5Z0r.gif"
+        src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg"
         alt="Gameplay preview" loading="lazy" decoding="async"
       >
       <button type="button" class="preview-overlay" id="previewOverlay">
         <div class="preview-lock"><i class="fas fa-lock"></i></div>
         <h3>18+ MATURE CONTENT</h3>
-        <p>This preview contains graphic combat footage. Tap anywhere to reveal.</p>
+        <p>This preview contains mature footage. Tap anywhere to reveal.</p>
         <span class="preview-cta"><i class="fas fa-eye"></i> Tap to Reveal</span>
       </button>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="fade-up d5">
-    <h2 class="text-xl font-extrabold tracking-tight mb-4 flex items-center gap-2">
-      <i class="fas fa-circle-question text-indigo-400"></i> Frequently Asked Questions
+  <section class="fade-up d5 mb-10">
+    <h2 class="text-lg font-extrabold tracking-tight mb-4 flex items-center gap-2">
+      <i class="fas fa-circle-question text-pink-400"></i> Frequently Asked Questions
     </h2>
 
     <div class="glass rounded-2xl px-5">
       <details class="faq py-4" open>
         <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">How to install the APK?</span>
-          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
+          <span class="font-semibold text-[14px] text-slate-100">How do I install the APK?</span>
+          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
         </summary>
         <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
           Download the file, then open your phone's "Downloads" folder. Tap the APK file and allow "Install from unknown sources" if prompted.
@@ -531,24 +557,34 @@
 
       <details class="faq py-4">
         <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Are these games safe to install?</span>
-          <i class="fas fa-chevron-down faq-chevron text-indigo-400 text-xs"></i>
+          <span class="font-semibold text-[14px] text-slate-100">Is this game safe to install?</span>
+          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
         </summary>
         <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
           Yes. All files are scanned and verified before being uploaded. We do not host any malware.
+        </p>
+      </details>
+
+      <details class="faq py-4">
+        <summary class="flex items-center justify-between gap-4">
+          <span class="font-semibold text-[14px] text-slate-100">Why is there an 18+ badge?</span>
+          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
+        </summary>
+        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
+          The game contains mature content and is intended for adult audiences only. Please respect age restrictions.
         </p>
       </details>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="mt-12 flex flex-col items-center gap-3 text-center">
+  <footer class="flex flex-col items-center gap-3 text-center fade-up d6">
     <div class="flex items-center gap-2 text-[12px] text-slate-500">
-      <i class="fas fa-lock text-indigo-400/80"></i>
+      <i class="fas fa-lock text-pink-400/80"></i>
       <span>Your downloads are safe and protected</span>
     </div>
     <p class="text-[11px] text-slate-600 max-w-lg leading-relaxed">
-      These are modified (MOD) versions and are not affiliated with the official publishers.
+      This is a modified (MOD) version and is not affiliated with the official publisher.
       All trademarks belong to their respective owners.
     </p>
   </footer>
@@ -572,15 +608,15 @@
   }
 
   /* ==========================================================
-     2) DOWNLOAD BUTTONS FEEDBACK
+     2) DOWNLOAD BUTTON FEEDBACK
      ========================================================== */
   var downloadBtns = document.querySelectorAll('.download-trigger');
-  
+
   downloadBtns.forEach(function(btn) {
     btn.addEventListener('click', function () {
       var icon = btn.querySelector('.fa-download');
-      var textSpan = btn.querySelector('span:not(.text-\\[10px\\])'); // select the text span, not the FREE badge
-      
+      var textSpan = btn.querySelector('span:not(.text-\\[10px\\])');
+
       if(!icon || !textSpan) return;
 
       var oldIcon = icon.className;
@@ -716,10 +752,10 @@
 })();
 </script>
 
-  <script type="text/javascript">
-    var gPpnd_cvi_Qjrslc={"it":4327745,"key":"794f6"};
+<script type="text/javascript">
+  var gPpnd_cvi_Qjrslc={"it":4327745,"key":"794f6"};
 </script>
 <script src="https://d1chbu4sfo2xhu.cloudfront.net/7649652.js"></script>
- 
+
 </body>
 </html>
