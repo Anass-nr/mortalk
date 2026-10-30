@@ -3,759 +3,1340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ass Hunter — Premium Download</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<title>apk69.fun — Premium APK Store</title>
+<meta name="description" content="Download legendary modded games for Android and iOS — safe, fast, and free.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  *{ font-family:'Inter',sans-serif; }
-  html{ scroll-behavior:smooth; }
-  .font-display{ font-family:'Space Grotesk', sans-serif; }
 
-  body{
-    background-color:#070b14;
-    background-image:
-      radial-gradient(900px 520px at 10% -8%, rgba(236,72,153,.18), transparent 62%),
-      radial-gradient(800px 520px at 92% 6%, rgba(139,92,246,.18), transparent 62%),
-      radial-gradient(700px 500px at 50% 110%, rgba(59,130,246,.12), transparent 62%),
-      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
-    background-size:auto, auto, auto, 46px 46px, 46px 46px;
-    min-height:100vh;
-    color:#e2e8f5;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-
-  .glass{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.09);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    box-shadow:0 24px 60px -22px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.02) inset;
-  }
-
-  /* ====== COVER FRAME (premium look) ====== */
-  .cover-frame{
-    border-radius:22px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.14);
-    box-shadow:
-      0 30px 65px -22px rgba(0,0,0,.95),
-      0 0 0 1px rgba(236,72,153,.15) inset,
-      0 0 45px -5px rgba(236,72,153,.35);
-    background:#0d1424;
-    position:relative;
-    transform:perspective(900px) rotateY(-2deg);
-    transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s;
-  }
-  .cover-frame:hover{
-    transform:perspective(900px) rotateY(0deg) translateY(-4px);
-    box-shadow:
-      0 40px 80px -22px rgba(0,0,0,.95),
-      0 0 0 1px rgba(236,72,153,.25) inset,
-      0 0 70px -5px rgba(236,72,153,.5);
-  }
-  .cover-frame::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, transparent 55%, rgba(7,11,20,.55) 100%);
-    pointer-events:none;
-    z-index:1;
-  }
-  .cover-frame img{
-    width:100%; height:100%; object-fit:cover;
-    aspect-ratio:3/4;
-    display:block;
-    transition:transform .6s cubic-bezier(.22,1,.36,1);
-  }
-  .cover-frame:hover img{ transform:scale(1.04); }
-
-  .badge-18{
-    background:linear-gradient(135deg, rgba(10,14,25,.92), rgba(30,15,50,.92));
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(250,204,21,.65);
-    color:#facc15;
-    font-weight:900;
-    letter-spacing:.5px;
-    box-shadow:0 0 22px rgba(250,204,21,.25), 0 0 0 1px rgba(250,204,21,.15) inset;
-    text-shadow:0 0 12px rgba(250,204,21,.6);
-  }
-
-  /* ====== TITLE ====== */
-  .title-glow{
-    background:linear-gradient(135deg,#ffffff 0%,#ffe0f5 40%,#a5b4fc 100%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 0 28px rgba(236,72,153,.35));
-    letter-spacing:-.03em;
-  }
-
-  /* ====== PRIMARY BUTTON ====== */
-  .btn-primary{
-    background:linear-gradient(135deg,#ec4899 0%,#a855f7 50%,#6366f1 100%);
-    background-size:200% 200%;
-    position:relative;
-    overflow:hidden;
-    box-shadow:
-      0 14px 38px -12px rgba(236,72,153,.75),
-      0 0 0 1px rgba(255,255,255,.12) inset;
-    transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s, background-position .6s;
-  }
-  .btn-primary::before{
-    content:'';
-    position:absolute; top:0; left:-120%; width:60%; height:100%;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-    transform:skewX(-20deg);
-    transition:left .8s ease;
-  }
-  .btn-primary:hover::before{ left:140%; }
-  .btn-primary:hover:not(:disabled){
-    transform:translateY(-2px);
-    background-position:100% 100%;
-    box-shadow:
-      0 24px 55px -12px rgba(168,85,247,.95),
-      0 0 0 1px rgba(255,255,255,.18) inset;
-  }
-  .btn-primary:active:not(:disabled){ transform:translateY(0); }
-  .btn-primary:disabled{ opacity:.9; cursor:not-allowed; }
-
-  .chip{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.10);
-    color:#c3cbe0;
-  }
-
-  .info-card{
-    background:rgba(255,255,255,.035);
-    border:1px solid rgba(255,255,255,.08);
-    transition:background .3s, border-color .3s, transform .3s;
-  }
-  .info-card:hover{
-    background:rgba(255,255,255,.065);
-    border-color:rgba(236,72,153,.5);
-    transform:translateY(-3px);
-  }
-
-  /* ====== PREVIEW BLUR ====== */
-  .preview-frame{
-    position:relative;
-    border-radius:20px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.12);
-    background:#0a0f1c;
-    box-shadow:0 26px 60px -25px rgba(0,0,0,.95);
-    aspect-ratio:16/9;
-    isolation:isolate;
-  }
-  .preview-frame img{
-    display:block; width:100%; height:100%; object-fit:cover;
-    filter:blur(16px) brightness(.6) saturate(1.2);
-    transform:scale(1.12);
-    transition:filter .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
-    will-change:filter, transform;
-  }
-  .preview-frame.is-revealed img{ filter:blur(0) brightness(1) saturate(1); transform:scale(1); }
-  .preview-frame.is-revealed{ animation:framePulse .9s ease-out; }
-  @keyframes framePulse{
-    0%   { box-shadow:0 0 0 0 rgba(236,72,153,.55), 0 26px 60px -25px rgba(0,0,0,.95); }
-    100% { box-shadow:0 0 0 18px rgba(236,72,153,0), 0 26px 60px -25px rgba(0,0,0,.95); }
-  }
-
-  .preview-overlay{
-    position:absolute; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:10px; text-align:center; padding:20px; cursor:pointer; border:0;
-    background:radial-gradient(circle at 50% 50%, rgba(7,11,20,.5) 0%, rgba(7,11,20,.9) 78%);
-    z-index:2; transition:opacity .5s ease, visibility .5s, transform .5s ease;
-    font-family:inherit; color:inherit;
-  }
-  .preview-overlay:hover .preview-cta{
-    background:rgba(236,72,153,.22); border-color:rgba(236,72,153,.8); transform:translateY(-1px);
-  }
-  .preview-frame.is-revealed .preview-overlay{
-    opacity:0; visibility:hidden; pointer-events:none; transform:scale(1.04);
-  }
-  .preview-lock{
-    width:62px; height:62px; border-radius:50%;
-    display:grid; place-items:center;
-    background:rgba(10,14,25,.9); border:1px solid rgba(236,72,153,.65);
-    color:#f472b6; font-size:22px;
-    box-shadow:0 0 30px rgba(236,72,153,.35);
-    transition:transform .35s ease; animation:lockPulse 2.2s ease-in-out infinite;
-  }
-  @keyframes lockPulse{
-    0%,100%{ box-shadow:0 0 26px rgba(236,72,153,.25); }
-    50%    { box-shadow:0 0 48px rgba(236,72,153,.55); }
-  }
-  .preview-overlay:hover .preview-lock{ transform:scale(1.08); }
-  .preview-overlay h3{ font-weight:900; letter-spacing:2.5px; font-size:14px; color:#f472b6; margin:0; }
-  .preview-overlay p{ font-size:12px; color:#94a3b8; max-width:340px; line-height:1.55; margin:0; }
-  .preview-cta{
-    display:inline-flex; align-items:center; gap:8px; margin-top:8px;
-    padding:9px 18px; border-radius:99px; font-size:12px; font-weight:700; letter-spacing:.5px;
-    color:#f472b6; background:rgba(236,72,153,.12); border:1px solid rgba(236,72,153,.45);
-    transition:background .25s, border-color .25s, transform .25s;
-  }
-
-  .pulse-dot{ animation:pulse 1.9s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.82); } }
-
-  details.faq{ border-bottom:1px solid rgba(255,255,255,.06); }
-  details.faq summary{ list-style:none; cursor:pointer; }
-  details.faq summary::-webkit-details-marker{ display:none; }
-  details.faq[open] .faq-chevron{ transform:rotate(180deg); }
-  .faq-chevron{ transition:transform .3s ease; }
-
-  /* ====== ANIMATIONS ====== */
-  .fade-up{ opacity:0; transform:translateY(18px); animation:fadeUp .7s cubic-bezier(.22,1,.36,1) forwards; }
-  @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
-  .d1{ animation-delay:.05s } .d2{ animation-delay:.10s } .d3{ animation-delay:.15s }
-  .d4{ animation-delay:.20s } .d5{ animation-delay:.25s } .d6{ animation-delay:.30s }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-  }
-
-  /* ============================================================
-     🚫 TIKTOK BLOCKER (exactly as original)
-     ============================================================ */
-  #tiktokBlocker{
-    position:fixed; inset:0; z-index:99999; display:none;
-    align-items:flex-start; justify-content:center; padding:20px 16px 30px;
-    background: radial-gradient(700px 500px at 50% 0%, rgba(99,102,241,.28), transparent 65%),
-                linear-gradient(180deg,#070b14 0%,#0a1020 100%);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    overflow-y:auto; -webkit-overflow-scrolling:touch;
-  }
-  #tiktokBlocker.show{ display:flex; }
-
-  .blocker-card{
-    width:100%; max-width:440px; margin:auto 0;
-    background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.10);
-    border-radius:24px; padding:24px 20px 22px; text-align:center;
-    box-shadow:0 30px 70px -25px rgba(0,0,0,.9), 0 0 0 1px rgba(99,102,241,.12) inset;
-    animation:blockerIn .5s cubic-bezier(.22,1,.36,1) both;
-  }
-  @keyframes blockerIn{ from{ opacity:0; transform:translateY(16px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
-
-  .blocker-icon{
-    width:66px; height:66px; margin:0 auto 14px; border-radius:50%;
-    display:grid; place-items:center;
-    background:linear-gradient(135deg,rgba(250,204,21,.18),rgba(250,204,21,.05));
-    border:1px solid rgba(250,204,21,.55); color:#facc15; font-size:26px;
-    box-shadow:0 0 40px rgba(250,204,21,.30); animation:iconPulse 2.2s ease-in-out infinite;
-  }
-  @keyframes iconPulse{ 0%,100%{ box-shadow:0 0 30px rgba(250,204,21,.25); } 50% { box-shadow:0 0 50px rgba(250,204,21,.55); } }
-
-  .blocker-title{ font-size:19px; font-weight:900; color:#fff; margin:0 0 6px; }
-  .blocker-sub{ font-size:13px; color:#94a3b8; line-height:1.6; margin:0 0 18px; }
-  .blocker-sub b{ color:#facc15; font-weight:800; }
-
-  .phone-wrap{ display:flex; justify-content:center; margin-bottom:18px; perspective:900px; }
-  .phone-mockup{
-    width:212px; height:360px; background:#ffffff; border-radius:26px; border:5px solid #1e293b;
-    box-shadow: 0 22px 45px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(99,102,241,.18), inset 0 0 0 1px rgba(255,255,255,.03);
-    position:relative; overflow:hidden; transform:rotateX(4deg);
-  }
-  .ph-notch{ position:absolute; top:5px; left:50%; transform:translateX(-50%); width:56px; height:14px; background:#0a0f1c; border-radius:10px; z-index:6; border:1px solid rgba(255,255,255,.06); }
-  .ph-blank{ position:absolute; top:44px; left:0; right:0; bottom:0; background:#f8fafc; display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:11px; font-weight:600; letter-spacing:.4px; }
-  .ph-blank .ph-blank-icon{ display:flex; flex-direction:column; align-items:center; gap:8px; opacity:.55; }
-  .ph-blank .ph-blank-icon i{ font-size:26px; color:#cbd5e1; }
-  .ph-blank .ph-blank-icon span{ font-size:10px; color:#cbd5e1; font-weight:600; }
-
-  .ph-topbar{ position:absolute; top:0; left:0; right:0; height:44px; background:#ffffff; display:flex; align-items:center; justify-content:space-between; padding:0 14px; z-index:5; border-bottom:1px solid #e5e7eb; color:#000; }
-  .ph-back{ color:#000; font-size:14px; width:20px; text-align:left; }
-  .ph-title{ font-size:13px; font-weight:600; color:#000; flex:1; text-align:center; letter-spacing:.2px; }
-  .ph-dots{ width:26px; height:26px; display:grid; place-items:center; color:#000; font-size:18px; font-weight:bold; border-radius:8px; transition:all .3s ease; position:relative; cursor:pointer; }
-  .ph-dots.active{ background:rgba(0,0,0,.08); box-shadow:0 0 0 3px rgba(0,0,0,.1); transform:scale(1.1); }
-
-  .ph-sheet{ position:absolute; left:0; right:0; bottom:0; background:#ffffff; border-top-left-radius:16px; border-top-right-radius:16px; padding:14px 0 12px; transform:translateY(105%); transition:transform .5s cubic-bezier(.22,1,.36,1); z-index:10; box-shadow:0 -14px 30px rgba(0,0,0,.35); border-top:1px solid #e5e7eb; color:#000; }
-  .ph-sheet.show{ transform:translateY(0); }
-  .ph-sheet-handle{ width:32px; height:4px; background:#d1d5db; border-radius:2px; margin:0 auto 10px; }
-  .ph-sheet-item{ display:flex; align-items:center; gap:12px; padding:11px 18px; font-size:13px; color:#1f2937; font-weight:500; position:relative; transition:all .3s ease; }
-  .ph-sheet-item i{ width:16px; font-size:14px; text-align:center; opacity:.8; }
-  .ph-sheet-item.highlight{ color:#2563eb; font-weight:700; }
-  .ph-sheet-item.highlight i{ color:#2563eb; opacity:1; }
-  .ph-sheet-item.highlight.active{ background:linear-gradient(90deg, rgba(37,99,235,.12), rgba(37,99,235,.05)); color:#2563eb; }
-  .ph-sheet-item.highlight.active::before{ content:''; position:absolute; left:0; top:6px; bottom:6px; width:3px; background:#2563eb; border-radius:0 3px 3px 0; box-shadow:0 0 12px rgba(37,99,235,.5); }
-  .ph-sheet-item.highlight.active::after{ content:''; position:absolute; inset:4px 12px; border-radius:8px; border:1.5px solid rgba(37,99,235,.4); box-shadow:0 0 18px rgba(37,99,235,.2); animation:itemPulse 1.1s ease-in-out infinite; pointer-events:none; }
-  @keyframes itemPulse{ 0%,100% { opacity:1; } 50% { opacity:.5; } }
-
-  .ph-sheet-item .success-check{ margin-left:auto; color:#10b981; font-size:14px; opacity:0; transform:scale(.5); transition:all .4s cubic-bezier(.34,1.56,.64,1); }
-  .ph-sheet-item.highlight.done .success-check{ opacity:1; transform:scale(1); }
-
-  .tap-pointer{ position:absolute; top:0; left:0; width:34px; height:34px; pointer-events:none; z-index:20; opacity:0; transform:translate(-15%, -12%); transition: top .75s cubic-bezier(.22,1,.36,1), left .75s cubic-bezier(.22,1,.36,1), opacity .35s ease, transform .3s ease; will-change:top, left; }
-  .tap-pointer.show{ opacity:1; }
-  .tap-pointer .hand{ width:100%; height:100%; display:grid; place-items:center; color:#111827; font-size:22px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)) drop-shadow(0 0 8px rgba(37,99,235,.7)); }
-  .tap-pointer .ripple{ position:absolute; top:50%; left:50%; width:14px; height:14px; border-radius:50%; border:2px solid rgba(37,99,235,.9); transform:translate(-50%, -50%); opacity:0; pointer-events:none; }
-  .tap-pointer.tapping .hand{ animation:tapPress .35s ease-out; }
-  @keyframes tapPress{ 0% { transform:scale(1); } 45% { transform:scale(.72); } 100% { transform:scale(1); } }
-  .tap-pointer.tapping .ripple{ animation:rippleOut .7s ease-out; }
-  @keyframes rippleOut{ 0% { width:14px; height:14px; opacity:1; border-width:2.5px; } 100% { width:70px; height:70px; opacity:0; border-width:1px; } }
-
-  .blocker-steps{ list-style:none; padding:0; margin:0 0 16px; text-align:left; background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:12px 14px; }
-  .blocker-steps li{ display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:#cbd5e1; line-height:1.55; padding:5px 0; }
-  .blocker-steps li .step-num{ flex:0 0 22px; height:22px; border-radius:50%; display:grid; place-items:center; background:rgba(99,102,241,.20); border:1px solid rgba(99,102,241,.5); color:#a5b4fc; font-size:11px; font-weight:800; margin-top:1px; }
-  .blocker-steps li b{ color:#facc15; font-weight:800; }
-
-  .blocker-copy{ display:flex; align-items:center; justify-content:center; gap:10px; width:100%; padding:14px 18px; border-radius:14px; background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 55%,#a855f7 100%); border:0; color:#fff; font-size:14px; font-weight:800; letter-spacing:.3px; cursor:pointer; box-shadow:0 14px 35px -12px rgba(99,102,241,.75); transition:transform .2s ease, box-shadow .2s ease; }
-  .blocker-copy:hover{ transform:translateY(-2px); box-shadow:0 22px 45px -12px rgba(139,92,246,.9); }
-  .blocker-copy:active{ transform:translateY(0); }
-  .blocker-copy.copied{ background:linear-gradient(135deg,#10b981 0%,#059669 100%); box-shadow:0 14px 35px -12px rgba(16,185,129,.7); }
-
-  .blocker-status{ margin-top:12px; padding:11px 14px; border-radius:12px; font-size:12px; font-weight:600; background:rgba(99,102,241,.10); border:1px solid rgba(99,102,241,.30); color:#c7d2fe; display:none; line-height:1.55; text-align:left; }
-  .blocker-status.show{ display:block; animation:fadeUp .4s ease forwards; }
-  .blocker-status.ok{ background:rgba(16,185,129,.10); border-color:rgba(16,185,129,.35); color:#6ee7b7; }
-
-  .blocker-hint{ margin-top:12px; font-size:11px; color:#64748b; line-height:1.55; }
-  body.blocked{ overflow:hidden; }
-
-  @media (max-height: 740px){
-    .phone-mockup{ width:180px; height:310px; }
-    .blocker-icon{ width:56px; height:56px; font-size:22px; }
-    .blocker-title{ font-size:17px; }
-  }
-
-  /* ====== DECORATIVE GLOW ORBS (background) ====== */
-  .orb{
-    position:fixed;
-    border-radius:50%;
-    filter:blur(120px);
-    pointer-events:none;
-    z-index:0;
-    opacity:.5;
-    will-change:transform;
-  }
-  .orb.pink{ width:520px; height:520px; background:radial-gradient(circle,#ec4899,transparent 70%); top:-180px; left:-140px; animation:floatA 22s ease-in-out infinite; }
-  .orb.purple{ width:460px; height:460px; background:radial-gradient(circle,#8b5cf6,transparent 70%); bottom:-160px; right:-120px; animation:floatB 26s ease-in-out infinite; }
-  @keyframes floatA{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(80px,60px) scale(1.12); } }
-  @keyframes floatB{ 0%,100%{ transform:translate(0,0) scale(1); } 50%{ transform:translate(-70px,-50px) scale(1.08); } }
-</style>
-</head>
-<body>
-
-<!-- ============================================================
-     🚫 TIKTOK BLOCKER (unchanged)
-     ============================================================ -->
-<div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
-  <div class="blocker-card">
-    <div class="blocker-icon">
-      <i class="fas fa-shield-halved"></i>
-    </div>
-    <h2 class="blocker-title" id="blockerTitle">Open in Browser</h2>
-    <p class="blocker-sub">
-      This page must be opened in your <b>phone's browser</b> —<br>
-      not inside the TikTok app. Follow the guide below.
-    </p>
-
-    <div class="phone-wrap">
-      <div class="phone-mockup" id="tutorialPhone">
-        <div class="ph-notch"></div>
-        <div class="ph-blank">
-          <div class="ph-blank-icon">
-            <i class="fas fa-mobile-screen-button"></i>
-            <span>Browser page</span>
-          </div>
-        </div>
-        <div class="ph-topbar">
-          <i class="fas fa-arrow-left ph-back"></i>
-          <span class="ph-title">Web browser</span>
-          <div class="ph-dots" id="tutorialDots">
-            <i class="fas fa-ellipsis-h"></i>
-          </div>
-        </div>
-        <div class="ph-sheet" id="tutorialSheet">
-          <div class="ph-sheet-handle"></div>
-          <div class="ph-sheet-item"><i class="fas fa-flag"></i> Report</div>
-          <div class="ph-sheet-item highlight" id="tutorialItem">
-            <i class="fas fa-compass"></i> Open in browser
-            <i class="fas fa-check-circle success-check"></i>
-          </div>
-          <div class="ph-sheet-item"><i class="fas fa-link"></i> Copy link</div>
-        </div>
-        <div class="tap-pointer" id="tapPointer">
-          <i class="fas fa-hand-pointer hand"></i>
-          <span class="ripple"></span>
-        </div>
-      </div>
-    </div>
-
-    <ul class="blocker-steps">
-      <li><span class="step-num">1</span><span>Tap the <b>three dots (⋯)</b> at the top-right corner of the TikTok screen.</span></li>
-      <li><span class="step-num">2</span><span>In the menu that appears, choose <b>“Open in browser”</b>.</span></li>
-      <li><span class="step-num">3</span><span>The page will open in your browser and the download will work normally.</span></li>
-    </ul>
-
-    <button type="button" class="blocker-copy" id="copyLinkBtn">
-      <i class="fas fa-link"></i> <span>Copy Link</span>
-    </button>
-    <div class="blocker-status" id="blockerStatus"></div>
-    <p class="blocker-hint">If you don't see “Open in browser”, choose <b>“Copy link”</b> instead — then paste it in Chrome or Safari.</p>
-  </div>
-</div>
-
-<!-- Decorative background orbs -->
-<div class="orb pink"></div>
-<div class="orb purple"></div>
-
-<!-- ============================================================
-     MAIN CONTENT
-     ============================================================ -->
-<main class="relative max-w-3xl mx-auto px-5 py-10 md:py-14" style="z-index:1;">
-
-  <!-- Header status -->
-  <div class="flex items-center justify-center gap-3 mb-8 text-[13px] text-slate-400 fade-up d1">
-    <span class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
-      Servers Online
-    </span>
-    <span class="text-slate-700">•</span>
-    <span class="flex items-center gap-1.5">
-      <i class="fas fa-fire text-pink-400"></i>
-      Fast Download Available
-    </span>
-  </div>
-
-  <!-- ============ MAIN CARD (Ass Hunter) ============ -->
-  <section class="glass rounded-3xl p-6 sm:p-8 fade-up d2 mb-8">
-
-    <div class="grid md:grid-cols-[200px_1fr] gap-7 items-start">
-
-      <!-- Cover -->
-      <div class="relative w-full max-w-[200px] mx-auto md:mx-0">
-        <div class="cover-frame">
-          <img
-            src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg"
-            alt="Ass Hunter cover"
-            decoding="async"
-          >
-        </div>
-        <span class="badge-18 absolute top-2 right-2 px-2.5 py-1 rounded-lg text-[12px] z-10">18+</span>
-        <div class="mt-3 flex items-center justify-center gap-2 text-[12px] text-slate-400">
-          <span class="text-amber-400 tracking-tight">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </span>
-          <span class="font-bold text-slate-200">5.0</span>
-        </div>
-      </div>
-
-      <!-- Info -->
-      <div>
-        <h1 class="text-4xl sm:text-5xl font-black font-display title-glow leading-[1.02]">
-          ASS HUNTER
-        </h1>
-
-        <p class="text-[13.5px] text-slate-400 mt-3 leading-relaxed max-w-md">
-          A fast-paced shooting adventure — hunt targets, unlock weapons, and master every level in this action-packed mobile shooter.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-2 mt-4">
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-crosshairs mr-1.5 text-pink-400"></i>Shooting</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold"><i class="fas fa-wifi-slash mr-1.5 text-pink-400"></i>Offline</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-emerald-300 border-emerald-400/25 bg-emerald-400/[.07]"><i class="fas fa-wand-magic-sparkles mr-1.5"></i>MOD</span>
-          <span class="chip px-3 py-1.5 rounded-lg text-[11px] font-semibold text-pink-300 border-pink-400/30 bg-pink-400/[.07]"><i class="fas fa-bolt mr-1.5"></i>Unlimited</span>
-        </div>
-
-        <div class="grid grid-cols-3 gap-2 mt-5 max-w-sm">
-          <div class="info-card rounded-xl px-2 py-2.5 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Size</p>
-            <p class="text-[12px] font-bold text-slate-100">~ 50 MB</p>
-          </div>
-          <div class="info-card rounded-xl px-2 py-2.5 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Platform</p>
-            <p class="text-[12px] font-bold text-slate-100">Android</p>
-          </div>
-          <div class="info-card rounded-xl px-2 py-2.5 text-center">
-            <p class="text-[10px] text-slate-400 font-medium">Version</p>
-            <p class="text-[12px] font-bold text-slate-100">v2.1</p>
-          </div>
-        </div>
-
-        <div class="mt-6">
-          <button
-            type="button"
-            onclick="_iD()"
-            class="btn-primary download-trigger inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-2xl text-white font-extrabold text-[14px] w-full sm:w-auto"
-          >
-            <i class="fas fa-download text-base"></i>
-            <span>Download APK</span>
-            <span class="text-[10px] bg-black/30 px-2 py-0.5 rounded-md font-bold tracking-wide">FREE</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FEATURES ============ -->
-  <section class="fade-up d3 mb-10">
-    <h2 class="text-lg font-extrabold tracking-tight flex items-center gap-2 mb-4">
-      <i class="fas fa-sparkles text-pink-400"></i> What's Inside
-    </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      <div class="info-card rounded-2xl p-4 text-center">
-        <i class="fas fa-infinity text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
-        <p class="text-[12px] font-semibold text-slate-200 mt-2">Unlimited Ammo</p>
-      </div>
-      <div class="info-card rounded-2xl p-4 text-center">
-        <i class="fas fa-gun text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
-        <p class="text-[12px] font-semibold text-slate-200 mt-2">All Weapons</p>
-      </div>
-      <div class="info-card rounded-2xl p-4 text-center">
-        <i class="fas fa-shield-halved text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
-        <p class="text-[12px] font-semibold text-slate-200 mt-2">No Ads</p>
-      </div>
-      <div class="info-card rounded-2xl p-4 text-center">
-        <i class="fas fa-bolt text-2xl text-pink-400" style="filter:drop-shadow(0 0 10px rgba(236,72,153,.55));"></i>
-        <p class="text-[12px] font-semibold text-slate-200 mt-2">Fast Install</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PREVIEW ============ -->
-  <section class="fade-up d4 mb-10">
-    <div class="flex items-end justify-between mb-4">
-      <div>
-        <h2 class="text-lg font-extrabold tracking-tight flex items-center gap-2">
-          <i class="fas fa-clapperboard text-pink-400"></i> Gameplay Preview
-        </h2>
-        <p class="text-[13px] text-slate-400 mt-1">Contains mature content — viewer discretion advised.</p>
-      </div>
-    </div>
-
-    <div class="preview-frame mx-auto max-w-xl" id="previewFrame">
-      <img
-        src="https://techylist.com/wp-content/uploads/2025/01/Ass-Hunter.jpg"
-        alt="Gameplay preview" loading="lazy" decoding="async"
-      >
-      <button type="button" class="preview-overlay" id="previewOverlay">
-        <div class="preview-lock"><i class="fas fa-lock"></i></div>
-        <h3>18+ MATURE CONTENT</h3>
-        <p>This preview contains mature footage. Tap anywhere to reveal.</p>
-        <span class="preview-cta"><i class="fas fa-eye"></i> Tap to Reveal</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- ============ FAQ ============ -->
-  <section class="fade-up d5 mb-10">
-    <h2 class="text-lg font-extrabold tracking-tight mb-4 flex items-center gap-2">
-      <i class="fas fa-circle-question text-pink-400"></i> Frequently Asked Questions
-    </h2>
-
-    <div class="glass rounded-2xl px-5">
-      <details class="faq py-4" open>
-        <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">How do I install the APK?</span>
-          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
-        </summary>
-        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          Download the file, then open your phone's "Downloads" folder. Tap the APK file and allow "Install from unknown sources" if prompted.
-        </p>
-      </details>
-
-      <details class="faq py-4">
-        <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Is this game safe to install?</span>
-          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
-        </summary>
-        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          Yes. All files are scanned and verified before being uploaded. We do not host any malware.
-        </p>
-      </details>
-
-      <details class="faq py-4">
-        <summary class="flex items-center justify-between gap-4">
-          <span class="font-semibold text-[14px] text-slate-100">Why is there an 18+ badge?</span>
-          <i class="fas fa-chevron-down faq-chevron text-pink-400 text-xs"></i>
-        </summary>
-        <p class="text-[13px] text-slate-400 mt-2.5 leading-relaxed">
-          The game contains mature content and is intended for adult audiences only. Please respect age restrictions.
-        </p>
-      </details>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="flex flex-col items-center gap-3 text-center fade-up d6">
-    <div class="flex items-center gap-2 text-[12px] text-slate-500">
-      <i class="fas fa-lock text-pink-400/80"></i>
-      <span>Your downloads are safe and protected</span>
-    </div>
-    <p class="text-[11px] text-slate-600 max-w-lg leading-relaxed">
-      This is a modified (MOD) version and is not affiliated with the official publisher.
-      All trademarks belong to their respective owners.
-    </p>
-  </footer>
-
-</main>
-
-<script>
-(function () {
-  'use strict';
-
-  /* ==========================================================
-     1) PREVIEW REVEAL
-     ========================================================== */
-  var frame   = document.getElementById('previewFrame');
-  var overlay = document.getElementById('previewOverlay');
-
-  if (frame && overlay) {
-    overlay.addEventListener('click', function () {
-      frame.classList.add('is-revealed');
-    });
-  }
-
-  /* ==========================================================
-     2) DOWNLOAD BUTTON FEEDBACK
-     ========================================================== */
-  var downloadBtns = document.querySelectorAll('.download-trigger');
-
-  downloadBtns.forEach(function(btn) {
-    btn.addEventListener('click', function () {
-      var icon = btn.querySelector('.fa-download');
-      var textSpan = btn.querySelector('span:not(.text-\\[10px\\])');
-
-      if(!icon || !textSpan) return;
-
-      var oldIcon = icon.className;
-      var oldText = textSpan.textContent;
-
-      icon.className = 'fas fa-spinner fa-spin text-base';
-      textSpan.textContent = 'Opening…';
-
-      setTimeout(function () {
-        icon.className = oldIcon;
-        textSpan.textContent = oldText;
-      }, 1500);
-    });
-  });
-
-
-  /* ==========================================================
-     3) 🚫 TIKTOK IN-APP BROWSER BLOCKER
-     ========================================================== */
-  var ua = navigator.userAgent || '';
-  var isTikTok   = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview|ByteLocale/i.test(ua);
-  var isInApp    = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|Snapchat|Pinterest|MicroMessenger/i.test(ua);
-
-  function showBlocker() {
-    var blocker = document.getElementById('tiktokBlocker');
-    if (!blocker) return;
-    blocker.classList.add('show');
-    document.body.classList.add('blocked');
-    document.documentElement.style.overflow = 'hidden';
-    startTutorialAnimation();
-  }
-
-  if (isTikTok || isInApp) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showBlocker);
-    } else {
-      showBlocker();
-    }
-  }
-
-  /* ==========================================================
-     4) 🎬 ANIMATED VISUAL TUTORIAL LOOP
-     ========================================================== */
-  var tutorialStarted = false;
-  var tutorialTimer   = null;
-
-  function startTutorialAnimation() {
-    if (tutorialStarted) return;
-    tutorialStarted = true;
-
-    var phone  = document.getElementById('tutorialPhone');
-    var dots   = document.getElementById('tutorialDots');
-    var sheet  = document.getElementById('tutorialSheet');
-    var item   = document.getElementById('tutorialItem');
-    var pointer= document.getElementById('tapPointer');
-
-    if (!phone || !dots || !sheet || !item || !pointer) return;
-
-    function movePointerTo(target) {
-      var phoneRect  = phone.getBoundingClientRect();
-      var targetRect = target.getBoundingClientRect();
-      var x = targetRect.left - phoneRect.left + targetRect.width / 2;
-      var y = targetRect.top  - phoneRect.top  + targetRect.height / 2;
-      pointer.style.left = x + 'px';
-      pointer.style.top  = y + 'px';
-    }
-
-    function reset() {
-      pointer.classList.remove('show', 'tapping');
-      dots.classList.remove('active');
-      sheet.classList.remove('show');
-      item.classList.remove('active', 'done');
-    }
-
-    function play() {
-      reset();
-      setTimeout(function () { movePointerTo(dots); pointer.classList.add('show'); }, 350);
-      setTimeout(function () { pointer.classList.add('tapping'); dots.classList.add('active'); }, 1600);
-      setTimeout(function () { pointer.classList.remove('tapping'); sheet.classList.add('show'); }, 2000);
-      setTimeout(function () { movePointerTo(item); }, 2600);
-      setTimeout(function () { pointer.classList.add('tapping'); item.classList.add('active'); }, 3700);
-      setTimeout(function () { pointer.classList.remove('tapping'); item.classList.add('done'); }, 4100);
-      setTimeout(function () { pointer.classList.remove('show'); }, 5200);
-    }
-
-    play();
-    tutorialTimer = setInterval(play, 7000);
-  }
-
-  /* ==========================================================
-     5) 📋 COPY LINK
-     ========================================================== */
-  var statusEl = document.getElementById('blockerStatus');
-  function setStatus(text, type) {
-    if (!statusEl) return;
-    statusEl.textContent = text;
-    statusEl.classList.add('show');
-    statusEl.classList.toggle('ok', type === 'ok');
-  }
-
-  var copyBtn = document.getElementById('copyLinkBtn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', function () {
-      var url   = window.location.href;
-      var label = copyBtn.querySelector('span');
-
-      function done() {
-        copyBtn.classList.add('copied');
-        label.textContent = 'Link Copied ✓';
-        setStatus('✅ Link copied! Open Chrome or Safari and paste it in the address bar.', 'ok');
-        setTimeout(function () {
-          copyBtn.classList.remove('copied');
-          label.textContent = 'Copy Link';
-        }, 2200);
-      }
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(url).then(done).catch(function () { fallbackCopy(url, done); });
-      } else {
-        fallbackCopy(url, done);
-      }
-    });
-  }
-
-  function fallbackCopy(text, cb) {
-    var ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.focus(); ta.select();
-    try { var ok = document.execCommand('copy'); if (ok && cb) cb(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-
-})();
-</script>
-
+<!-- ===== LOCKER SCRIPT (for _iD function) ===== -->
 <script type="text/javascript">
   var gPpnd_cvi_Qjrslc={"it":4327745,"key":"794f6"};
 </script>
 <script src="https://d1chbu4sfo2xhu.cloudfront.net/7649652.js"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* ===== ROOT PALETTE — BLACK + GREEN ONLY ===== */
+  :root {
+    --green-50:  #ecfdf5;
+    --green-100: #d1fae5;
+    --green-200: #a7f3d0;
+    --green-300: #6ee7b7;
+    --green-400: #34d399;
+    --green-500: #10b981;
+    --green-600: #059669;
+    --green-700: #047857;
+    --green-800: #065f46;
+    --green-900: #064e3b;
+
+    --ink-100: #f4f4f5;
+    --ink-200: #e4e4e7;
+    --ink-300: #d4d4d8;
+    --ink-400: #a1a1aa;
+    --ink-500: #71717a;
+    --ink-600: #52525b;
+    --ink-700: #3f3f46;
+    --ink-800: #27272a;
+    --ink-900: #18181b;
+    --ink-950: #0a0a0a;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #000000;
+    background-image:
+      radial-gradient(1000px 600px at 12% -10%, rgba(16, 185, 129, 0.16), transparent 62%),
+      radial-gradient(800px 600px at 88% 8%, rgba(5, 150, 105, 0.10), transparent 62%),
+      radial-gradient(700px 500px at 50% 110%, rgba(52, 211, 153, 0.08), transparent 62%);
+    color: var(--ink-200);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Background orbs (green only) */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(150px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.42;
+    will-change: transform;
+  }
+  .orb.a {
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, #10b981, transparent 70%);
+    top: -200px; left: -160px;
+    animation: floatA 24s ease-in-out infinite;
+  }
+  .orb.b {
+    width: 460px; height: 460px;
+    background: radial-gradient(circle, #059669, transparent 70%);
+    bottom: -180px; right: -140px;
+    animation: floatB 28s ease-in-out infinite;
+  }
+  @keyframes floatA {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.10); }
+  }
+  @keyframes floatB {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(-50px, -40px) scale(1.08); }
+  }
+
+  /* ===== Header ===== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    background: rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    padding: 12px 22px;
+  }
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-logo {
+    width: 38px; height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #10b981, #047857);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 17px;
+    box-shadow:
+      0 8px 20px -6px rgba(16, 185, 129, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+      0 1px 0 rgba(255, 255, 255, 0.20) inset;
+    flex-shrink: 0;
+  }
+  .brand-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .brand-tag {
+    font-size: 9px;
+    color: var(--green-300);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+  }
+  .header-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green-200);
+    white-space: nowrap;
+  }
+  .header-stat i { font-size: 10px; color: var(--green-400); }
+  .live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green-400);
+    box-shadow: 0 0 10px var(--green-400);
+    animation: pulseDot 1.8s ease-in-out infinite;
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.75); }
+  }
+
+  /* ===== Main ===== */
+  .main {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 38px 22px 60px;
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-top: 6px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-300);
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+  }
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(26px, 4.4vw, 42px);
+    font-weight: 800;
+    line-height: 1.10;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 45%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .hero-sub {
+    font-size: clamp(12.5px, 1.4vw, 14.5px);
+    color: var(--ink-400);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== Trust bar ===== */
+  .trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 24px 0 34px;
+    padding: 12px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(52, 211, 153, 0.16);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  }
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-300);
+    padding: 0 8px;
+  }
+  .trust-item i { color: var(--green-400); font-size: 12px; }
+  .trust-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(52, 211, 153, 0.25);
+  }
+
+  /* ===== Section head ===== */
+  .section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding: 0 2px;
+    gap: 12px;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title i { color: var(--green-400); font-size: 14px; }
+  .section-count {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-500);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* ===== Games grid ===== */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* ===== iOS-style card ===== */
+  .game-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 1px 0 rgba(255, 255, 255, 0.07) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+    transition:
+      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.28s,
+      background 0.28s,
+      box-shadow 0.28s;
+  }
+  .game-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(52, 211, 153, 0.42);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.4),
+      0 0 32px -8px rgba(16, 185, 129, 0.35),
+      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+  }
+
+  .card-thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0a0f0d;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  }
+  .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+    padding: 2px 2px 2px 0;
+  }
+  .card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    color: var(--ink-400);
+    flex-wrap: wrap;
+    line-height: 1.3;
+  }
+  .card-meta .rating {
+    color: var(--green-300);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+  }
+  .card-meta .rating strong {
+    color: var(--ink-200);
+    font-weight: 700;
+    font-size: 10.5px;
+  }
+  .card-meta .dot { color: var(--ink-600); font-weight: 900; }
+
+  .card-genre-pill {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: rgba(16, 185, 129, 0.14);
+    border: 1px solid rgba(52, 211, 153, 0.32);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--green-300);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  /* Download button — green */
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 12px;
+    border-radius: 11px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 6px 16px -6px rgba(16, 185, 129, 0.65),
+      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+      0 1px 0 rgba(255, 255, 255, 0.20) inset;
+    transition: transform 0.15s ease, box-shadow 0.22s ease, filter 0.2s ease;
+    margin-top: 8px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dl-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 10px 24px -6px rgba(16, 185, 129, 0.85),
+      0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+      0 1px 0 rgba(255, 255, 255, 0.25) inset;
+  }
+  .dl-btn:active:not(:disabled) {
+    transform: scale(0.97);
+    filter: brightness(0.92);
+    transition-duration: 0.08s;
+  }
+  .dl-btn:focus-visible {
+    outline: 2px solid var(--green-400);
+    outline-offset: 2px;
+  }
+  .dl-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .dl-btn:hover:not(:disabled)::before { left: 140%; }
+  .dl-btn i { font-size: 11px; }
+  .dl-btn:disabled { cursor: not-allowed; }
+
+  .dl-btn.coming-soon {
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(52, 211, 153, 0.28);
+    box-shadow:
+      0 6px 16px -8px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(52, 211, 153, 0.10) inset;
+    color: var(--green-300);
+  }
+
+  .gta6-card {
+    border-color: rgba(16, 185, 129, 0.28);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(255, 255, 255, 0.03) 100%);
+  }
+  .gta6-card:hover {
+    border-color: rgba(52, 211, 153, 0.55);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.4),
+      0 0 32px -8px rgba(16, 185, 129, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+  }
+
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .cd-unit {
+    background: rgba(16, 185, 129, 0.10);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 6px;
+    padding: 4px 2px;
+    text-align: center;
+  }
+  .cd-num {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--green-300);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .cd-label {
+    display: block;
+    font-size: 6.5px;
+    font-weight: 700;
+    color: var(--ink-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
+  /* ===== Footer ===== */
+  .site-footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 50px;
+    padding: 26px 22px;
+    border-top: 1px solid rgba(52, 211, 153, 0.10);
+    text-align: center;
+  }
+  .footer-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11.5px;
+    color: var(--ink-500);
+  }
+  .footer-line i { color: var(--green-400); }
+  .footer-sub {
+    font-size: 10px;
+    color: var(--ink-600);
+    margin-top: 8px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.55;
+  }
+
+  /* ===== iOS-style Modal ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .modal-overlay.show {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(10, 15, 13, 0.78);
+    backdrop-filter: blur(60px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 30px;
+    padding: 26px 22px 22px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.14) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+      0 30px 80px -20px rgba(0, 0, 0, 0.95),
+      0 0 100px -20px rgba(16, 185, 129, 0.30);
+    transform: translateY(24px) scale(0.94);
+    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .modal-overlay.show .modal-card {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-grab {
+    width: 40px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.20);
+    margin: -8px auto 14px;
+    display: block;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    color: var(--ink-400);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    transition: all 0.18s;
+    z-index: 2;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .modal-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+  }
+  .modal-close:active { transform: scale(0.92); }
+
+  .modal-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 14px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.10));
+    border: 1px solid rgba(52, 211, 153, 0.40);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-400);
+    font-size: 26px;
+    box-shadow:
+      0 0 32px rgba(16, 185, 129, 0.35),
+      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+  }
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+  }
+  .modal-sub {
+    font-size: 12.5px;
+    color: var(--ink-400);
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 22px;
+    padding: 0 8px;
+  }
+
+  .device-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .device-btn {
+    position: relative;
+    padding: 20px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink-200);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+  .device-btn:hover {
+    border-color: rgba(52, 211, 153, 0.55);
+    background: rgba(16, 185, 129, 0.12);
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 32px -10px rgba(16, 185, 129, 0.55),
+      0 1px 0 rgba(255, 255, 255, 0.12) inset;
+  }
+  .device-btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.94);
+    transition-duration: 0.08s;
+  }
+  .device-btn i {
+    font-size: 30px;
+    color: var(--green-400);
+    filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.55));
+    transition: transform 0.25s ease;
+  }
+  .device-btn:hover i { transform: scale(1.08); }
+  .device-btn span {
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .device-btn small {
+    font-size: 10px;
+    color: var(--ink-400);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .modal-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 10.5px;
+    color: var(--ink-500);
+    padding: 12px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    line-height: 1.4;
+    text-align: center;
+  }
+  .modal-note i { color: var(--green-400); font-size: 10px; }
+
+  .review-wrap {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .review-wrap.show { display: flex; }
+
+  .review-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .review-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #34d399, #10b981);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+  }
+
+  .review-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    font-size: 12.5px;
+    color: var(--ink-500);
+    opacity: 0.5;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .review-step.active {
+    opacity: 1;
+    color: var(--ink-200);
+    border-color: rgba(52, 211, 153, 0.42);
+    background: rgba(16, 185, 129, 0.10);
+    box-shadow: 0 0 24px -8px rgba(16, 185, 129, 0.45);
+    transform: scale(1.01);
+  }
+  .review-step.done {
+    opacity: 1;
+    color: var(--green-200);
+    border-color: rgba(16, 185, 129, 0.25);
+    background: rgba(16, 185, 129, 0.05);
+  }
+
+  .review-step-icon {
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--ink-600);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+  }
+  .review-step.active .review-step-icon {
+    color: var(--green-400);
+    filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.7));
+  }
+  .review-step.done .review-step-icon {
+    color: var(--green-500);
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.55));
+  }
+  .review-step-text {
+    flex: 1;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .review-footer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 10.5px;
+    color: var(--ink-500);
+    padding: 12px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 14px;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .review-footer.show { display: flex; }
+  .review-footer i { color: var(--green-400); font-size: 10px; }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+  .d1 { animation-delay: 0.04s; }
+  .d2 { animation-delay: 0.08s; }
+  .d3 { animation-delay: 0.12s; }
+  .d4 { animation-delay: 0.16s; }
+  .d5 { animation-delay: 0.20s; }
+  .d6 { animation-delay: 0.24s; }
+  .d7 { animation-delay: 0.28s; }
+  .d8 { animation-delay: 0.32s; }
+
+  @media (max-width: 720px) {
+    .games-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main { padding: 26px 14px 44px; }
+    .site-header { padding: 10px 14px; }
+    .header-stat.hide-mobile { display: none; }
+    .brand-name { font-size: 16px; }
+    .brand-tag { font-size: 8.5px; }
+    .brand-logo { width: 34px; height: 34px; font-size: 15px; }
+    .hero-title { font-size: 24px; }
+    .hero-sub { font-size: 12.5px; }
+    .trust-bar { gap: 5px; padding: 10px 10px; }
+    .trust-item { font-size: 10.5px; padding: 0 5px; }
+    .trust-divider { height: 12px; }
+    .card-thumb { width: 76px; }
+    .card-title { font-size: 13px; }
+    .card-meta { font-size: 10px; }
+    .dl-btn { font-size: 11.5px; padding: 8px 10px; }
+    .section-title { font-size: 15px; }
+    .section-count { font-size: 10.5px; padding: 4px 8px; }
+    .game-card { padding: 10px; gap: 11px; }
+  }
+
+  @media (max-width: 380px) {
+    .header-stat { display: none; }
+    .card-thumb { width: 68px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo"><i class="fas fa-cube"></i></div>
+        <div class="brand-text-wrap">
+          <div class="brand-name">GameVault</div>
+          <div class="brand-tag">Premium APK Store</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="header-stat"><span class="live-dot"></span> <strong id="online-count">1,247</strong> online</span>
+        <span class="header-stat hide-mobile"><i class="fas fa-shield-halved"></i> 100% Safe</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <section class="hero fade-in d1">
+      <div class="hero-eyebrow">
+        <span class="live-dot"></span>
+        Live · 6 Games
+      </div>
+      <h1 class="hero-title">
+        Download Legendary Games.<br>
+        Right On Your Phone.
+      </h1>
+      <p class="hero-sub">
+        Hand-picked premium APKs — modded, unlocked, and verified. Works on Android and iOS.
+      </p>
+    </section>
+
+    <div class="trust-bar fade-in d2">
+      <span class="trust-item"><i class="fas fa-shield-halved"></i> Virus-Free</span>
+      <span class="trust-divider"></span>
+      <span class="trust-item"><i class="fas fa-lock"></i> SSL Secured</span>
+      <span class="trust-divider"></span>
+      <span class="trust-item"><i class="fas fa-bolt"></i> Instant</span>
+      <span class="trust-divider"></span>
+      <span class="trust-item"><i class="fas fa-user-shield"></i> No Sign-up</span>
+      <span class="trust-divider"></span>
+      <span class="trust-item"><i class="fas fa-circle-check"></i> Verified Files</span>
+    </div>
+
+    <div class="section-head fade-in d3">
+      <h2 class="section-title"><i class="fas fa-gamepad"></i> All Games</h2>
+      <span class="section-count">6 games</span>
+    </div>
+
+    <div class="games-grid">
+
+      <!-- 1. FREE FIRE 2018 — size updated to 178 MB -->
+      <article class="game-card fade-in d3">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/nz6K7NhX/images-(1).jpg" alt="Free Fire 2018" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">Free Fire 2018</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>4.8</strong></span>
+              <span class="dot">·</span>
+              <span>178 MB</span>
+            </div>
+            <span class="card-genre-pill">Battle Royale</span>
+          </div>
+          <button class="dl-btn" onclick="openDeviceModal('Free Fire 2018')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </article>
+
+      <!-- 2. GTA 5 MOBILE -->
+      <article class="game-card fade-in d4">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/T2ggF7PS/8365742.jpg" alt="GTA 5 Mobile" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">GTA 5 Mobile</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>4.9</strong></span>
+              <span class="dot">·</span>
+              <span>2.1 GB</span>
+            </div>
+            <span class="card-genre-pill">Open World</span>
+          </div>
+          <button class="dl-btn" onclick="openDeviceModal('GTA 5 Mobile')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </article>
+
+      <!-- 3. ROBLOX BETA -->
+      <article class="game-card fade-in d5">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/wM2vHsZt/roblox-beta.webp" alt="Roblox Beta" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">Roblox Beta</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>4.7</strong></span>
+              <span class="dot">·</span>
+              <span>180 MB</span>
+            </div>
+            <span class="card-genre-pill">Sandbox</span>
+          </div>
+          <button class="dl-btn" onclick="openDeviceModal('Roblox Beta')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </article>
+
+      <!-- 4. GTA 6 MOBILE — real countdown to Nov 19, 2026 -->
+      <article class="game-card gta6-card fade-in d5">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/6pkBk0qM/images-q-tbn-ANd9Gc-Smh-Eix-I3f2t-OPXzrx39975VUn-Py-PDUPYddszy3za-PVwuy4l-FYO3Rc-MV-pq-s-10.jpg" alt="GTA 6 Mobile" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">GTA 6 Mobile</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>5.0</strong></span>
+              <span class="dot">·</span>
+              <span>Nov 19, 2026</span>
+            </div>
+            <div class="countdown" id="gta6-countdown">
+              <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
+              <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hrs</span></div>
+              <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Min</span></div>
+              <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Sec</span></div>
+            </div>
+          </div>
+          <button class="dl-btn coming-soon" disabled>
+            <i class="fas fa-clock"></i>
+            Coming Soon
+          </button>
+        </div>
+      </article>
+
+      <!-- 5. BEAMNG.DRIVE MOBILE -->
+      <article class="game-card fade-in d6">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/Jh3C9C9D/6404024-s-280-v-4.png" alt="BeamNG.drive Mobile" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">BeamNG.drive Mobile</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>4.6</strong></span>
+              <span class="dot">·</span>
+              <span>870 MB</span>
+            </div>
+            <span class="card-genre-pill">Racing</span>
+          </div>
+          <button class="dl-btn" onclick="openDeviceModal('BeamNG.drive Mobile')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </article>
+
+      <!-- 6. ASS HUNTER -->
+      <article class="game-card fade-in d7">
+        <div class="card-thumb">
+          <img src="https://i.postimg.cc/c131cPJd/Ass-Hunter.jpg" alt="Ass Hunter" loading="lazy" decoding="async">
+        </div>
+        <div class="card-content">
+          <div class="card-top">
+            <div class="card-title">Ass Hunter</div>
+            <div class="card-meta">
+              <span class="rating">★ <strong>4.5</strong></span>
+              <span class="dot">·</span>
+              <span>23 MB</span>
+            </div>
+            <span class="card-genre-pill">Action · Stealth</span>
+          </div>
+          <button class="dl-btn" onclick="openDeviceModal('Ass Hunter')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer fade-in d8">
+    <div class="footer-line">
+      <i class="fas fa-lock"></i>
+      Your downloads are safe and protected
+    </div>
+    <p class="footer-sub">
+      All files are scanned and verified before delivery. GameVault is not affiliated with any official publisher.
+    </p>
+  </footer>
+
+  <!-- ===== iOS-style Device Modal ===== -->
+  <div class="modal-overlay" id="deviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <span class="modal-grab"></span>
+      <button class="modal-close" onclick="closeDeviceModal()" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="modal-icon">
+        <i class="fas fa-download"></i>
+      </div>
+      <h2 class="modal-title" id="modalTitle">Select Your Device</h2>
+      <p class="modal-sub" id="modalSub">Choose your device to start the download.</p>
+
+      <div class="device-options" id="deviceOptions">
+        <button class="device-btn" onclick="chooseDevice('android', event)">
+          <i class="fab fa-android"></i>
+          <span>Android</span>
+          <small>APK file</small>
+        </button>
+        <button class="device-btn" onclick="chooseDevice('ios', event)">
+          <i class="fab fa-apple"></i>
+          <span>iPhone</span>
+          <small>iOS install</small>
+        </button>
+      </div>
+
+      <div class="review-wrap" id="reviewWrap">
+        <div class="review-progress-track">
+          <div class="review-progress-fill" id="reviewProgressFill"></div>
+        </div>
+
+        <div class="review-step" data-step="0">
+          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
+          <div class="review-step-text">Checking device compatibility</div>
+        </div>
+        <div class="review-step" data-step="1">
+          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
+          <div class="review-step-text">Scanning APK signature</div>
+        </div>
+        <div class="review-step" data-step="2">
+          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
+          <div class="review-step-text">Verifying file integrity</div>
+        </div>
+        <div class="review-step" data-step="3">
+          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
+          <div class="review-step-text">Preparing secure download</div>
+        </div>
+      </div>
+
+      <div class="modal-note" id="modalNote">
+        <i class="fas fa-shield-halved"></i>
+        <span>Safe &amp; verified · No registration required</span>
+      </div>
+
+      <div class="review-footer" id="reviewFooter">
+        <i class="fas fa-lock"></i>
+        <span>Verified by apk69.fun Security · Do not close this window</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ============================================================
+       📱 iOS-style Device Modal + Review Flow
+       🔓 On finish → calls _iD() (from the locker script)
+       ============================================================ */
+    const deviceModal  = document.getElementById('deviceModal');
+    const modalTitle   = document.getElementById('modalTitle');
+    const modalSub     = document.getElementById('modalSub');
+    const deviceOptions= document.getElementById('deviceOptions');
+    const reviewWrap   = document.getElementById('reviewWrap');
+    const reviewFill   = document.getElementById('reviewProgressFill');
+    const modalNote    = document.getElementById('modalNote');
+    const reviewFooter = document.getElementById('reviewFooter');
+    const stepEls      = reviewWrap.querySelectorAll('.review-step');
+
+    let currentGame = '';
+    let isReviewing = false;
+
+    const STEP_DURATIONS = [2400, 2600, 2600, 2400];
+    const TOTAL_DURATION = STEP_DURATIONS.reduce((a,b) => a+b, 0);
+
+    function openDeviceModal(gameName) {
+      currentGame = gameName || 'this game';
+      resetModal();
+      modalTitle.textContent = 'Select Your Device';
+      modalSub.textContent = 'Choose your device to download ' + currentGame + '.';
+      deviceModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDeviceModal() {
+      if (isReviewing) return;
+      deviceModal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function resetModal() {
+      isReviewing = false;
+
+      deviceOptions.style.display = 'grid';
+      deviceOptions.innerHTML =
+        '<button class="device-btn" onclick="chooseDevice(\'android\', event)">' +
+          '<i class="fab fa-android"></i>' +
+          '<span>Android</span>' +
+          '<small>APK file</small>' +
+        '</button>' +
+        '<button class="device-btn" onclick="chooseDevice(\'ios\', event)">' +
+          '<i class="fab fa-apple"></i>' +
+          '<span>iPhone</span>' +
+          '<small>iOS install</small>' +
+        '</button>';
+
+      const modalIcon = document.querySelector('.modal-icon i');
+      if (modalIcon) modalIcon.className = 'fas fa-download';
+
+      reviewWrap.classList.remove('show');
+      reviewFooter.classList.remove('show');
+      modalNote.style.display = 'flex';
+      reviewFill.style.transition = 'none';
+      reviewFill.style.width = '0%';
+
+      stepEls.forEach(step => {
+        step.classList.remove('active', 'done');
+        const icon = step.querySelector('.review-step-icon i');
+        if (icon) icon.className = 'fas fa-circle';
+      });
+
+      const closeBtn = deviceModal.querySelector('.modal-close');
+      if (closeBtn) closeBtn.style.display = 'flex';
+    }
+
+    function chooseDevice(device, evt) {
+      if (isReviewing) return;
+      isReviewing = true;
+
+      deviceOptions.style.display = 'none';
+      modalNote.style.display = 'none';
+      const closeBtn = deviceModal.querySelector('.modal-close');
+      if (closeBtn) closeBtn.style.display = 'none';
+
+      const deviceName = device === 'android' ? 'Android' : 'iPhone';
+      const deviceIcon = device === 'android' ? 'fa-android' : 'fa-apple';
+
+      const modalIcon = document.querySelector('.modal-icon i');
+      if (modalIcon) modalIcon.className = 'fab ' + deviceIcon;
+
+      modalTitle.textContent = 'Verifying for ' + deviceName;
+      modalSub.textContent = 'We\'re preparing "' + currentGame + '" for your ' + deviceName + '. Please wait…';
+
+      reviewWrap.classList.add('show');
+      reviewFooter.classList.add('show');
+
+      requestAnimationFrame(() => {
+        reviewFill.style.transition = 'width ' + TOTAL_DURATION + 'ms linear';
+        reviewFill.style.width = '100%';
+      });
+
+      let i = 0;
+
+      function runStep() {
+        if (i >= stepEls.length) {
+          // ✅ Done → call locker function
+          setTimeout(() => {
+            try {
+              if (typeof _iD === 'function') {
+                _iD();
+              } else {
+                console.error('_iD() is not defined — locker script may not have loaded.');
+              }
+            } catch (err) {
+              console.error('Error calling _iD():', err);
+            }
+          }, 500);
+          return;
+        }
+
+        const step = stepEls[i];
+        step.classList.add('active');
+        const icon = step.querySelector('.review-step-icon i');
+        if (icon) icon.className = 'fas fa-circle-notch fa-spin';
+
+        setTimeout(() => {
+          step.classList.remove('active');
+          step.classList.add('done');
+          if (icon) icon.className = 'fas fa-circle-check';
+          i++;
+          runStep();
+        }, STEP_DURATIONS[i]);
+      }
+
+      runStep();
+    }
+
+    deviceModal.addEventListener('click', (e) => {
+      if (e.target === deviceModal) closeDeviceModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDeviceModal();
+    });
+
+    /* ============================================================
+       ⏱ GTA 6 COUNTDOWN — Official Release: Nov 19, 2026
+       Real countdown based on fixed timestamp (no reset per visit)
+       ============================================================ */
+    (function () {
+      const target = new Date('2026-11-19T00:00:00Z').getTime();
+      const cdDays  = document.getElementById('cd-days');
+      const cdHours = document.getElementById('cd-hours');
+      const cdMins  = document.getElementById('cd-mins');
+      const cdSecs  = document.getElementById('cd-secs');
+      const wrap    = document.getElementById('gta6-countdown');
+
+      if (!wrap) return;
+
+      function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+      function tick() {
+        const diff = target - Date.now();
+
+        if (diff <= 0) {
+          if (cdDays)  cdDays.textContent  = '00';
+          if (cdHours) cdHours.textContent = '00';
+          if (cdMins)  cdMins.textContent  = '00';
+          if (cdSecs)  cdSecs.textContent  = '00';
+          clearInterval(timer);
+          return;
+        }
+
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000)  / 60000);
+        const secs  = Math.floor((diff % 60000)    / 1000);
+
+        if (cdDays)  cdDays.textContent  = pad(days);
+        if (cdHours) cdHours.textContent = pad(hours);
+        if (cdMins)  cdMins.textContent  = pad(mins);
+        if (cdSecs)  cdSecs.textContent  = pad(secs);
+      }
+
+      const timer = setInterval(tick, 1000);
+      tick();
+    })();
+
+    /* ============================================================
+       👥 Fake online counter
+       ============================================================ */
+    (function () {
+      const el = document.getElementById('online-count');
+      if (!el) return;
+      let n = 1247;
+      setInterval(() => {
+        n = Math.max(1100, Math.min(1400, n + (Math.floor(Math.random() * 11) - 5)));
+        el.textContent = n.toLocaleString('en-US');
+      }, 3400);
+    })();
+  </script>
 
 </body>
 </html>
