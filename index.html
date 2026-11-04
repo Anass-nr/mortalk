@@ -396,6 +396,65 @@
     width: fit-content;
   }
 
+  /* ---- Split buttons (Android + iPhone) ---- */
+  .dl-btn-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .dl-btn-split {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 6px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 5px 14px -6px rgba(16, 185, 129, 0.65),
+      0 0 0 1px rgba(255, 255, 255, 0.10) inset,
+      0 1px 0 rgba(255, 255, 255, 0.18) inset;
+    transition: transform 0.15s ease, box-shadow 0.22s ease, filter 0.2s ease;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dl-btn-split i { font-size: 12px; }
+  .dl-btn-split:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 9px 22px -6px rgba(16, 185, 129, 0.85),
+      0 0 0 1px rgba(255, 255, 255, 0.16) inset,
+      0 1px 0 rgba(255, 255, 255, 0.22) inset;
+  }
+  .dl-btn-split:active {
+    transform: scale(0.97);
+    filter: brightness(0.92);
+    transition-duration: 0.08s;
+  }
+  .dl-btn-split::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.30), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .dl-btn-split:hover::before { left: 140%; }
+
+  /* Keep original dl-btn for the "Coming Soon" card */
   .dl-btn {
     display: flex;
     align-items: center;
@@ -422,33 +481,6 @@
     white-space: nowrap;
     -webkit-tap-highlight-color: transparent;
   }
-  .dl-btn:hover:not(:disabled) {
-    transform: translateY(-1px);
-    filter: brightness(1.06);
-    box-shadow:
-      0 10px 24px -6px rgba(16, 185, 129, 0.85),
-      0 0 0 1px rgba(255, 255, 255, 0.18) inset,
-      0 1px 0 rgba(255, 255, 255, 0.25) inset;
-  }
-  .dl-btn:active:not(:disabled) {
-    transform: scale(0.97);
-    filter: brightness(0.92);
-    transition-duration: 0.08s;
-  }
-  .dl-btn:focus-visible {
-    outline: 2px solid var(--green-400);
-    outline-offset: 2px;
-  }
-  .dl-btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
-  }
-  .dl-btn:hover:not(:disabled)::before { left: 140%; }
   .dl-btn i { font-size: 11px; }
   .dl-btn:disabled { cursor: not-allowed; }
 
@@ -570,19 +602,15 @@
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
   }
-  .modal-overlay.show .modal-card {
-    transform: translateY(0) scale(1);
-  }
+  .modal-overlay.show .modal-card { transform: translateY(0) scale(1); }
 
   .modal-grab {
-    width: 40px;
-    height: 5px;
+    width: 40px; height: 5px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.20);
     margin: -8px auto 14px;
     display: block;
   }
-
   .modal-close {
     position: absolute;
     top: 14px; right: 14px;
@@ -596,14 +624,9 @@
     font-size: 11px;
     transition: all 0.18s;
     z-index: 2;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     -webkit-tap-highlight-color: transparent;
   }
-  .modal-close:hover {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
-  }
+  .modal-close:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
   .modal-close:active { transform: scale(0.92); }
 
   .modal-icon {
@@ -615,9 +638,7 @@
     display: flex; align-items: center; justify-content: center;
     color: var(--green-400);
     font-size: 26px;
-    box-shadow:
-      0 0 32px rgba(16, 185, 129, 0.35),
-      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+    box-shadow: 0 0 32px rgba(16, 185, 129, 0.35);
   }
   .modal-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -625,7 +646,6 @@
     font-weight: 700;
     color: #fff;
     text-align: center;
-    letter-spacing: -0.015em;
     margin-bottom: 6px;
   }
   .modal-sub {
@@ -636,7 +656,6 @@
     margin-bottom: 22px;
     padding: 0 8px;
   }
-
   .device-options {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -644,7 +663,6 @@
     margin-bottom: 16px;
   }
   .device-btn {
-    position: relative;
     padding: 20px 14px;
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.06);
@@ -654,47 +672,12 @@
     flex-direction: column;
     align-items: center;
     gap: 9px;
-    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.2s, background 0.2s, box-shadow 0.2s;
-    font-family: 'Inter', sans-serif;
     color: var(--ink-200);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
+    font-family: 'Inter', sans-serif;
   }
-  .device-btn:hover {
-    border-color: rgba(52, 211, 153, 0.55);
-    background: rgba(16, 185, 129, 0.12);
-    transform: translateY(-2px);
-    box-shadow:
-      0 12px 32px -10px rgba(16, 185, 129, 0.55),
-      0 1px 0 rgba(255, 255, 255, 0.12) inset;
-  }
-  .device-btn:active {
-    transform: scale(0.96);
-    filter: brightness(0.94);
-    transition-duration: 0.08s;
-  }
-  .device-btn i {
-    font-size: 30px;
-    color: var(--green-400);
-    filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.55));
-    transition: transform 0.25s ease;
-  }
-  .device-btn:hover i { transform: scale(1.08); }
-  .device-btn span {
-    font-size: 13.5px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-  .device-btn small {
-    font-size: 10px;
-    color: var(--ink-400);
-    font-weight: 500;
-    letter-spacing: 0;
-  }
+  .device-btn i { font-size: 30px; color: var(--green-400); }
+  .device-btn span { font-size: 13.5px; font-weight: 700; }
+  .device-btn small { font-size: 10px; color: var(--ink-400); }
 
   .modal-note {
     display: flex;
@@ -705,103 +688,9 @@
     color: var(--ink-500);
     padding: 12px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-    line-height: 1.4;
     text-align: center;
   }
   .modal-note i { color: var(--green-400); font-size: 10px; }
-
-  .review-wrap {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .review-wrap.show { display: flex; }
-
-  .review-progress-track {
-    width: 100%;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-bottom: 4px;
-  }
-  .review-progress-fill {
-    width: 0%;
-    height: 100%;
-    background: linear-gradient(90deg, #34d399, #10b981);
-    border-radius: 999px;
-    transition: width 0.5s ease;
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
-  }
-
-  .review-step {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 14px;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 14px;
-    font-size: 12.5px;
-    color: var(--ink-500);
-    opacity: 0.5;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-  .review-step.active {
-    opacity: 1;
-    color: var(--ink-200);
-    border-color: rgba(52, 211, 153, 0.42);
-    background: rgba(16, 185, 129, 0.10);
-    box-shadow: 0 0 24px -8px rgba(16, 185, 129, 0.45);
-    transform: scale(1.01);
-  }
-  .review-step.done {
-    opacity: 1;
-    color: var(--green-200);
-    border-color: rgba(16, 185, 129, 0.25);
-    background: rgba(16, 185, 129, 0.05);
-  }
-
-  .review-step-icon {
-    width: 24px; height: 24px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    color: var(--ink-600);
-    flex-shrink: 0;
-    transition: all 0.3s ease;
-    border-radius: 50%;
-  }
-  .review-step.active .review-step-icon {
-    color: var(--green-400);
-    filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.7));
-  }
-  .review-step.done .review-step-icon {
-    color: var(--green-500);
-    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.55));
-  }
-  .review-step-text {
-    flex: 1;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  .review-footer {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 10.5px;
-    color: var(--ink-500);
-    padding: 12px 0 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    margin-top: 14px;
-    line-height: 1.4;
-    text-align: center;
-  }
-  .review-footer.show { display: flex; }
-  .review-footer i { color: var(--green-400); font-size: 10px; }
 
   .fade-in {
     opacity: 0;
@@ -821,7 +710,6 @@
   @media (max-width: 720px) {
     .games-grid { grid-template-columns: 1fr; gap: 10px; }
   }
-
   @media (max-width: 640px) {
     .main { padding: 26px 14px 130px; }
     .site-header { padding: 10px 14px; }
@@ -837,23 +725,23 @@
     .card-thumb { width: 76px; }
     .card-title { font-size: 13px; }
     .card-meta { font-size: 10px; }
+    .dl-btn-split { font-size: 10.5px; padding: 8px 5px; gap: 4px; }
+    .dl-btn-split i { font-size: 11px; }
     .dl-btn { font-size: 11.5px; padding: 8px 10px; }
     .section-title { font-size: 15px; }
     .section-count { font-size: 10.5px; padding: 4px 8px; }
     .game-card { padding: 10px; gap: 11px; }
   }
-
   @media (max-width: 380px) {
     .header-stat { display: none; }
     .card-thumb { width: 68px; }
   }
-
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
   }
 
   /* ============================================================
-     🚫 TIKTOK BLOCKER — adapted to GREEN + BLACK theme
+     🚫 TIKTOK BLOCKER
      ============================================================ */
   #tiktokBlocker {
     position: fixed; inset: 0; z-index: 999999; display: none;
@@ -876,7 +764,6 @@
     from { opacity: 0; transform: translateY(16px) scale(.97); }
     to   { opacity: 1; transform: translateY(0) scale(1); }
   }
-
   .blocker-icon {
     width: 66px; height: 66px; margin: 0 auto 14px; border-radius: 50%;
     display: grid; place-items: center;
@@ -889,7 +776,6 @@
     0%,100% { box-shadow: 0 0 30px rgba(16,185,129,.25); }
     50%     { box-shadow: 0 0 50px rgba(16,185,129,.55); }
   }
-
   .blocker-title { font-size: 19px; font-weight: 900; color: #fff; margin: 0 0 6px; }
   .blocker-sub { font-size: 13px; color: #a1a1aa; line-height: 1.6; margin: 0 0 18px; }
   .blocker-sub b { color: #34d399; font-weight: 800; }
@@ -897,25 +783,23 @@
   .phone-wrap { display: flex; justify-content: center; margin-bottom: 18px; perspective: 900px; }
   .phone-mockup {
     width: 212px; height: 360px; background: #ffffff; border-radius: 26px; border: 5px solid #1e293b;
-    box-shadow: 0 22px 45px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(16,185,129,.18), inset 0 0 0 1px rgba(255,255,255,.03);
+    box-shadow: 0 22px 45px -15px rgba(0,0,0,.9), 0 0 0 1px rgba(16,185,129,.18);
     position: relative; overflow: hidden; transform: rotateX(4deg);
   }
-  .ph-notch { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 56px; height: 14px; background: #0a0f1c; border-radius: 10px; z-index: 6; border: 1px solid rgba(255,255,255,.06); }
-  .ph-blank { position: absolute; top: 44px; left: 0; right: 0; bottom: 0; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 11px; font-weight: 600; letter-spacing: .4px; }
+  .ph-notch { position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 56px; height: 14px; background: #0a0f1c; border-radius: 10px; z-index: 6; }
+  .ph-blank { position: absolute; top: 44px; left: 0; right: 0; bottom: 0; background: #f8fafc; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 11px; font-weight: 600; }
   .ph-blank .ph-blank-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: .55; }
   .ph-blank .ph-blank-icon i { font-size: 26px; color: #cbd5e1; }
   .ph-blank .ph-blank-icon span { font-size: 10px; color: #cbd5e1; font-weight: 600; }
-
   .ph-topbar {
     position: absolute; top: 0; left: 0; right: 0; height: 44px; background: #ffffff;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 14px; z-index: 5; border-bottom: 1px solid #e5e7eb; color: #000;
   }
-  .ph-back { color: #000; font-size: 14px; width: 20px; text-align: left; }
-  .ph-title { font-size: 13px; font-weight: 600; color: #000; flex: 1; text-align: center; letter-spacing: .2px; }
+  .ph-back { color: #000; font-size: 14px; width: 20px; }
+  .ph-title { font-size: 13px; font-weight: 600; color: #000; flex: 1; text-align: center; }
   .ph-dots { width: 26px; height: 26px; display: grid; place-items: center; color: #000; font-size: 18px; font-weight: bold; border-radius: 8px; transition: all .3s ease; position: relative; cursor: pointer; }
   .ph-dots.active { background: rgba(0,0,0,.08); box-shadow: 0 0 0 3px rgba(0,0,0,.1); transform: scale(1.1); }
-
   .ph-sheet {
     position: absolute; left: 0; right: 0; bottom: 0; background: #ffffff;
     border-top-left-radius: 16px; border-top-right-radius: 16px;
@@ -928,7 +812,6 @@
   .ph-sheet-handle { width: 32px; height: 4px; background: #d1d5db; border-radius: 2px; margin: 0 auto 10px; }
   .ph-sheet-item { display: flex; align-items: center; gap: 12px; padding: 11px 18px; font-size: 13px; color: #1f2937; font-weight: 500; position: relative; transition: all .3s ease; }
   .ph-sheet-item i { width: 16px; font-size: 14px; text-align: center; opacity: .8; }
-
   .ph-sheet-item.highlight { color: #10b981; font-weight: 700; }
   .ph-sheet-item.highlight i { color: #10b981; opacity: 1; }
   .ph-sheet-item.highlight.active { background: linear-gradient(90deg, rgba(16,185,129,.12), rgba(16,185,129,.05)); color: #10b981; }
@@ -936,13 +819,6 @@
     content: ''; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px;
     background: #10b981; border-radius: 0 3px 3px 0; box-shadow: 0 0 12px rgba(16,185,129,.5);
   }
-  .ph-sheet-item.highlight.active::after {
-    content: ''; position: absolute; inset: 4px 12px; border-radius: 8px;
-    border: 1.5px solid rgba(16,185,129,.4); box-shadow: 0 0 18px rgba(16,185,129,.2);
-    animation: itemPulse 1.1s ease-in-out infinite; pointer-events: none;
-  }
-  @keyframes itemPulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
-
   .ph-sheet-item .success-check {
     margin-left: auto; color: #10b981; font-size: 14px;
     opacity: 0; transform: scale(.5);
@@ -998,14 +874,8 @@
     background: linear-gradient(135deg, #10b981 0%, #059669 55%, #047857 100%);
     border: 0; color: #fff; font-size: 14px; font-weight: 800; letter-spacing: .3px;
     cursor: pointer; box-shadow: 0 14px 35px -12px rgba(16,185,129,.75);
-    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .blocker-copy:hover { transform: translateY(-2px); box-shadow: 0 22px 45px -12px rgba(5,150,105,.9); }
-  .blocker-copy:active { transform: translateY(0); }
-  .blocker-copy.copied {
-    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-    box-shadow: 0 14px 35px -12px rgba(52,211,153,.7);
-  }
+  .blocker-copy.copied { background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
 
   .blocker-status {
     margin-top: 12px; padding: 11px 14px; border-radius: 12px;
@@ -1013,9 +883,8 @@
     background: rgba(16,185,129,.10); border: 1px solid rgba(16,185,129,.30);
     color: #a7f3d0; display: none; line-height: 1.55; text-align: left;
   }
-  .blocker-status.show { display: block; animation: blockerFadeUp .4s ease forwards; }
+  .blocker-status.show { display: block; }
   .blocker-status.ok { background: rgba(16,185,129,.14); border-color: rgba(16,185,129,.45); color: #6ee7b7; }
-  @keyframes blockerFadeUp { to { opacity: 1; transform: translateY(0); } }
 
   .blocker-hint { margin-top: 12px; font-size: 11px; color: #71717a; line-height: 1.55; }
   .blocker-hint b { color: #34d399; font-weight: 700; }
@@ -1029,13 +898,11 @@
   }
 
   /* ============================================================
-     🟣 PURPLE DOWNLOAD BAR (from Ben 10 page) + Device Toggle
+     🟣 PURPLE DOWNLOAD BAR + Device Toggle
      ============================================================ */
   #vault-download-bar {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     z-index: 99998;
     display: none;
     background: linear-gradient(180deg, #2a0a52 0%, #0a0a2a 100%);
@@ -1048,9 +915,7 @@
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
-  #vault-download-bar.visible {
-    transform: translateY(0);
-  }
+  #vault-download-bar.visible { transform: translateY(0); }
   #vault-download-bar::before {
     content: '';
     position: absolute;
@@ -1059,12 +924,7 @@
     opacity: 0.9;
     pointer-events: none;
   }
-
-  .vdb-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    color: #fff;
-  }
+  .vdb-inner { max-width: 720px; margin: 0 auto; color: #fff; }
 
   .vdb-device-toggle {
     display: flex;
@@ -1074,10 +934,7 @@
     background: rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     border: 1px solid rgba(123, 66, 246, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
-
   .vdb-dev-btn {
     flex: 1;
     display: flex;
@@ -1092,13 +949,12 @@
     font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     font-weight: 700;
-    letter-spacing: 0.02em;
     cursor: pointer;
     transition: all 0.22s ease;
     -webkit-tap-highlight-color: transparent;
   }
   .vdb-dev-btn i { font-size: 14px; }
-  .vdb-dev-btn:hover:not(.active) {
+  .vdb-dev-btn:hover:not(.active):not(:disabled) {
     color: rgba(255, 255, 255, 0.85);
     background: rgba(255, 255, 255, 0.04);
   }
@@ -1110,6 +966,7 @@
       0 3px 14px rgba(123, 66, 246, 0.45),
       0 1px 0 rgba(255, 255, 255, 0.15) inset;
   }
+  .vdb-dev-btn:disabled:not(.active) { opacity: 0.35; cursor: not-allowed; }
 
   .vdb-header {
     display: flex;
@@ -1118,8 +975,7 @@
     margin-bottom: 10px;
   }
   .vdb-icon {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     flex-shrink: 0;
     border-radius: 50%;
     background: rgba(123, 66, 246, 0.25);
@@ -1140,7 +996,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    letter-spacing: 0.005em;
   }
   .vdb-status {
     font-size: 11.5px;
@@ -1152,10 +1007,7 @@
     flex-wrap: wrap;
     font-variant-numeric: tabular-nums;
   }
-  #vdb-percentage {
-    color: #c4b5fd;
-    font-weight: 700;
-  }
+  #vdb-percentage { color: #c4b5fd; font-weight: 700; }
   .vdb-dot { color: rgba(255, 255, 255, 0.35); }
 
   .vdb-progress-track {
@@ -1223,9 +1075,7 @@
        ============================================================ -->
   <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
     <div class="blocker-card">
-      <div class="blocker-icon">
-        <i class="fas fa-shield-halved"></i>
-      </div>
+      <div class="blocker-icon"><i class="fas fa-shield-halved"></i></div>
       <h2 class="blocker-title" id="blockerTitle">Open in Browser</h2>
       <p class="blocker-sub">
         This page must be opened in your <b>phone's browser</b> —<br>
@@ -1290,7 +1140,6 @@
           <div class="brand-tag">Premium APK Store</div>
         </div>
       </div>
-
       <div class="header-actions">
         <span class="header-stat"><span class="live-dot"></span> <strong id="online-count">1,247</strong> online</span>
         <span class="header-stat hide-mobile"><i class="fas fa-shield-halved"></i> 100% Safe</span>
@@ -1331,6 +1180,7 @@
     </div>
 
     <div class="games-grid">
+      <!-- ============ Free Fire 2018 ============ -->
       <article class="game-card fade-in d3">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/nz6K7NhX/images-(1).jpg" alt="Free Fire 2018" loading="lazy" decoding="async">
@@ -1345,12 +1195,18 @@
             </div>
             <span class="card-genre-pill">Battle Royale</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('Free Fire 2018')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="Free Fire 2018" data-size="178">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ============ GTA 5 Mobile ============ -->
       <article class="game-card fade-in d4">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/T2ggF7PS/8365742.jpg" alt="GTA 5 Mobile" loading="lazy" decoding="async">
@@ -1365,12 +1221,18 @@
             </div>
             <span class="card-genre-pill">Open World</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('GTA 5 Mobile')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="GTA 5 Mobile" data-size="2150">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ============ Roblox Beta ============ -->
       <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/wM2vHsZt/roblox-beta.webp" alt="Roblox Beta" loading="lazy" decoding="async">
@@ -1385,19 +1247,25 @@
             </div>
             <span class="card-genre-pill">Sandbox</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('Roblox Beta')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="Roblox Beta" data-size="180">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ============ Ben 10 Galven ============ -->
       <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/1RKqbHks/galvan-ben-10-icon-150.png" alt="Ben 10 Galven" loading="lazy" decoding="async">
         </div>
         <div class="card-content">
           <div class="card-top">
-            <div class="card-title">Ben 10 Galven </div>
+            <div class="card-title">Ben 10 Galven</div>
             <div class="card-meta">
               <span class="rating">★ <strong>4.2</strong></span>
               <span class="dot">·</span>
@@ -1405,12 +1273,18 @@
             </div>
             <span class="card-genre-pill">Sci-Fi</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('Ben 10 Galven')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="Ben 10 Galven" data-size="2458">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ============ GTA 6 Mobile (Coming Soon) ============ -->
       <article class="game-card gta6-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/6pkBk0qM/images-q-tbn-ANd9Gc-Smh-Eix-I3f2t-OPXzrx39975VUn-Py-PDUPYddszy3za-PVwuy4l-FYO3Rc-MV-pq-s-10.jpg" alt="GTA 6 Mobile" loading="lazy" decoding="async">
@@ -1436,6 +1310,7 @@
         </div>
       </article>
 
+      <!-- ============ BeamNG.drive ============ -->
       <article class="game-card fade-in d6">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/Jh3C9C9D/6404024-s-280-v-4.png" alt="BeamNG.drive Mobile" loading="lazy" decoding="async">
@@ -1450,12 +1325,18 @@
             </div>
             <span class="card-genre-pill">Racing</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('BeamNG.drive Mobile')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="BeamNG.drive Mobile" data-size="870">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
 
+      <!-- ============ Ass Hunter ============ -->
       <article class="game-card fade-in d7">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/c131cPJd/Ass-Hunter.jpg" alt="Ass Hunter" loading="lazy" decoding="async">
@@ -1470,9 +1351,14 @@
             </div>
             <span class="card-genre-pill">Action · Stealth</span>
           </div>
-          <button class="dl-btn" onclick="openDeviceModal('Ass Hunter')">
-            <i class="fas fa-download"></i> Download
-          </button>
+          <div class="dl-btn-group" data-game="Ass Hunter" data-size="23">
+            <button type="button" class="dl-btn-split" data-device="android">
+              <i class="fab fa-android"></i> Android
+            </button>
+            <button type="button" class="dl-btn-split" data-device="ios">
+              <i class="fab fa-apple"></i> iPhone
+            </button>
+          </div>
         </div>
       </article>
     </div>
@@ -1489,11 +1375,11 @@
   </footer>
 
   <!-- ============================================================
-       🟣 PURPLE DOWNLOAD BAR — replaces the modal list
+       🟣 PURPLE DOWNLOAD BAR
        ============================================================ -->
   <div id="vault-download-bar" role="region" aria-label="Download progress">
     <div class="vdb-inner">
-      <div class="vdb-device-toggle" role="tablist" aria-label="Select device">
+      <div class="vdb-device-toggle" role="tablist" aria-label="Selected device">
         <button type="button" class="vdb-dev-btn" data-device="android" role="tab" aria-selected="false">
           <i class="fab fa-android"></i> Android
         </button>
@@ -1511,7 +1397,7 @@
             <span class="vdb-dot">•</span>
             <span id="vdb-amount">0 MB</span>
             <span class="vdb-dot">/</span>
-            <span>550 MB</span>
+            <span id="vdb-total">550 MB</span>
           </div>
         </div>
       </div>
@@ -1524,198 +1410,39 @@
     </div>
   </div>
 
-  <!-- ============================================================
-       Modal (kept for compatibility, no longer triggered by default)
-       ============================================================ -->
+  <!-- Old modal kept for compatibility (not used by cards anymore) -->
   <div class="modal-overlay" id="deviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <span class="modal-grab"></span>
       <button class="modal-close" onclick="closeDeviceModal()" aria-label="Close">
         <i class="fas fa-times"></i>
       </button>
-
-      <div class="modal-icon">
-        <i class="fas fa-download"></i>
-      </div>
+      <div class="modal-icon"><i class="fas fa-download"></i></div>
       <h2 class="modal-title" id="modalTitle">Select Your Device</h2>
       <p class="modal-sub" id="modalSub">Choose your device to start the download.</p>
-
       <div class="device-options" id="deviceOptions">
         <button class="device-btn" onclick="chooseDevice('android', event)">
-          <i class="fab fa-android"></i>
-          <span>Android</span>
-          <small>APK file</small>
+          <i class="fab fa-android"></i><span>Android</span><small>APK file</small>
         </button>
         <button class="device-btn" onclick="chooseDevice('ios', event)">
-          <i class="fab fa-apple"></i>
-          <span>iPhone</span>
-          <small>iOS install</small>
+          <i class="fab fa-apple"></i><span>iPhone</span><small>iOS install</small>
         </button>
       </div>
-
-      <div class="review-wrap" id="reviewWrap">
-        <div class="review-progress-track">
-          <div class="review-progress-fill" id="reviewProgressFill"></div>
-        </div>
-
-        <div class="review-step" data-step="0">
-          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
-          <div class="review-step-text">Checking device compatibility</div>
-        </div>
-        <div class="review-step" data-step="1">
-          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
-          <div class="review-step-text">Scanning APK signature</div>
-        </div>
-        <div class="review-step" data-step="2">
-          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
-          <div class="review-step-text">Verifying file integrity</div>
-        </div>
-        <div class="review-step" data-step="3">
-          <div class="review-step-icon"><i class="fas fa-circle"></i></div>
-          <div class="review-step-text">Preparing secure download</div>
-        </div>
-      </div>
-
       <div class="modal-note" id="modalNote">
         <i class="fas fa-shield-halved"></i>
         <span>Safe &amp; verified · No registration required</span>
-      </div>
-
-      <div class="review-footer" id="reviewFooter">
-        <i class="fas fa-lock"></i>
-        <span>Verified by GameVault Security · Do not close this window</span>
       </div>
     </div>
   </div>
 
   <script>
     /* ============================================================
-       📱 Device Modal (kept for compatibility — but openDeviceModal
-       now routes to the purple download bar instead)
+       HELPERS
        ============================================================ */
-    const deviceModal  = document.getElementById('deviceModal');
-    const modalTitle   = document.getElementById('modalTitle');
-    const modalSub     = document.getElementById('modalSub');
-    const deviceOptions= document.getElementById('deviceOptions');
-    const reviewWrap   = document.getElementById('reviewWrap');
-    const reviewFill   = document.getElementById('reviewProgressFill');
-    const modalNote    = document.getElementById('modalNote');
-    const reviewFooter = document.getElementById('reviewFooter');
-    const stepEls      = reviewWrap.querySelectorAll('.review-step');
-
-    let currentGame = '';
-    let isReviewing = false;
-
-    const STEP_DURATIONS = [2400, 2600, 2600, 2400];
-    const TOTAL_DURATION = STEP_DURATIONS.reduce((a,b) => a+b, 0);
-
-    /* 🔁 openDeviceModal now opens the PURPLE DOWNLOAD BAR
-       (the modal stays in the DOM untouched for compatibility) */
-    function openDeviceModal(gameName) {
-      startDownloadBar(gameName);
+    function formatSize(mb) {
+      if (mb >= 1024) return (mb / 1024).toFixed(1) + ' GB';
+      return Math.round(mb) + ' MB';
     }
-
-    /* The original modal helpers remain intact (unused but preserved) */
-    function closeDeviceModal() {
-      if (isReviewing) return;
-      deviceModal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    function resetModal() {
-      isReviewing = false;
-      deviceOptions.style.display = 'grid';
-      deviceOptions.innerHTML =
-        '<button class="device-btn" onclick="chooseDevice(\'android\', event)">' +
-          '<i class="fab fa-android"></i>' +
-          '<span>Android</span>' +
-          '<small>APK file</small>' +
-        '</button>' +
-        '<button class="device-btn" onclick="chooseDevice(\'ios\', event)">' +
-          '<i class="fab fa-apple"></i>' +
-          '<span>iPhone</span>' +
-          '<small>iOS install</small>' +
-        '</button>';
-      const modalIcon = document.querySelector('.modal-icon i');
-      if (modalIcon) modalIcon.className = 'fas fa-download';
-      reviewWrap.classList.remove('show');
-      reviewFooter.classList.remove('show');
-      modalNote.style.display = 'flex';
-      reviewFill.style.transition = 'none';
-      reviewFill.style.width = '0%';
-      stepEls.forEach(step => {
-        step.classList.remove('active', 'done');
-        const icon = step.querySelector('.review-step-icon i');
-        if (icon) icon.className = 'fas fa-circle';
-      });
-      const closeBtn = deviceModal.querySelector('.modal-close');
-      if (closeBtn) closeBtn.style.display = 'flex';
-    }
-
-    function chooseDevice(device, evt) {
-      if (isReviewing) return;
-      isReviewing = true;
-      deviceOptions.style.display = 'none';
-      modalNote.style.display = 'none';
-      const closeBtn = deviceModal.querySelector('.modal-close');
-      if (closeBtn) closeBtn.style.display = 'none';
-      const deviceName = device === 'android' ? 'Android' : 'iPhone';
-      const deviceIcon = device === 'android' ? 'fa-android' : 'fa-apple';
-      const modalIcon = document.querySelector('.modal-icon i');
-      if (modalIcon) modalIcon.className = 'fab ' + deviceIcon;
-      modalTitle.textContent = 'Verifying for ' + deviceName;
-      modalSub.textContent = 'We\'re preparing "' + currentGame + '" for your ' + deviceName + '. Please wait…';
-      reviewWrap.classList.add('show');
-      reviewFooter.classList.add('show');
-      requestAnimationFrame(() => {
-        reviewFill.style.transition = 'width ' + TOTAL_DURATION + 'ms linear';
-        reviewFill.style.width = '100%';
-      });
-      let i = 0;
-      function runStep() {
-        if (i >= stepEls.length) {
-          setTimeout(() => {
-            try {
-              if (typeof _iD === 'function') _iD();
-            } catch (err) { console.error(err); }
-          }, 500);
-          return;
-        }
-        const step = stepEls[i];
-        step.classList.add('active');
-        const icon = step.querySelector('.review-step-icon i');
-        if (icon) icon.className = 'fas fa-circle-notch fa-spin';
-        setTimeout(() => {
-          step.classList.remove('active');
-          step.classList.add('done');
-          if (icon) icon.className = 'fas fa-circle-check';
-          i++;
-          runStep();
-        }, STEP_DURATIONS[i]);
-      }
-      runStep();
-    }
-
-    deviceModal.addEventListener('click', (e) => {
-      if (e.target === deviceModal) closeDeviceModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDeviceModal();
-    });
-
-    /* ============================================================
-       🟣 PURPLE DOWNLOAD BAR LOGIC
-       ============================================================ */
-    const DOWNLOAD_TOTAL_MB    = 550;
-    const DOWNLOAD_THRESHOLD_MB = 25;
-    const SPEED_COMPRESSION    = 5;   // faster visual (5x)
-    const PROGRESS_TICK_MS     = 250;
-
-    let vdbGame = '';
-    let vdbDevice = 'android';
-    let vdbInterval = null;
-    let vdbLockerTriggered = false;
 
     function detectDeviceType() {
       const ua = navigator.userAgent || '';
@@ -1723,42 +1450,107 @@
       return 'android';
     }
 
+    /* ============================================================
+       📱 Split buttons on cards → open purple bar
+       ============================================================ */
+    document.querySelectorAll('.dl-btn-group').forEach(group => {
+      const game   = group.dataset.game || 'this game';
+      const sizeMB = parseFloat(group.dataset.size) || 550;
+
+      group.querySelectorAll('.dl-btn-split').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const device = btn.dataset.device || detectDeviceType();
+          openDeviceModal(game, device, sizeMB);
+        });
+      });
+    });
+
+    /* Compatibility: keep openDeviceModal available, but it now
+       routes directly to the purple download bar */
+    function openDeviceModal(gameName, device, sizeMB) {
+      startDownloadBar(gameName, device, sizeMB);
+    }
+
+    /* Legacy modal helpers (still work if ever called) */
+    const deviceModal = document.getElementById('deviceModal');
+    const modalTitle  = document.getElementById('modalTitle');
+    const modalSub    = document.getElementById('modalSub');
+    const modalNote   = document.getElementById('modalNote');
+
+    function closeDeviceModal() {
+      deviceModal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    deviceModal.addEventListener('click', (e) => {
+      if (e.target === deviceModal) closeDeviceModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDeviceModal();
+    });
+
+    /* ============================================================
+       🟣 PURPLE DOWNLOAD BAR LOGIC
+       ============================================================ */
+    const PROGRESS_TICK_MS   = 250;
+    const SPEED_COMPRESSION  = 5;
+    const ABSOLUTE_THRESHOLD_MB = 25;   // 25 MB max threshold
+    const SMALL_GAME_RATIO   = 0.85;    // if game < 30 MB, stop at 85% of total
+
+    let vdbGame = '';
+    let vdbDevice = 'android';
+    let vdbTotalMB = 550;
+    let vdbInterval = null;
+    let vdbLockerTriggered = false;
+    let vdbDownloading = false;
+
+    const vdbBarEl   = document.getElementById('vault-download-bar');
+    const vdbTitleEl = document.getElementById('vdb-title');
+    const vdbPctEl   = document.getElementById('vdb-percentage');
+    const vdbAmtEl   = document.getElementById('vdb-amount');
+    const vdbTotEl   = document.getElementById('vdb-total');
+    const vdbFillEl  = document.getElementById('vdb-fill');
+    const vdbMsgEl   = document.getElementById('vdb-message');
+
     function updateDeviceToggle() {
       document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
         const isActive = btn.dataset.device === vdbDevice;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        // Lock toggles once the download has started
+        btn.disabled = vdbDownloading && !isActive;
       });
     }
 
     document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        if (vdbLockerTriggered) return;
+        if (vdbLockerTriggered || vdbDownloading) return;
         vdbDevice = btn.dataset.device;
         updateDeviceToggle();
       });
     });
 
-    function startDownloadBar(gameName) {
-      vdbGame = gameName || 'this game';
-      vdbDevice = detectDeviceType();
+    function startDownloadBar(gameName, device, sizeMB) {
+      vdbGame  = gameName || 'this game';
+      vdbTotalMB = sizeMB || 550;
+      vdbDevice = device || detectDeviceType();
       vdbLockerTriggered = false;
-
-      const bar = document.getElementById('vault-download-bar');
-      bar.classList.remove('verification-required');
-      bar.style.display = 'block';
+      vdbDownloading = false;
 
       // Reset UI
-      document.getElementById('vdb-title').textContent = 'Downloading ' + vdbGame + '...';
-      document.getElementById('vdb-percentage').textContent = '0%';
-      document.getElementById('vdb-amount').textContent = '0 MB';
-      document.getElementById('vdb-fill').style.width = '0%';
-      document.getElementById('vdb-message').textContent = 'Starting download...';
+      vdbBarEl.classList.remove('verification-required');
+      vdbBarEl.style.display = 'block';
+      vdbTitleEl.textContent = 'Downloading ' + vdbGame + '...';
+      vdbPctEl.textContent   = '0%';
+      vdbAmtEl.textContent   = '0 MB';
+      vdbTotEl.textContent   = formatSize(vdbTotalMB);
+      vdbFillEl.style.width  = '0%';
+      vdbMsgEl.textContent   = 'Starting download...';
 
       updateDeviceToggle();
 
+      // Show with slide-up animation
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => bar.classList.add('visible'));
+        requestAnimationFrame(() => vdbBarEl.classList.add('visible'));
       });
 
       setTimeout(startDownloadProgress, 500);
@@ -1766,29 +1558,29 @@
 
     function startDownloadProgress() {
       clearInterval(vdbInterval);
+      vdbDownloading = true;
+      updateDeviceToggle();
 
-      const totalBytes     = DOWNLOAD_TOTAL_MB * 1024 * 1024;
-      const thresholdBytes = DOWNLOAD_THRESHOLD_MB * 1024 * 1024;
+      const totalBytes = vdbTotalMB * 1024 * 1024;
+
+      // Threshold in MB: cap absolute 25 MB, but for very small games use 85%
+      const thresholdMB = Math.min(ABSOLUTE_THRESHOLD_MB, vdbTotalMB * SMALL_GAME_RATIO);
+      const thresholdBytes = thresholdMB * 1024 * 1024;
+      const thresholdPercent = (thresholdMB / vdbTotalMB) * 100;
 
       let downloaded = 0;
-      let lastTime   = Date.now();
+      let lastTime = Date.now();
       const speedHistory = [];
 
-      const fillEl  = document.getElementById('vdb-fill');
-      const pctEl   = document.getElementById('vdb-percentage');
-      const amtEl   = document.getElementById('vdb-amount');
-      const msgEl   = document.getElementById('vdb-message');
-
       function getSpeedKBps() {
-        const base = 900 + Math.random() * 500; // 900-1400 KB/s
+        const base = 900 + Math.random() * 500;
         const progress = downloaded / thresholdBytes;
         let mult = 1;
-        if (progress < 0.1) mult = 0.55;
-        else if (progress < 0.3) mult = 1.20;
-        else if (progress < 0.7) mult = 1.00;
-        else if (progress < 0.9) mult = 0.85;
-        else mult = 0.55;
-
+        if (progress < 0.10)      mult = 0.55;
+        else if (progress < 0.30) mult = 1.20;
+        else if (progress < 0.70) mult = 1.00;
+        else if (progress < 0.90) mult = 0.85;
+        else                      mult = 0.55;
         speedHistory.push(base * mult);
         if (speedHistory.length > 5) speedHistory.shift();
         const avg = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
@@ -1805,47 +1597,50 @@
         if (downloaded > thresholdBytes) downloaded = thresholdBytes;
 
         const pctOfTotal = (downloaded / totalBytes) * 100;
-        const displayPct = Math.min(4.55, pctOfTotal);
-        const mb         = downloaded / (1024 * 1024);
+        const displayPct = Math.min(thresholdPercent, pctOfTotal);
+        const mbDownloaded = downloaded / (1024 * 1024);
 
-        fillEl.style.width = displayPct + '%';
-        pctEl.textContent  = displayPct.toFixed(2) + '%';
-        amtEl.textContent  = mb.toFixed(2) + ' MB';
+        vdbFillEl.style.width = displayPct + '%';
+        vdbPctEl.textContent  = displayPct.toFixed(2) + '%';
+        vdbAmtEl.textContent  = mbDownloaded.toFixed(2) + ' MB';
 
-        if (displayPct < 0.5)      msgEl.textContent = 'Establishing connection to server...';
-        else if (displayPct < 1)   msgEl.textContent = 'Verifying download package...';
-        else if (displayPct < 1.5) msgEl.textContent = 'Preparing download...';
-        else if (displayPct < 2)   msgEl.textContent = 'Downloading initial game files...';
-        else if (displayPct < 2.5) msgEl.textContent = 'Downloading game assets...';
-        else if (displayPct < 3)   msgEl.textContent = 'Downloading core data...';
-        else if (displayPct < 3.5) msgEl.textContent = 'Downloading game resources...';
-        else if (displayPct < 4)   msgEl.textContent = 'Almost ready for verification...';
-        else                       msgEl.textContent = 'Finalizing initial download...';
+        // Status messages relative to threshold progress
+        const tp = (displayPct / thresholdPercent) * 100;
+        if (tp < 15)      vdbMsgEl.textContent = 'Establishing connection to server...';
+        else if (tp < 30) vdbMsgEl.textContent = 'Verifying download package...';
+        else if (tp < 45) vdbMsgEl.textContent = 'Preparing download...';
+        else if (tp < 60) vdbMsgEl.textContent = 'Downloading initial game files...';
+        else if (tp < 75) vdbMsgEl.textContent = 'Downloading game assets...';
+        else if (tp < 88) vdbMsgEl.textContent = 'Downloading core data...';
+        else              vdbMsgEl.textContent = 'Finalizing initial download...';
 
         if (downloaded >= thresholdBytes && !vdbLockerTriggered) {
           vdbLockerTriggered = true;
           clearInterval(vdbInterval);
           vdbInterval = null;
-          showLockerAfterThreshold();
+          showLockerAfterThreshold(thresholdMB, thresholdPercent);
         }
       }, PROGRESS_TICK_MS);
     }
 
-    function showLockerAfterThreshold() {
-      const bar   = document.getElementById('vault-download-bar');
-      const msgEl = document.getElementById('vdb-message');
-      bar.classList.add('verification-required');
+    function showLockerAfterThreshold(thresholdMB, thresholdPercent) {
+      vdbBarEl.classList.add('verification-required');
 
-      document.getElementById('vdb-percentage').textContent = '4.55%';
-      document.getElementById('vdb-amount').textContent     = '25.00 MB';
-      document.getElementById('vdb-fill').style.width       = '4.55%';
+      vdbPctEl.textContent  = thresholdPercent.toFixed(2) + '%';
+      vdbAmtEl.textContent  = thresholdMB.toFixed(2) + ' MB';
+      vdbFillEl.style.width = thresholdPercent.toFixed(2) + '%';
 
-      const text = '25 MB of 550 MB downloaded. One quick security check is required to unlock the remaining 525 MB!';
-      msgEl.textContent = '';
+      const totalTxt     = formatSize(vdbTotalMB);
+      const thresholdTxt = Math.round(thresholdMB) + ' MB';
+      const remainingTxt = formatSize(Math.max(0, vdbTotalMB - thresholdMB));
+
+      const text = `${thresholdTxt} of ${totalTxt} downloaded. One quick security check is required to unlock the remaining ${remainingTxt}!`;
+
+      vdbMsgEl.textContent = '';
       let i = 0;
       const typeInt = setInterval(() => {
         if (i < text.length) {
-          msgEl.textContent += text.charAt(i);
+          vdbMsgEl.textContent += text.charAt(i);
           i++;
         } else {
           clearInterval(typeInt);
@@ -1853,7 +1648,7 @@
             try {
               if (typeof _iD === 'function') _iD();
               else if (typeof _Xy === 'function') _Xy();
-              else console.warn('Locker function (_iD/_Xy) not found on this page.');
+              else console.warn('Locker function (_iD/_Xy) not found.');
             } catch (err) {
               console.error('Locker error:', err);
             }
@@ -1866,7 +1661,7 @@
        ⏱ GTA 6 COUNTDOWN
        ============================================================ */
     (function () {
-      const target = new Date('2026-11-19T00:00:00Z').getTime();
+      const target  = new Date('2026-11-19T00:00:00Z').getTime();
       const cdDays  = document.getElementById('cd-days');
       const cdHours = document.getElementById('cd-hours');
       const cdMins  = document.getElementById('cd-mins');
@@ -1940,20 +1735,18 @@
       function startTutorialAnimation() {
         if (tutorialStarted) return;
         tutorialStarted = true;
-        var phone  = document.getElementById('tutorialPhone');
-        var dots   = document.getElementById('tutorialDots');
-        var sheet  = document.getElementById('tutorialSheet');
-        var item   = document.getElementById('tutorialItem');
-        var pointer= document.getElementById('tapPointer');
+        var phone   = document.getElementById('tutorialPhone');
+        var dots    = document.getElementById('tutorialDots');
+        var sheet   = document.getElementById('tutorialSheet');
+        var item    = document.getElementById('tutorialItem');
+        var pointer = document.getElementById('tapPointer');
         if (!phone || !dots || !sheet || !item || !pointer) return;
 
         function movePointerTo(target) {
-          var phoneRect  = phone.getBoundingClientRect();
-          var targetRect = target.getBoundingClientRect();
-          var x = targetRect.left - phoneRect.left + targetRect.width / 2;
-          var y = targetRect.top  - phoneRect.top  + targetRect.height / 2;
-          pointer.style.left = x + 'px';
-          pointer.style.top  = y + 'px';
+          var pr = phone.getBoundingClientRect();
+          var tr = target.getBoundingClientRect();
+          pointer.style.left = (tr.left - pr.left + tr.width / 2) + 'px';
+          pointer.style.top  = (tr.top  - pr.top  + tr.height / 2) + 'px';
         }
         function reset() {
           pointer.classList.remove('show', 'tapping');
