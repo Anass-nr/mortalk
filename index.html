@@ -21,16 +21,16 @@
   html { scroll-behavior: smooth; }
 
   :root {
-    --green-50:  #ecfdf5;
-    --green-100: #d1fae5;
-    --green-200: #a7f3d0;
-    --green-300: #6ee7b7;
-    --green-400: #34d399;
-    --green-500: #10b981;
-    --green-600: #059669;
-    --green-700: #047857;
-    --green-800: #065f46;
-    --green-900: #064e3b;
+    /* === NEW BLUE PALETTE === */
+    --sky-300: #7dd3fc;
+    --sky-400: #38bdf8;
+    --sky-500: #0ea5e9;
+    --sky-600: #0284c7;
+    --cyan-400: #22d3ee;
+    --cyan-500: #06b6d4;
+    --indigo-400: #818cf8;
+    --indigo-500: #6366f1;
+    --violet-400: #a78bfa;
 
     --ink-100: #f4f4f5;
     --ink-200: #e4e4e7;
@@ -47,11 +47,11 @@
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: #000000;
+    background: #030712;
     background-image:
-      radial-gradient(1000px 600px at 12% -10%, rgba(16, 185, 129, 0.16), transparent 62%),
-      radial-gradient(800px 600px at 88% 8%, rgba(5, 150, 105, 0.10), transparent 62%),
-      radial-gradient(700px 500px at 50% 110%, rgba(52, 211, 153, 0.08), transparent 62%);
+      radial-gradient(1000px 600px at 12% -10%, rgba(56, 189, 248, 0.14), transparent 62%),
+      radial-gradient(800px 600px at 88% 8%, rgba(99, 102, 241, 0.10), transparent 62%),
+      radial-gradient(700px 500px at 50% 110%, rgba(34, 211, 238, 0.06), transparent 62%);
     color: var(--ink-200);
     min-height: 100vh;
     overflow-x: hidden;
@@ -63,18 +63,18 @@
     filter: blur(150px);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.42;
+    opacity: 0.38;
     will-change: transform;
   }
   .orb.a {
     width: 520px; height: 520px;
-    background: radial-gradient(circle, #10b981, transparent 70%);
+    background: radial-gradient(circle, #22d3ee, transparent 70%);
     top: -200px; left: -160px;
     animation: floatA 24s ease-in-out infinite;
   }
   .orb.b {
     width: 460px; height: 460px;
-    background: radial-gradient(circle, #059669, transparent 70%);
+    background: radial-gradient(circle, #6366f1, transparent 70%);
     bottom: -180px; right: -140px;
     animation: floatB 28s ease-in-out infinite;
   }
@@ -93,8 +93,8 @@
     z-index: 100;
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
-    background: rgba(0, 0, 0, 0.55);
-    border-bottom: 1px solid rgba(16, 185, 129, 0.15);
+    background: rgba(3, 7, 18, 0.6);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.14);
     padding: 12px 22px;
   }
   .header-inner {
@@ -109,13 +109,13 @@
   .brand-logo {
     width: 38px; height: 38px;
     border-radius: 11px;
-    background: linear-gradient(135deg, #10b981, #047857);
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
     display: flex; align-items: center; justify-content: center;
     color: #fff; font-size: 17px;
     box-shadow:
-      0 8px 20px -6px rgba(16, 185, 129, 0.7),
-      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
-      0 1px 0 rgba(255, 255, 255, 0.20) inset;
+      0 8px 20px -6px rgba(14, 165, 233, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+      0 1px 0 rgba(255, 255, 255, 0.22) inset;
     flex-shrink: 0;
   }
   .brand-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
@@ -123,14 +123,14 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 18px; font-weight: 800;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .brand-tag {
     font-size: 9px;
-    color: var(--green-300);
+    color: var(--sky-300);
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -148,19 +148,19 @@
     gap: 6px;
     padding: 6px 11px;
     border-radius: 999px;
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid rgba(52, 211, 153, 0.25);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.22);
     font-size: 11px;
     font-weight: 600;
-    color: var(--green-200);
+    color: var(--sky-300);
     white-space: nowrap;
   }
-  .header-stat i { font-size: 10px; color: var(--green-400); }
+  .header-stat i { font-size: 10px; color: var(--sky-400); }
   .live-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--green-400);
-    box-shadow: 0 0 10px var(--green-400);
+    background: var(--cyan-400);
+    box-shadow: 0 0 10px var(--cyan-400);
     animation: pulseDot 1.8s ease-in-out infinite;
   }
   @keyframes pulseDot {
@@ -187,11 +187,11 @@
     gap: 7px;
     padding: 7px 14px;
     border-radius: 999px;
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid rgba(52, 211, 153, 0.28);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
     font-size: 11px;
     font-weight: 700;
-    color: var(--green-300);
+    color: var(--sky-300);
     margin-bottom: 18px;
     letter-spacing: 0.03em;
   }
@@ -201,7 +201,7 @@
     font-weight: 800;
     line-height: 1.10;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 45%, #34d399 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #22d3ee 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -224,11 +224,11 @@
     margin: 24px 0 34px;
     padding: 12px 16px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(52, 211, 153, 0.16);
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(56, 189, 248, 0.14);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
   }
   .trust-item {
     display: inline-flex;
@@ -239,11 +239,11 @@
     color: var(--ink-300);
     padding: 0 8px;
   }
-  .trust-item i { color: var(--green-400); font-size: 12px; }
+  .trust-item i { color: var(--sky-400); font-size: 12px; }
   .trust-divider {
     width: 1px;
     height: 14px;
-    background: rgba(52, 211, 153, 0.25);
+    background: rgba(56, 189, 248, 0.22);
   }
 
   .section-head {
@@ -264,7 +264,7 @@
     align-items: center;
     gap: 8px;
   }
-  .section-title i { color: var(--green-400); font-size: 14px; }
+  .section-title i { color: var(--sky-400); font-size: 14px; }
   .section-count {
     font-size: 11.5px;
     font-weight: 600;
@@ -288,13 +288,13 @@
     gap: 12px;
     padding: 11px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
     box-shadow:
       0 4px 20px rgba(0, 0, 0, 0.3),
-      0 1px 0 rgba(255, 255, 255, 0.07) inset,
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
       0 0 0 1px rgba(255, 255, 255, 0.02) inset;
     transition:
       transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -304,11 +304,11 @@
   }
   .game-card:hover {
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.065);
-    border-color: rgba(52, 211, 153, 0.42);
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(56, 189, 248, 0.42);
     box-shadow:
       0 12px 32px rgba(0, 0, 0, 0.4),
-      0 0 32px -8px rgba(16, 185, 129, 0.35),
+      0 0 32px -8px rgba(56, 189, 248, 0.32),
       0 1px 0 rgba(255, 255, 255, 0.10) inset;
   }
 
@@ -319,7 +319,7 @@
     aspect-ratio: 1 / 1;
     border-radius: 14px;
     overflow: hidden;
-    background: #0a0f0d;
+    background: #0a0f1a;
     border: 1px solid rgba(255, 255, 255, 0.10);
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
   }
@@ -354,11 +354,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     letter-spacing: -0.005em;
-    display: flex;
-    align-items: center;
-    gap: 6px;
   }
-
   .card-meta {
     display: flex;
     align-items: center;
@@ -369,7 +365,7 @@
     line-height: 1.3;
   }
   .card-meta .rating {
-    color: var(--green-300);
+    color: var(--cyan-400);
     display: inline-flex;
     align-items: center;
     gap: 3px;
@@ -386,75 +382,104 @@
     display: inline-block;
     padding: 2px 7px;
     border-radius: 5px;
-    background: rgba(16, 185, 129, 0.14);
-    border: 1px solid rgba(52, 211, 153, 0.32);
+    background: rgba(56, 189, 248, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.28);
     font-size: 9px;
     font-weight: 700;
-    color: var(--green-300);
+    color: var(--sky-300);
     letter-spacing: 0.05em;
     text-transform: uppercase;
     width: fit-content;
   }
 
-  /* ---- Split buttons (Android + iPhone) ---- */
+  /* === PREMIUM SPLIT BUTTONS === */
   .dl-btn-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
     margin-top: 8px;
   }
-
   .dl-btn-split {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    padding: 8px 6px;
-    border-radius: 10px;
-    border: none;
+    gap: 6px;
+    padding: 9px 8px;
+    border-radius: 11px;
+    border: 1px solid transparent;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.01em;
+    font-weight: 800;
+    letter-spacing: 0.02em;
     color: #fff;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    position: relative;
     overflow: hidden;
-    box-shadow:
-      0 5px 14px -6px rgba(16, 185, 129, 0.65),
-      0 0 0 1px rgba(255, 255, 255, 0.10) inset,
-      0 1px 0 rgba(255, 255, 255, 0.18) inset;
-    transition: transform 0.15s ease, box-shadow 0.22s ease, filter 0.2s ease;
-    white-space: nowrap;
+    transition: transform 0.2s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.28s ease, filter 0.2s ease;
     -webkit-tap-highlight-color: transparent;
-  }
-  .dl-btn-split i { font-size: 12px; }
-  .dl-btn-split:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.06);
-    box-shadow:
-      0 9px 22px -6px rgba(16, 185, 129, 0.85),
-      0 0 0 1px rgba(255, 255, 255, 0.16) inset,
-      0 1px 0 rgba(255, 255, 255, 0.22) inset;
-  }
-  .dl-btn-split:active {
-    transform: scale(0.97);
-    filter: brightness(0.92);
-    transition-duration: 0.08s;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
   }
   .dl-btn-split::before {
     content: '';
     position: absolute;
-    top: 0; left: -100%;
+    top: 0; left: -120%;
     width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.30), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-22deg);
+    transition: left 0.7s cubic-bezier(0.4,0,0.2,1);
+    pointer-events: none;
   }
   .dl-btn-split:hover::before { left: 140%; }
+  .dl-btn-split:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+  }
+  .dl-btn-split:active {
+    transform: translateY(0) scale(0.96);
+    filter: brightness(0.92);
+    transition-duration: 0.08s;
+  }
+  .dl-btn-split i {
+    font-size: 13px;
+    filter: drop-shadow(0 1px 1.5px rgba(0,0,0,0.35));
+    position: relative;
+    z-index: 1;
+  }
+  .dl-btn-split span { position: relative; z-index: 1; }
 
-  /* Keep original dl-btn for the "Coming Soon" card */
+  .android-btn {
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+    border-color: rgba(125, 211, 252, 0.55);
+    box-shadow:
+      0 6px 18px -6px rgba(14, 165, 233, 0.75),
+      0 1px 0 rgba(255, 255, 255, 0.28) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+  .android-btn:hover {
+    box-shadow:
+      0 12px 26px -6px rgba(14, 165, 233, 0.95),
+      0 0 24px -4px rgba(56, 189, 248, 0.55),
+      0 1px 0 rgba(255, 255, 255, 0.32) inset;
+  }
+
+  .ios-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+    border-color: rgba(165, 180, 252, 0.55);
+    box-shadow:
+      0 6px 18px -6px rgba(99, 102, 241, 0.75),
+      0 1px 0 rgba(255, 255, 255, 0.28) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  }
+  .ios-btn:hover {
+    box-shadow:
+      0 12px 26px -6px rgba(99, 102, 241, 0.95),
+      0 0 24px -4px rgba(129, 140, 248, 0.55),
+      0 1px 0 rgba(255, 255, 255, 0.32) inset;
+  }
+
+  /* Keep classic single button for "Coming Soon" */
   .dl-btn {
     display: flex;
     align-items: center;
@@ -467,41 +492,25 @@
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.01em;
     color: #fff;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    position: relative;
-    overflow: hidden;
-    box-shadow:
-      0 6px 16px -6px rgba(16, 185, 129, 0.65),
-      0 0 0 1px rgba(255, 255, 255, 0.12) inset,
-      0 1px 0 rgba(255, 255, 255, 0.20) inset;
-    transition: transform 0.15s ease, box-shadow 0.22s ease, filter 0.2s ease;
     margin-top: 8px;
     white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
   }
-  .dl-btn i { font-size: 11px; }
-  .dl-btn:disabled { cursor: not-allowed; }
-
   .dl-btn.coming-soon {
     background: rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(52, 211, 153, 0.28);
-    box-shadow:
-      0 6px 16px -8px rgba(0, 0, 0, 0.6),
-      0 0 0 1px rgba(52, 211, 153, 0.10) inset;
-    color: var(--green-300);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    color: var(--sky-300);
   }
 
   .gta6-card {
-    border-color: rgba(16, 185, 129, 0.28);
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-color: rgba(56, 189, 248, 0.26);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, rgba(255, 255, 255, 0.03) 100%);
   }
   .gta6-card:hover {
-    border-color: rgba(52, 211, 153, 0.55);
+    border-color: rgba(56, 189, 248, 0.55);
     box-shadow:
       0 12px 32px rgba(0, 0, 0, 0.4),
-      0 0 32px -8px rgba(16, 185, 129, 0.45),
+      0 0 32px -8px rgba(56, 189, 248, 0.45),
       0 1px 0 rgba(255, 255, 255, 0.10) inset;
   }
 
@@ -512,8 +521,8 @@
     margin-top: 4px;
   }
   .cd-unit {
-    background: rgba(16, 185, 129, 0.10);
-    border: 1px solid rgba(52, 211, 153, 0.25);
+    background: rgba(56, 189, 248, 0.10);
+    border: 1px solid rgba(56, 189, 248, 0.28);
     border-radius: 6px;
     padding: 4px 2px;
     text-align: center;
@@ -523,7 +532,7 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 11px;
     font-weight: 800;
-    color: var(--green-300);
+    color: var(--sky-300);
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
@@ -542,7 +551,7 @@
     z-index: 1;
     margin-top: 50px;
     padding: 26px 22px;
-    border-top: 1px solid rgba(52, 211, 153, 0.10);
+    border-top: 1px solid rgba(56, 189, 248, 0.10);
     text-align: center;
   }
   .footer-line {
@@ -552,7 +561,7 @@
     font-size: 11.5px;
     color: var(--ink-500);
   }
-  .footer-line i { color: var(--green-400); }
+  .footer-line i { color: var(--sky-400); }
   .footer-sub {
     font-size: 10px;
     color: var(--ink-600);
@@ -562,135 +571,6 @@
     margin-right: auto;
     line-height: 1.55;
   }
-
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    background: rgba(0, 0, 0, 0.78);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .modal-overlay.show {
-    display: flex;
-    opacity: 1;
-  }
-  .modal-card {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(10, 15, 13, 0.78);
-    backdrop-filter: blur(60px) saturate(200%);
-    -webkit-backdrop-filter: blur(60px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 30px;
-    padding: 26px 22px 22px;
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.14) inset,
-      0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-      0 30px 80px -20px rgba(0, 0, 0, 0.95),
-      0 0 100px -20px rgba(16, 185, 129, 0.30);
-    transform: translateY(24px) scale(0.94);
-    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .modal-overlay.show .modal-card { transform: translateY(0) scale(1); }
-
-  .modal-grab {
-    width: 40px; height: 5px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.20);
-    margin: -8px auto 14px;
-    display: block;
-  }
-  .modal-close {
-    position: absolute;
-    top: 14px; right: 14px;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    color: var(--ink-400);
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    transition: all 0.18s;
-    z-index: 2;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .modal-close:hover { background: rgba(255, 255, 255, 0.16); color: #fff; }
-  .modal-close:active { transform: scale(0.92); }
-
-  .modal-icon {
-    width: 60px; height: 60px;
-    margin: 0 auto 14px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.10));
-    border: 1px solid rgba(52, 211, 153, 0.40);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--green-400);
-    font-size: 26px;
-    box-shadow: 0 0 32px rgba(16, 185, 129, 0.35);
-  }
-  .modal-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 6px;
-  }
-  .modal-sub {
-    font-size: 12.5px;
-    color: var(--ink-400);
-    text-align: center;
-    line-height: 1.5;
-    margin-bottom: 22px;
-    padding: 0 8px;
-  }
-  .device-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .device-btn {
-    padding: 20px 14px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    color: var(--ink-200);
-    font-family: 'Inter', sans-serif;
-  }
-  .device-btn i { font-size: 30px; color: var(--green-400); }
-  .device-btn span { font-size: 13.5px; font-weight: 700; }
-  .device-btn small { font-size: 10px; color: var(--ink-400); }
-
-  .modal-note {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 10.5px;
-    color: var(--ink-500);
-    padding: 12px 0 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    text-align: center;
-  }
-  .modal-note i { color: var(--green-400); font-size: 10px; }
 
   .fade-in {
     opacity: 0;
@@ -711,7 +591,7 @@
     .games-grid { grid-template-columns: 1fr; gap: 10px; }
   }
   @media (max-width: 640px) {
-    .main { padding: 26px 14px 130px; }
+    .main { padding: 26px 14px calc(env(safe-area-inset-bottom, 0px) + 200px); }
     .site-header { padding: 10px 14px; }
     .header-stat.hide-mobile { display: none; }
     .brand-name { font-size: 16px; }
@@ -727,7 +607,6 @@
     .card-meta { font-size: 10px; }
     .dl-btn-split { font-size: 10.5px; padding: 8px 5px; gap: 4px; }
     .dl-btn-split i { font-size: 11px; }
-    .dl-btn { font-size: 11.5px; padding: 8px 10px; }
     .section-title { font-size: 15px; }
     .section-count { font-size: 10.5px; padding: 4px 8px; }
     .game-card { padding: 10px; gap: 11px; }
@@ -741,7 +620,7 @@
   }
 
   /* ============================================================
-     🚫 TIKTOK BLOCKER
+     🚫 TIKTOK BLOCKER — UNCHANGED (per request)
      ============================================================ */
   #tiktokBlocker {
     position: fixed; inset: 0; z-index: 999999; display: none;
@@ -898,31 +777,39 @@
   }
 
   /* ============================================================
-     🟣 PURPLE DOWNLOAD BAR + Device Toggle
+     🔵 BLUE DOWNLOAD BAR — REALISTIC PACED DOWNLOAD
      ============================================================ */
   #vault-download-bar {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     z-index: 99998;
     display: none;
-    background: linear-gradient(180deg, #2a0a52 0%, #0a0a2a 100%);
-    border-top: 1px solid rgba(123, 66, 246, 0.45);
+    background:
+      linear-gradient(180deg, #0a1e3d 0%, #05122b 55%, #02080f 100%);
+    border-top: 1px solid rgba(56, 189, 248, 0.55);
     box-shadow:
-      0 -10px 40px rgba(0, 0, 0, 0.75),
-      0 -1px 0 rgba(255, 255, 255, 0.06) inset;
-    padding: 14px 16px 18px;
+      0 -12px 45px rgba(0, 0, 0, 0.8),
+      0 -1px 0 rgba(56, 189, 248, 0.25) inset,
+      0 -1px 30px -8px rgba(56, 189, 248, 0.35);
+    padding: 14px 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
     transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
   #vault-download-bar.visible { transform: translateY(0); }
   #vault-download-bar::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, #7B42F6, #a78bfa, #7B42F6, transparent);
-    opacity: 0.9;
+    top: 0; left: -40%;
+    width: 40%; height: 2px;
+    background: linear-gradient(90deg, transparent, #38bdf8, #22d3ee, #38bdf8, transparent);
+    animation: vdbTopShine 5s ease-in-out infinite;
     pointer-events: none;
+    filter: blur(0.5px);
+  }
+  @keyframes vdbTopShine {
+    0%   { left: -40%; }
+    100% { left: 100%; }
   }
   .vdb-inner { max-width: 720px; margin: 0 auto; color: #fff; }
 
@@ -931,9 +818,9 @@
     gap: 6px;
     margin-bottom: 12px;
     padding: 4px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(56, 189, 248, 0.05);
     border-radius: 12px;
-    border: 1px solid rgba(123, 66, 246, 0.25);
+    border: 1px solid rgba(56, 189, 248, 0.18);
   }
   .vdb-dev-btn {
     flex: 1;
@@ -945,7 +832,7 @@
     border: 1px solid transparent;
     border-radius: 9px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.60);
+    color: rgba(255, 255, 255, 0.55);
     font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     font-weight: 700;
@@ -956,14 +843,14 @@
   .vdb-dev-btn i { font-size: 14px; }
   .vdb-dev-btn:hover:not(.active):not(:disabled) {
     color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(56, 189, 248, 0.04);
   }
   .vdb-dev-btn.active {
-    background: linear-gradient(135deg, rgba(123, 66, 246, 0.55), rgba(88, 34, 200, 0.60));
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.65), rgba(6, 182, 212, 0.55));
     color: #fff;
-    border-color: rgba(167, 139, 250, 0.70);
+    border-color: rgba(125, 211, 252, 0.70);
     box-shadow:
-      0 3px 14px rgba(123, 66, 246, 0.45),
+      0 3px 14px rgba(14, 165, 233, 0.5),
       0 1px 0 rgba(255, 255, 255, 0.15) inset;
   }
   .vdb-dev-btn:disabled:not(.active) { opacity: 0.35; cursor: not-allowed; }
@@ -975,18 +862,25 @@
     margin-bottom: 10px;
   }
   .vdb-icon {
-    width: 36px; height: 36px;
+    width: 38px; height: 38px;
     flex-shrink: 0;
     border-radius: 50%;
-    background: rgba(123, 66, 246, 0.25);
-    border: 1px solid rgba(123, 66, 246, 0.55);
+    background: rgba(56, 189, 248, 0.22);
+    border: 1px solid rgba(56, 189, 248, 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #c4b5fd;
+    color: #7dd3fc;
     font-size: 15px;
-    box-shadow: 0 0 16px rgba(123, 66, 246, 0.35);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
     transition: all 0.3s ease;
+  }
+  .vdb-icon.preparing {
+    animation: vdbPrepPulse 1.3s ease-in-out infinite;
+  }
+  @keyframes vdbPrepPulse {
+    0%, 100% { box-shadow: 0 0 16px rgba(56, 189, 248, 0.4); border-color: rgba(56, 189, 248, 0.55); }
+    50%      { box-shadow: 0 0 30px rgba(56, 189, 248, 0.85); border-color: rgba(125, 211, 252, 0.95); }
   }
   .vdb-info { flex: 1; min-width: 0; }
   .vdb-title {
@@ -996,10 +890,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    letter-spacing: 0.005em;
   }
   .vdb-status {
     font-size: 11.5px;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.68);
     margin-top: 3px;
     display: flex;
     align-items: center;
@@ -1007,28 +902,73 @@
     flex-wrap: wrap;
     font-variant-numeric: tabular-nums;
   }
-  #vdb-percentage { color: #c4b5fd; font-weight: 700; }
-  .vdb-dot { color: rgba(255, 255, 255, 0.35); }
+  #vdb-percentage { color: #7dd3fc; font-weight: 700; }
+  #vdb-speed { color: #22d3ee; font-weight: 600; }
+  .vdb-dot { color: rgba(255, 255, 255, 0.30); }
 
   .vdb-progress-track {
     height: 8px;
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(56, 189, 248, 0.08);
     border-radius: 4px;
     overflow: hidden;
-    margin-bottom: 8px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3) inset;
+    margin-bottom: 9px;
+    box-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.4) inset,
+      0 0 0 1px rgba(56, 189, 248, 0.10);
+    position: relative;
   }
   .vdb-progress-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #7B42F6, #a78bfa);
+    background: linear-gradient(90deg, #0284c7, #0ea5e9, #22d3ee);
     border-radius: 4px;
-    transition: width 0.32s ease, background 0.4s ease;
-    box-shadow: 0 0 14px rgba(123, 66, 246, 0.65);
+    transition: width 0.28s ease, background 0.4s ease;
+    box-shadow: 0 0 14px rgba(34, 211, 238, 0.7);
+    position: relative;
+    overflow: hidden;
   }
+  .vdb-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.35) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: vdbFillShimmer 1.8s linear infinite;
+  }
+  @keyframes vdbFillShimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+  }
+
+  /* Indeterminate (preparing) state */
+  .vdb-progress-fill.indeterminate {
+    width: 100% !important;
+    background: linear-gradient(
+      90deg,
+      rgba(56, 189, 248, 0.10) 0%,
+      rgba(56, 189, 248, 0.55) 40%,
+      rgba(34, 211, 238, 0.95) 50%,
+      rgba(56, 189, 248, 0.55) 60%,
+      rgba(56, 189, 248, 0.10) 100%
+    );
+    background-size: 200% 100%;
+    animation: vdbShimmer 1.4s linear infinite;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  }
+  .vdb-progress-fill.indeterminate::after { display: none; }
+  @keyframes vdbShimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+  }
+
   .vdb-message {
     font-size: 11.5px;
-    color: rgba(255, 255, 255, 0.78);
+    color: rgba(255, 255, 255, 0.75);
     text-align: center;
     min-height: 17px;
     line-height: 1.5;
@@ -1038,6 +978,9 @@
   #vault-download-bar.verification-required .vdb-progress-fill {
     background: linear-gradient(90deg, #fbbc04, #f59e0b);
     box-shadow: 0 0 14px rgba(251, 188, 4, 0.65);
+  }
+  #vault-download-bar.verification-required .vdb-progress-fill::after {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
   }
   #vault-download-bar.verification-required .vdb-icon {
     background: rgba(251, 188, 4, 0.22);
@@ -1053,25 +996,28 @@
   #vault-download-bar.verification-required #vdb-percentage {
     color: #fcd34d;
   }
+  #vault-download-bar.verification-required #vdb-speed {
+    color: #fcd34d;
+  }
   @keyframes vdbIconPulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.08); }
   }
 
   @media (max-width: 480px) {
-    #vault-download-bar { padding: 12px 12px 14px; }
+    #vault-download-bar { padding: 12px 12px calc(env(safe-area-inset-bottom, 0px) + 14px); }
     .vdb-dev-btn { font-size: 11.5px; padding: 8px 10px; }
     .vdb-title { font-size: 12.5px; }
     .vdb-status { font-size: 10.5px; }
     .vdb-message { font-size: 10.5px; }
-    .vdb-icon { width: 32px; height: 32px; font-size: 13px; }
+    .vdb-icon { width: 34px; height: 34px; font-size: 13px; }
   }
 </style>
 </head>
 <body>
 
   <!-- ============================================================
-       🚫 TIKTOK BLOCKER
+       🚫 TIKTOK BLOCKER — UNCHANGED
        ============================================================ -->
   <div id="tiktokBlocker" role="dialog" aria-modal="true" aria-labelledby="blockerTitle">
     <div class="blocker-card">
@@ -1094,9 +1040,7 @@
           <div class="ph-topbar">
             <i class="fas fa-arrow-left ph-back"></i>
             <span class="ph-title">Web browser</span>
-            <div class="ph-dots" id="tutorialDots">
-              <i class="fas fa-ellipsis-h"></i>
-            </div>
+            <div class="ph-dots" id="tutorialDots"><i class="fas fa-ellipsis-h"></i></div>
           </div>
           <div class="ph-sheet" id="tutorialSheet">
             <div class="ph-sheet-handle"></div>
@@ -1180,7 +1124,7 @@
     </div>
 
     <div class="games-grid">
-      <!-- ============ Free Fire 2018 ============ -->
+      <!-- Free Fire 2018 -->
       <article class="game-card fade-in d3">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/nz6K7NhX/images-(1).jpg" alt="Free Fire 2018" loading="lazy" decoding="async">
@@ -1196,17 +1140,17 @@
             <span class="card-genre-pill">Battle Royale</span>
           </div>
           <div class="dl-btn-group" data-game="Free Fire 2018" data-size="178">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- ============ GTA 5 Mobile ============ -->
+      <!-- GTA 5 Mobile -->
       <article class="game-card fade-in d4">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/T2ggF7PS/8365742.jpg" alt="GTA 5 Mobile" loading="lazy" decoding="async">
@@ -1222,17 +1166,17 @@
             <span class="card-genre-pill">Open World</span>
           </div>
           <div class="dl-btn-group" data-game="GTA 5 Mobile" data-size="2150">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- ============ Roblox Beta ============ -->
+      <!-- Roblox Beta -->
       <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/wM2vHsZt/roblox-beta.webp" alt="Roblox Beta" loading="lazy" decoding="async">
@@ -1248,17 +1192,17 @@
             <span class="card-genre-pill">Sandbox</span>
           </div>
           <div class="dl-btn-group" data-game="Roblox Beta" data-size="180">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- ============ Ben 10 Galven ============ -->
+      <!-- Ben 10 Galven -->
       <article class="game-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/1RKqbHks/galvan-ben-10-icon-150.png" alt="Ben 10 Galven" loading="lazy" decoding="async">
@@ -1274,17 +1218,17 @@
             <span class="card-genre-pill">Sci-Fi</span>
           </div>
           <div class="dl-btn-group" data-game="Ben 10 Galven" data-size="2458">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- ============ GTA 6 Mobile (Coming Soon) ============ -->
+      <!-- GTA 6 (Coming Soon) -->
       <article class="game-card gta6-card fade-in d5">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/6pkBk0qM/images-q-tbn-ANd9Gc-Smh-Eix-I3f2t-OPXzrx39975VUn-Py-PDUPYddszy3za-PVwuy4l-FYO3Rc-MV-pq-s-10.jpg" alt="GTA 6 Mobile" loading="lazy" decoding="async">
@@ -1310,7 +1254,7 @@
         </div>
       </article>
 
-      <!-- ============ BeamNG.drive ============ -->
+      <!-- BeamNG.drive -->
       <article class="game-card fade-in d6">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/Jh3C9C9D/6404024-s-280-v-4.png" alt="BeamNG.drive Mobile" loading="lazy" decoding="async">
@@ -1326,17 +1270,17 @@
             <span class="card-genre-pill">Racing</span>
           </div>
           <div class="dl-btn-group" data-game="BeamNG.drive Mobile" data-size="870">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- ============ Ass Hunter ============ -->
+      <!-- Ass Hunter -->
       <article class="game-card fade-in d7">
         <div class="card-thumb">
           <img src="https://i.postimg.cc/c131cPJd/Ass-Hunter.jpg" alt="Ass Hunter" loading="lazy" decoding="async">
@@ -1352,11 +1296,11 @@
             <span class="card-genre-pill">Action · Stealth</span>
           </div>
           <div class="dl-btn-group" data-game="Ass Hunter" data-size="23">
-            <button type="button" class="dl-btn-split" data-device="android">
-              <i class="fab fa-android"></i> Android
+            <button type="button" class="dl-btn-split android-btn" data-device="android">
+              <i class="fab fa-android"></i><span>Android</span>
             </button>
-            <button type="button" class="dl-btn-split" data-device="ios">
-              <i class="fab fa-apple"></i> iPhone
+            <button type="button" class="dl-btn-split ios-btn" data-device="ios">
+              <i class="fab fa-apple"></i><span>iPhone</span>
             </button>
           </div>
         </div>
@@ -1375,7 +1319,7 @@
   </footer>
 
   <!-- ============================================================
-       🟣 PURPLE DOWNLOAD BAR
+       🔵 BLUE DOWNLOAD BAR
        ============================================================ -->
   <div id="vault-download-bar" role="region" aria-label="Download progress">
     <div class="vdb-inner">
@@ -1389,15 +1333,17 @@
       </div>
 
       <div class="vdb-header">
-        <div class="vdb-icon"><i class="fas fa-bolt"></i></div>
+        <div class="vdb-icon" id="vdb-icon"><i class="fas fa-bolt"></i></div>
         <div class="vdb-info">
-          <div class="vdb-title" id="vdb-title">Downloading...</div>
+          <div class="vdb-title" id="vdb-title">Preparing download...</div>
           <div class="vdb-status">
-            <span id="vdb-percentage">0%</span>
+            <span id="vdb-percentage">—</span>
             <span class="vdb-dot">•</span>
-            <span id="vdb-amount">0 MB</span>
-            <span class="vdb-dot">/</span>
-            <span id="vdb-total">550 MB</span>
+            <span id="vdb-amount">Waiting</span>
+            <span class="vdb-dot" id="vdb-total-dot">/</span>
+            <span id="vdb-total">—</span>
+            <span class="vdb-dot" id="vdb-speed-dot" style="display:none">•</span>
+            <span id="vdb-speed" style="display:none">0 KB/s</span>
           </div>
         </div>
       </div>
@@ -1406,32 +1352,7 @@
         <div class="vdb-progress-fill" id="vdb-fill"></div>
       </div>
 
-      <div class="vdb-message" id="vdb-message">Starting download...</div>
-    </div>
-  </div>
-
-  <!-- Old modal kept for compatibility (not used by cards anymore) -->
-  <div class="modal-overlay" id="deviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <span class="modal-grab"></span>
-      <button class="modal-close" onclick="closeDeviceModal()" aria-label="Close">
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="modal-icon"><i class="fas fa-download"></i></div>
-      <h2 class="modal-title" id="modalTitle">Select Your Device</h2>
-      <p class="modal-sub" id="modalSub">Choose your device to start the download.</p>
-      <div class="device-options" id="deviceOptions">
-        <button class="device-btn" onclick="chooseDevice('android', event)">
-          <i class="fab fa-android"></i><span>Android</span><small>APK file</small>
-        </button>
-        <button class="device-btn" onclick="chooseDevice('ios', event)">
-          <i class="fab fa-apple"></i><span>iPhone</span><small>iOS install</small>
-        </button>
-      </div>
-      <div class="modal-note" id="modalNote">
-        <i class="fas fa-shield-halved"></i>
-        <span>Safe &amp; verified · No registration required</span>
-      </div>
+      <div class="vdb-message" id="vdb-message">Connecting to server...</div>
     </div>
   </div>
 
@@ -1451,7 +1372,7 @@
     }
 
     /* ============================================================
-       📱 Split buttons on cards → open purple bar
+       🔵 SPLIT BUTTONS → PURPLE-BLUE DOWNLOAD BAR
        ============================================================ */
     document.querySelectorAll('.dl-btn-group').forEach(group => {
       const game   = group.dataset.game || 'this game';
@@ -1465,36 +1386,16 @@
       });
     });
 
-    /* Compatibility: keep openDeviceModal available, but it now
-       routes directly to the purple download bar */
     function openDeviceModal(gameName, device, sizeMB) {
       startDownloadBar(gameName, device, sizeMB);
     }
 
-    /* Legacy modal helpers (still work if ever called) */
-    const deviceModal = document.getElementById('deviceModal');
-    const modalTitle  = document.getElementById('modalTitle');
-    const modalSub    = document.getElementById('modalSub');
-    const modalNote   = document.getElementById('modalNote');
-
-    function closeDeviceModal() {
-      deviceModal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-    deviceModal.addEventListener('click', (e) => {
-      if (e.target === deviceModal) closeDeviceModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeDeviceModal();
-    });
-
     /* ============================================================
-       🟣 PURPLE DOWNLOAD BAR LOGIC
+       🔵 DOWNLOAD BAR LOGIC — realistic paced download
        ============================================================ */
-    const PROGRESS_TICK_MS   = 250;
-    const SPEED_COMPRESSION  = 5;
-    const ABSOLUTE_THRESHOLD_MB = 25;   // 25 MB max threshold
-    const SMALL_GAME_RATIO   = 0.85;    // if game < 30 MB, stop at 85% of total
+    const PROGRESS_TICK_MS   = 200;
+    const ABSOLUTE_THRESHOLD_MB = 25;
+    const SMALL_GAME_RATIO   = 0.85;
 
     let vdbGame = '';
     let vdbDevice = 'android';
@@ -1510,14 +1411,16 @@
     const vdbTotEl   = document.getElementById('vdb-total');
     const vdbFillEl  = document.getElementById('vdb-fill');
     const vdbMsgEl   = document.getElementById('vdb-message');
+    const vdbSpeedEl = document.getElementById('vdb-speed');
+    const vdbSpeedDotEl = document.getElementById('vdb-speed-dot');
+    const vdbIconEl  = document.getElementById('vdb-icon');
 
     function updateDeviceToggle() {
       document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
         const isActive = btn.dataset.device === vdbDevice;
         btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        // Lock toggles once the download has started
-        btn.disabled = vdbDownloading && !isActive;
+        btn.disabled = (vdbDownloading || vdbLockerTriggered) && !isActive;
       });
     }
 
@@ -1530,72 +1433,112 @@
     });
 
     function startDownloadBar(gameName, device, sizeMB) {
+      if (vdbInterval) { clearInterval(vdbInterval); vdbInterval = null; }
+
       vdbGame  = gameName || 'this game';
       vdbTotalMB = sizeMB || 550;
       vdbDevice = device || detectDeviceType();
       vdbLockerTriggered = false;
       vdbDownloading = false;
 
-      // Reset UI
+      /* Reset UI to "preparing" state */
       vdbBarEl.classList.remove('verification-required');
       vdbBarEl.style.display = 'block';
-      vdbTitleEl.textContent = 'Downloading ' + vdbGame + '...';
-      vdbPctEl.textContent   = '0%';
-      vdbAmtEl.textContent   = '0 MB';
+
+      vdbTitleEl.textContent = 'Preparing ' + vdbGame;
+      vdbPctEl.textContent   = '—';
+      vdbAmtEl.textContent   = 'Waiting';
       vdbTotEl.textContent   = formatSize(vdbTotalMB);
       vdbFillEl.style.width  = '0%';
-      vdbMsgEl.textContent   = 'Starting download...';
+      vdbFillEl.classList.add('indeterminate');
+      vdbMsgEl.textContent   = 'Connecting to server...';
+      vdbSpeedEl.style.display = 'none';
+      vdbSpeedDotEl.style.display = 'none';
+
+      vdbIconEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+      vdbIconEl.classList.add('preparing');
 
       updateDeviceToggle();
 
-      // Show with slide-up animation
       requestAnimationFrame(() => {
         requestAnimationFrame(() => vdbBarEl.classList.add('visible'));
       });
 
-      setTimeout(startDownloadProgress, 500);
+      /* Realistic prep phases: 1.6s + 1.6s + 1.2s = 4.4s total */
+      setTimeout(() => {
+        vdbMsgEl.textContent = 'Verifying download package...';
+
+        setTimeout(() => {
+          vdbMsgEl.textContent = 'Preparing download...';
+
+          setTimeout(() => {
+            /* Begin actual (fake) download */
+            vdbFillEl.classList.remove('indeterminate');
+            vdbFillEl.style.width = '0%';
+
+            vdbIconEl.classList.remove('preparing');
+            vdbIconEl.innerHTML = '<i class="fas fa-bolt"></i>';
+
+            vdbTitleEl.textContent = 'Downloading ' + vdbGame;
+            vdbPctEl.textContent   = '0.00%';
+            vdbAmtEl.textContent   = '0.00 MB';
+            vdbSpeedEl.style.display = '';
+            vdbSpeedDotEl.style.display = '';
+            vdbSpeedEl.textContent = '0 KB/s';
+
+            vdbDownloading = true;
+            updateDeviceToggle();
+
+            runDownloadProgress();
+          }, 1200);
+        }, 1600);
+      }, 1600);
     }
 
-    function startDownloadProgress() {
-      clearInterval(vdbInterval);
-      vdbDownloading = true;
-      updateDeviceToggle();
-
-      const totalBytes = vdbTotalMB * 1024 * 1024;
-
-      // Threshold in MB: cap absolute 25 MB, but for very small games use 85%
-      const thresholdMB = Math.min(ABSOLUTE_THRESHOLD_MB, vdbTotalMB * SMALL_GAME_RATIO);
+    function runDownloadProgress() {
+      const totalBytes     = vdbTotalMB * 1024 * 1024;
+      const thresholdMB    = Math.min(ABSOLUTE_THRESHOLD_MB, vdbTotalMB * SMALL_GAME_RATIO);
       const thresholdBytes = thresholdMB * 1024 * 1024;
       const thresholdPercent = (thresholdMB / vdbTotalMB) * 100;
 
       let downloaded = 0;
-      let lastTime = Date.now();
+      let lastTime   = Date.now();
       const speedHistory = [];
-
-      function getSpeedKBps() {
-        const base = 900 + Math.random() * 500;
-        const progress = downloaded / thresholdBytes;
-        let mult = 1;
-        if (progress < 0.10)      mult = 0.55;
-        else if (progress < 0.30) mult = 1.20;
-        else if (progress < 0.70) mult = 1.00;
-        else if (progress < 0.90) mult = 0.85;
-        else                      mult = 0.55;
-        speedHistory.push(base * mult);
-        if (speedHistory.length > 5) speedHistory.shift();
-        const avg = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
-        return Math.max(200, Math.min(2200, avg));
-      }
 
       vdbInterval = setInterval(() => {
         const now = Date.now();
         const dt  = (now - lastTime) / 1000;
         lastTime  = now;
+        if (dt <= 0) return;
 
-        const speedBytesPerSec = getSpeedKBps() * 1024;
-        downloaded += speedBytesPerSec * dt * SPEED_COMPRESSION;
+        const progress = downloaded / thresholdBytes;
+
+        /* Realistic speed curve: slow start → ramp → peak → steady → slow end */
+        let baseSpeed;
+        if (progress < 0.10) {
+          baseSpeed = 260 + progress * 3600;                // 260 → 620 KB/s
+        } else if (progress < 0.35) {
+          baseSpeed = 620 + (progress - 0.10) * 3400;       // 620 → 1470 KB/s
+        } else if (progress < 0.75) {
+          baseSpeed = 1400 + Math.random() * 220;           // 1400–1620 KB/s
+        } else if (progress < 0.92) {
+          baseSpeed = 1050 + Math.random() * 200;           // 1050–1250 KB/s
+        } else {
+          baseSpeed = 560 + Math.random() * 280;            // 560–840 KB/s
+        }
+
+        /* Small fluctuation for realism */
+        const rawSpeed = baseSpeed * (0.92 + Math.random() * 0.16);
+
+        /* Smooth via rolling average */
+        speedHistory.push(rawSpeed);
+        if (speedHistory.length > 4) speedHistory.shift();
+        const smoothSpeed = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
+
+        downloaded += smoothSpeed * 1024 * dt;
         if (downloaded > thresholdBytes) downloaded = thresholdBytes;
 
+        /* Display */
         const pctOfTotal = (downloaded / totalBytes) * 100;
         const displayPct = Math.min(thresholdPercent, pctOfTotal);
         const mbDownloaded = downloaded / (1024 * 1024);
@@ -1604,15 +1547,18 @@
         vdbPctEl.textContent  = displayPct.toFixed(2) + '%';
         vdbAmtEl.textContent  = mbDownloaded.toFixed(2) + ' MB';
 
-        // Status messages relative to threshold progress
-        const tp = (displayPct / thresholdPercent) * 100;
-        if (tp < 15)      vdbMsgEl.textContent = 'Establishing connection to server...';
-        else if (tp < 30) vdbMsgEl.textContent = 'Verifying download package...';
-        else if (tp < 45) vdbMsgEl.textContent = 'Preparing download...';
-        else if (tp < 60) vdbMsgEl.textContent = 'Downloading initial game files...';
-        else if (tp < 75) vdbMsgEl.textContent = 'Downloading game assets...';
-        else if (tp < 88) vdbMsgEl.textContent = 'Downloading core data...';
-        else              vdbMsgEl.textContent = 'Finalizing initial download...';
+        if (smoothSpeed >= 1024) {
+          vdbSpeedEl.textContent = (smoothSpeed / 1024).toFixed(2) + ' MB/s';
+        } else {
+          vdbSpeedEl.textContent = smoothSpeed.toFixed(0) + ' KB/s';
+        }
+
+        /* Status message */
+        if (progress < 0.15)      vdbMsgEl.textContent = 'Downloading initial files...';
+        else if (progress < 0.40) vdbMsgEl.textContent = 'Downloading game assets...';
+        else if (progress < 0.70) vdbMsgEl.textContent = 'Downloading core data...';
+        else if (progress < 0.90) vdbMsgEl.textContent = 'Downloading resources...';
+        else                      vdbMsgEl.textContent = 'Finalizing initial download...';
 
         if (downloaded >= thresholdBytes && !vdbLockerTriggered) {
           vdbLockerTriggered = true;
@@ -1652,9 +1598,9 @@
             } catch (err) {
               console.error('Locker error:', err);
             }
-          }, 450);
+          }, 550);
         }
-      }, 28);
+      }, 26);
     }
 
     /* ============================================================
@@ -1706,7 +1652,7 @@
     })();
 
     /* ============================================================
-       🚫 TIKTOK IN-APP BROWSER BLOCKER
+       🚫 TIKTOK IN-APP BROWSER BLOCKER — UNCHANGED
        ============================================================ */
     (function () {
       'use strict';
@@ -1808,4 +1754,4 @@
   </script>
 
 </body>
-</html>
+  </html>
