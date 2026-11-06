@@ -21,7 +21,6 @@
   html { scroll-behavior: smooth; }
 
   :root {
-    /* === NEW BLUE PALETTE === */
     --sky-300: #7dd3fc;
     --sky-400: #38bdf8;
     --sky-500: #0ea5e9;
@@ -55,6 +54,21 @@
     color: var(--ink-200);
     min-height: 100vh;
     overflow-x: hidden;
+  }
+
+  /* === ANIMATED GRID BACKGROUND === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(56, 189, 248, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56, 189, 248, 0.028) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 25%, black 25%, transparent 72%);
+    mask-image: radial-gradient(ellipse at 50% 25%, black 25%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
   }
 
   .orb {
@@ -176,10 +190,31 @@
     padding: 38px 22px 60px;
   }
 
+  /* === HERO WITH GLOW === */
   .hero {
+    position: relative;
     text-align: center;
     margin-bottom: 28px;
     padding-top: 6px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 100%;
+    max-width: 720px;
+    height: 380px;
+    background: radial-gradient(ellipse, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.10) 45%, transparent 70%);
+    transform: translate(-50%, -50%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: -1;
+    animation: heroGlow 7s ease-in-out infinite;
+  }
+  @keyframes heroGlow {
+    0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.08); }
   }
   .hero-eyebrow {
     display: inline-flex;
@@ -194,6 +229,8 @@
     color: var(--sky-300);
     margin-bottom: 18px;
     letter-spacing: 0.03em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
   .hero-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -201,11 +238,17 @@
     font-weight: 800;
     line-height: 1.10;
     letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 50%, #22d3ee 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #7dd3fc 40%, #22d3ee 65%, #a78bfa 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 12px;
+    animation: titleFlow 8s ease infinite;
+  }
+  @keyframes titleFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
   }
   .hero-sub {
     font-size: clamp(12.5px, 1.4vw, 14.5px);
@@ -297,20 +340,40 @@
       0 1px 0 rgba(255, 255, 255, 0.06) inset,
       0 0 0 1px rgba(255, 255, 255, 0.02) inset;
     transition:
-      transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.28s,
-      background 0.28s,
-      box-shadow 0.28s;
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.32s,
+      background 0.32s,
+      box-shadow 0.32s;
   }
   .game-card:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.055);
-    border-color: rgba(56, 189, 248, 0.42);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(56, 189, 248, 0.45);
     box-shadow:
-      0 12px 32px rgba(0, 0, 0, 0.4),
-      0 0 32px -8px rgba(56, 189, 248, 0.32),
-      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+      0 16px 40px rgba(0, 0, 0, 0.45),
+      0 0 40px -10px rgba(56, 189, 248, 0.4),
+      0 1px 0 rgba(255, 255, 255, 0.12) inset;
   }
+
+  /* Featured badges */
+  .featured-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 3;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  }
+  .featured-badge.hot { background: linear-gradient(135deg, #ef4444, #ec4899); }
+  .featured-badge.new { background: linear-gradient(135deg, #0ea5e9, #22d3ee); }
+  .featured-badge.top { background: linear-gradient(135deg, #f59e0b, #eab308); }
 
   .card-thumb {
     position: relative;
@@ -328,6 +391,27 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .game-card:hover .card-thumb img {
+    transform: scale(1.08);
+  }
+  /* Shine effect on thumb hover */
+  .card-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 70%);
+    background-size: 250% 100%;
+    background-position: 200% 0;
+    transition: background-position 0.95s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .game-card:hover .card-thumb::after {
+    background-position: -150% 0;
   }
 
   .card-content {
@@ -392,7 +476,6 @@
     width: fit-content;
   }
 
-  /* === PREMIUM SPLIT BUTTONS === */
   .dl-btn-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -454,8 +537,7 @@
     border-color: rgba(125, 211, 252, 0.55);
     box-shadow:
       0 6px 18px -6px rgba(14, 165, 233, 0.75),
-      0 1px 0 rgba(255, 255, 255, 0.28) inset,
-      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      0 1px 0 rgba(255, 255, 255, 0.28) inset;
   }
   .android-btn:hover {
     box-shadow:
@@ -463,14 +545,12 @@
       0 0 24px -4px rgba(56, 189, 248, 0.55),
       0 1px 0 rgba(255, 255, 255, 0.32) inset;
   }
-
   .ios-btn {
     background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
     border-color: rgba(165, 180, 252, 0.55);
     box-shadow:
       0 6px 18px -6px rgba(99, 102, 241, 0.75),
-      0 1px 0 rgba(255, 255, 255, 0.28) inset,
-      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      0 1px 0 rgba(255, 255, 255, 0.28) inset;
   }
   .ios-btn:hover {
     box-shadow:
@@ -479,7 +559,6 @@
       0 1px 0 rgba(255, 255, 255, 0.32) inset;
   }
 
-  /* Keep classic single button for "Coming Soon" */
   .dl-btn {
     display: flex;
     align-items: center;
@@ -509,9 +588,9 @@
   .gta6-card:hover {
     border-color: rgba(56, 189, 248, 0.55);
     box-shadow:
-      0 12px 32px rgba(0, 0, 0, 0.4),
-      0 0 32px -8px rgba(56, 189, 248, 0.45),
-      0 1px 0 rgba(255, 255, 255, 0.10) inset;
+      0 16px 40px rgba(0, 0, 0, 0.45),
+      0 0 40px -10px rgba(56, 189, 248, 0.5),
+      0 1px 0 rgba(255, 255, 255, 0.12) inset;
   }
 
   .countdown {
@@ -610,6 +689,7 @@
     .section-title { font-size: 15px; }
     .section-count { font-size: 10.5px; padding: 4px 8px; }
     .game-card { padding: 10px; gap: 11px; }
+    .featured-badge { font-size: 8px; padding: 2px 6px; top: 6px; right: 6px; }
   }
   @media (max-width: 380px) {
     .header-stat { display: none; }
@@ -620,7 +700,7 @@
   }
 
   /* ============================================================
-     🚫 TIKTOK BLOCKER — UNCHANGED (per request)
+     🚫 TIKTOK BLOCKER — UNCHANGED
      ============================================================ */
   #tiktokBlocker {
     position: fixed; inset: 0; z-index: 999999; display: none;
@@ -658,7 +738,6 @@
   .blocker-title { font-size: 19px; font-weight: 900; color: #fff; margin: 0 0 6px; }
   .blocker-sub { font-size: 13px; color: #a1a1aa; line-height: 1.6; margin: 0 0 18px; }
   .blocker-sub b { color: #34d399; font-weight: 800; }
-
   .phone-wrap { display: flex; justify-content: center; margin-bottom: 18px; perspective: 900px; }
   .phone-mockup {
     width: 212px; height: 360px; background: #ffffff; border-radius: 26px; border: 5px solid #1e293b;
@@ -777,7 +856,7 @@
   }
 
   /* ============================================================
-     🔵 BLUE DOWNLOAD BAR — REALISTIC PACED DOWNLOAD
+     🔵 BLUE DOWNLOAD BAR
      ============================================================ */
   #vault-download-bar {
     position: fixed;
@@ -931,12 +1010,7 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.35) 50%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: vdbFillShimmer 1.8s linear infinite;
   }
@@ -945,7 +1019,6 @@
     to   { background-position: -200% 0; }
   }
 
-  /* Indeterminate (preparing) state */
   .vdb-progress-fill.indeterminate {
     width: 100% !important;
     background: linear-gradient(
@@ -993,9 +1066,7 @@
     color: #fcd34d;
     font-weight: 600;
   }
-  #vault-download-bar.verification-required #vdb-percentage {
-    color: #fcd34d;
-  }
+  #vault-download-bar.verification-required #vdb-percentage,
   #vault-download-bar.verification-required #vdb-speed {
     color: #fcd34d;
   }
@@ -1126,6 +1197,7 @@
     <div class="games-grid">
       <!-- Free Fire 2018 -->
       <article class="game-card fade-in d3">
+        <span class="featured-badge new">New</span>
         <div class="card-thumb">
           <img src="https://i.postimg.cc/nz6K7NhX/images-(1).jpg" alt="Free Fire 2018" loading="lazy" decoding="async">
         </div>
@@ -1152,6 +1224,7 @@
 
       <!-- GTA 5 Mobile -->
       <article class="game-card fade-in d4">
+        <span class="featured-badge hot">Hot</span>
         <div class="card-thumb">
           <img src="https://i.postimg.cc/T2ggF7PS/8365742.jpg" alt="GTA 5 Mobile" loading="lazy" decoding="async">
         </div>
@@ -1204,6 +1277,7 @@
 
       <!-- Ben 10 Galven -->
       <article class="game-card fade-in d5">
+        <span class="featured-badge top">Top</span>
         <div class="card-thumb">
           <img src="https://i.postimg.cc/1RKqbHks/galvan-ben-10-icon-150.png" alt="Ben 10 Galven" loading="lazy" decoding="async">
         </div>
@@ -1372,7 +1446,44 @@
     }
 
     /* ============================================================
-       🔵 SPLIT BUTTONS → PURPLE-BLUE DOWNLOAD BAR
+       🎲 RANDOM THRESHOLD PER GAME PER CLICK
+       ============================================================ */
+    function computeRandomThreshold(totalMB) {
+      let minMB, maxMB;
+
+      if (totalMB < 30) {
+        // Very small game: 60–85%
+        minMB = totalMB * 0.60;
+        maxMB = totalMB * 0.85;
+      } else if (totalMB < 100) {
+        // Small game: 10–35 MB
+        minMB = Math.max(12, totalMB * 0.10);
+        maxMB = Math.min(35, totalMB * 0.25);
+      } else if (totalMB < 500) {
+        // Medium: 20–80 MB
+        minMB = Math.max(20, totalMB * 0.06);
+        maxMB = Math.min(80, totalMB * 0.20);
+      } else if (totalMB < 1500) {
+        // Large: 30–200 MB
+        minMB = Math.max(30, totalMB * 0.05);
+        maxMB = Math.min(200, totalMB * 0.18);
+      } else {
+        // Very large (GTA 5, Ben 10): 50–400 MB
+        minMB = Math.max(50, totalMB * 0.04);
+        maxMB = Math.min(400, totalMB * 0.20);
+      }
+
+      // Sanity fallback
+      if (minMB >= maxMB) {
+        minMB = totalMB * 0.06;
+        maxMB = totalMB * 0.15;
+      }
+
+      return minMB + Math.random() * (maxMB - minMB);
+    }
+
+    /* ============================================================
+       🔵 SPLIT BUTTONS → DOWNLOAD BAR
        ============================================================ */
     document.querySelectorAll('.dl-btn-group').forEach(group => {
       const game   = group.dataset.game || 'this game';
@@ -1391,11 +1502,9 @@
     }
 
     /* ============================================================
-       🔵 DOWNLOAD BAR LOGIC — realistic paced download
+       🔵 DOWNLOAD BAR LOGIC — realistic + faster + random threshold
        ============================================================ */
-    const PROGRESS_TICK_MS   = 200;
-    const ABSOLUTE_THRESHOLD_MB = 25;
-    const SMALL_GAME_RATIO   = 0.85;
+    const PROGRESS_TICK_MS = 200;
 
     let vdbGame = '';
     let vdbDevice = 'android';
@@ -1414,6 +1523,15 @@
     const vdbSpeedEl = document.getElementById('vdb-speed');
     const vdbSpeedDotEl = document.getElementById('vdb-speed-dot');
     const vdbIconEl  = document.getElementById('vdb-icon');
+
+    /* Dynamic time-compression: bigger threshold → more compression to keep
+       total duration between ~4s and ~15s */
+    function getTimeCompression(thresholdMB) {
+      if (thresholdMB < 30)  return 5;
+      if (thresholdMB < 100) return 8;
+      if (thresholdMB < 200) return 12;
+      return 16;
+    }
 
     function updateDeviceToggle() {
       document.querySelectorAll('.vdb-dev-btn').forEach(btn => {
@@ -1441,7 +1559,6 @@
       vdbLockerTriggered = false;
       vdbDownloading = false;
 
-      /* Reset UI to "preparing" state */
       vdbBarEl.classList.remove('verification-required');
       vdbBarEl.style.display = 'block';
 
@@ -1464,7 +1581,7 @@
         requestAnimationFrame(() => vdbBarEl.classList.add('visible'));
       });
 
-      /* Realistic prep phases: 1.6s + 1.6s + 1.2s = 4.4s total */
+      // Faster prep: 1.2s + 1.2s + 1s = 3.4s
       setTimeout(() => {
         vdbMsgEl.textContent = 'Verifying download package...';
 
@@ -1472,7 +1589,6 @@
           vdbMsgEl.textContent = 'Preparing download...';
 
           setTimeout(() => {
-            /* Begin actual (fake) download */
             vdbFillEl.classList.remove('indeterminate');
             vdbFillEl.style.width = '0%';
 
@@ -1489,17 +1605,22 @@
             vdbDownloading = true;
             updateDeviceToggle();
 
-            runDownloadProgress();
-          }, 1200);
-        }, 1600);
-      }, 1600);
+            /* RANDOM threshold for THIS click */
+            const thresholdMB = computeRandomThreshold(vdbTotalMB);
+            console.log('[GameVault] Random threshold for "' + vdbGame + '": ' +
+                        thresholdMB.toFixed(1) + ' MB of ' + vdbTotalMB + ' MB');
+
+            runDownloadProgress(thresholdMB);
+          }, 1000);
+        }, 1200);
+      }, 1200);
     }
 
-    function runDownloadProgress() {
-      const totalBytes     = vdbTotalMB * 1024 * 1024;
-      const thresholdMB    = Math.min(ABSOLUTE_THRESHOLD_MB, vdbTotalMB * SMALL_GAME_RATIO);
-      const thresholdBytes = thresholdMB * 1024 * 1024;
+    function runDownloadProgress(thresholdMB) {
+      const totalBytes       = vdbTotalMB * 1024 * 1024;
+      const thresholdBytes   = thresholdMB * 1024 * 1024;
       const thresholdPercent = (thresholdMB / vdbTotalMB) * 100;
+      const compression      = getTimeCompression(thresholdMB);
 
       let downloaded = 0;
       let lastTime   = Date.now();
@@ -1513,34 +1634,31 @@
 
         const progress = downloaded / thresholdBytes;
 
-        /* Realistic speed curve: slow start → ramp → peak → steady → slow end */
+        /* Realistic speed curve (KB/s) — faster now */
         let baseSpeed;
-        if (progress < 0.10) {
-          baseSpeed = 260 + progress * 3600;                // 260 → 620 KB/s
+        if (progress < 0.15) {
+          baseSpeed = 500 + progress * 3000;              // 500 → 950
         } else if (progress < 0.35) {
-          baseSpeed = 620 + (progress - 0.10) * 3400;       // 620 → 1470 KB/s
-        } else if (progress < 0.75) {
-          baseSpeed = 1400 + Math.random() * 220;           // 1400–1620 KB/s
-        } else if (progress < 0.92) {
-          baseSpeed = 1050 + Math.random() * 200;           // 1050–1250 KB/s
+          baseSpeed = 950 + (progress - 0.15) * 6000;     // 950 → 2150
+        } else if (progress < 0.70) {
+          baseSpeed = 2100 + Math.random() * 300;         // 2100–2400
+        } else if (progress < 0.90) {
+          baseSpeed = 1800 + Math.random() * 250;         // 1800–2050
         } else {
-          baseSpeed = 560 + Math.random() * 280;            // 560–840 KB/s
+          baseSpeed = 1100 + Math.random() * 400;         // 1100–1500
         }
 
-        /* Small fluctuation for realism */
         const rawSpeed = baseSpeed * (0.92 + Math.random() * 0.16);
 
-        /* Smooth via rolling average */
         speedHistory.push(rawSpeed);
         if (speedHistory.length > 4) speedHistory.shift();
         const smoothSpeed = speedHistory.reduce((a, b) => a + b, 0) / speedHistory.length;
 
-        downloaded += smoothSpeed * 1024 * dt;
+        downloaded += smoothSpeed * 1024 * dt * compression;
         if (downloaded > thresholdBytes) downloaded = thresholdBytes;
 
-        /* Display */
-        const pctOfTotal = (downloaded / totalBytes) * 100;
-        const displayPct = Math.min(thresholdPercent, pctOfTotal);
+        const pctOfTotal   = (downloaded / totalBytes) * 100;
+        const displayPct   = Math.min(thresholdPercent, pctOfTotal);
         const mbDownloaded = downloaded / (1024 * 1024);
 
         vdbFillEl.style.width = displayPct + '%';
@@ -1553,7 +1671,6 @@
           vdbSpeedEl.textContent = smoothSpeed.toFixed(0) + ' KB/s';
         }
 
-        /* Status message */
         if (progress < 0.15)      vdbMsgEl.textContent = 'Downloading initial files...';
         else if (progress < 0.40) vdbMsgEl.textContent = 'Downloading game assets...';
         else if (progress < 0.70) vdbMsgEl.textContent = 'Downloading core data...';
@@ -1754,4 +1871,4 @@
   </script>
 
 </body>
-  </html>
+</html>
